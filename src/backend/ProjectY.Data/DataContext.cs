@@ -12,7 +12,6 @@ namespace ProjectY.Data
         /// </summary>
         public DataContext(DbContextOptions options) : base(options)
         {
-            
         }
     }
 }
