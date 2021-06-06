@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
 using ProjectY.Data.Entities;
@@ -10,13 +11,14 @@ namespace ProjectY.Logic.Services
     public class TestService : ITestService
     {
         private readonly DataContext _context;
-        private readonly DbSet<Home> _dbSet;
 
         public TestService(DataContext context)
         {
             _context = context;
-            _dbSet = context.Set<Home>();
         }
+
+        public async Task<IEnumerable<Home>> GetAllAsync() =>
+            await _context.Homes.ToListAsync();
 
         public async Task<AddHomeDto> CreateHomeAsync(AddHomeDto homeDto)
         {

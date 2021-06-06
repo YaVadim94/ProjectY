@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,11 +22,14 @@ namespace ProjectY.Web.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddDbContext<DataContext>(options =>
             {
                 options
                     .UseNpgsql(_configuration.GetConnectionString("Postgres"))
-                    .EnableSensitiveDataLogging();
+                    .EnableSensitiveDataLogging()
+                    .LogTo(Console.WriteLine)
+                    ;
             });
 
             services.AddScoped<ITestService, TestService>();
