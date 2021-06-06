@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
 using Microsoft.Extensions.Configuration;
+using ProjectY.Logic.Interfaces;
+using ProjectY.Logic.Services;
 
 namespace ProjectY.Web.Api
 {
@@ -25,6 +27,8 @@ namespace ProjectY.Web.Api
                     .UseNpgsql(_configuration.GetConnectionString("Postgres"))
                     .EnableSensitiveDataLogging();
             });
+
+            services.AddScoped<ITestService, TestService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

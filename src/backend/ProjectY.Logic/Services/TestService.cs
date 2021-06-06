@@ -2,11 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
 using ProjectY.Data.Entities;
+using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Models;
 
 namespace ProjectY.Logic.Services
 {
-    public class TestService/*<TEntity> where TEntity : class*/
+    public class TestService : ITestService
     {
         private readonly DataContext _context;
         private readonly DbSet<Home> _dbSet;

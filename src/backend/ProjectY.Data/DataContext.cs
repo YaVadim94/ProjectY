@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectY.Data.Entities;
 
 namespace ProjectY.Data
 {
@@ -13,5 +14,7 @@ namespace ProjectY.Data
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<Home> Homes { get; set; }
     }
 }
