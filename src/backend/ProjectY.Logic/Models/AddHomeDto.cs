@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectY.Logic.Models
 {
-    /// <summary>
-    /// Тестовая модель.
-    /// </summary>
-    public class Test
+    public class AddHomeDto
     {
         public int Number { get; set; }
     }
