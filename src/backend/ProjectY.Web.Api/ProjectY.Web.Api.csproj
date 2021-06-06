@@ -16,7 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Data\ProjectY.Data.csproj" />
+    <ProjectReference Include="..\ProjectY.Logic\ProjectY.Logic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\Responses\" />
+    <Folder Include="Contracts\Requests\" />
   </ItemGroup>
 
 </Project>
