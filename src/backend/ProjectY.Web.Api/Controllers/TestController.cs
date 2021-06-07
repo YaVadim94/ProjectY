@@ -23,7 +23,7 @@ namespace ProjectY.Web.Api.Controllers
             await _testService.GetAllAsync();
 
         [HttpPost]
-        public async Task<AddHomeDto> CreateHome([FromBody] [Required] AddHomeDto request)
+        public async Task<AddHomeDto> CreateHome([FromBody][Required] AddHomeDto request)
         {
             var result = await _testService.CreateHomeAsync(request);
             return result;

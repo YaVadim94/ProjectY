@@ -6,6 +6,6 @@ namespace ProjectY.Web.Api.Controllers
     [ApiController]
     public class BaseApiController : ControllerBase
     {
-        
+
     }
 }

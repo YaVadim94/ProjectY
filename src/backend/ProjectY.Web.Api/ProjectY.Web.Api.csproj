@@ -24,4 +24,8 @@
     <Folder Include="Contracts\Requests\" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="dotnet tool install -g dotnet-format&#xD;&#xA;dotnet tool update -g dotnet-format&#xD;&#xA;dotnet format -w &quot;$(SolutionPath)&quot;&#xD;&#xA;" />
+  </Target>
+
 </Project>
