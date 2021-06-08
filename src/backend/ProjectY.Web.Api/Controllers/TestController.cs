@@ -16,6 +16,9 @@ namespace ProjectY.Web.Api.Controllers
     {
         private readonly ITestService _testService;
 
+        /// <summary>
+        /// Тестовый контроллер для отладки проекта.
+        /// </summary>
         public TestController(ITestService testService)
         {
             _testService = testService;
@@ -24,7 +27,6 @@ namespace ProjectY.Web.Api.Controllers
         /// <summary>
         /// Получить все записи Home.
         /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<Home>> CreateHome() =>
             await _testService.GetAllAsync();
@@ -32,8 +34,6 @@ namespace ProjectY.Web.Api.Controllers
         /// <summary>
         /// Создать запись Home.
         /// </summary>
-        /// <param name="request">Модель для создания записи</param>
-        /// <returns></returns>
         [HttpPost]
         public async Task<AddHomeDto> CreateHome([FromBody][Required] AddHomeDto request)
         {

@@ -4,6 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>2</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>D:\Programming\Repositories\ProjectY\src\backend\ProjectY.Web.Api\ProjectY.Web.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
   <!--<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
     <DocumentationFile>D:\Programming\Repositories\ProjectY\src\backend\ProjectY.Web.Api\ProjectY.Web.Api.xml</DocumentationFile>

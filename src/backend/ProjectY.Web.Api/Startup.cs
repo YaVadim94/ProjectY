@@ -10,15 +10,24 @@ using ProjectY.Logic.Services;
 
 namespace ProjectY.Web.Api
 {
+    /// <summary>
+    /// Класс для конфигурации веб приложения
+    /// </summary>
     public class Startup
     {
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Класс для конфигурации веб приложения
+        /// </summary>
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Сидирование DI
+        /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -34,6 +43,9 @@ namespace ProjectY.Web.Api
             services.AddScoped<ITestService, TestService>();
         }
 
+        /// <summary>
+        /// Настройка дата пайплайна
+        /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();

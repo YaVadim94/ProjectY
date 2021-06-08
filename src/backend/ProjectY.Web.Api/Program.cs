@@ -9,13 +9,22 @@ using System.Threading.Tasks;
 
 namespace ProjectY.Web.Api
 {
+    /// <summary>
+    /// Исходный класс приложения
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Исходный метод приложения
+        /// </summary>
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
         }
 
+        /// <summary>
+        /// Конфигурация веб хоста
+        /// </summary>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
