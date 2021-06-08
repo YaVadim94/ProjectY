@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +40,11 @@ namespace ProjectY.Web.Api
                     .EnableSensitiveDataLogging()
                     .LogTo(Console.WriteLine);
             });
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+                    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+            });
 
             services.AddScoped<ITestService, TestService>();
         }
