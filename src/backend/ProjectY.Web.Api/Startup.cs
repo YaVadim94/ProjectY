@@ -9,6 +9,7 @@ using ProjectY.Data;
 using Microsoft.Extensions.Configuration;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Services;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ProjectY.Web.Api
 {
@@ -59,6 +60,7 @@ namespace ProjectY.Web.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project Y API V1");
                 c.RoutePrefix = string.Empty;
+                c.DocExpansion(DocExpansion.None);
             });
             app.UseRouting().UseEndpoints(configure => configure.MapControllers());
         }
