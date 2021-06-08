@@ -1,7 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
@@ -28,19 +27,22 @@ namespace ProjectY.Web.Api
                 options
                     .UseNpgsql(_configuration.GetConnectionString("Postgres"))
                     .EnableSensitiveDataLogging()
-                    .LogTo(Console.WriteLine)
-                    ;
+                    .LogTo(Console.WriteLine);
             });
+            services.AddSwaggerGen();
 
             services.AddScoped<ITestService, TestService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app
-                .UseRouting()
-                .UseEndpoints(configure =>
-                    configure.MapControllers());
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project Y API V1");
+                c.RoutePrefix = string.Empty;
+            });
+            app.UseRouting().UseEndpoints(configure => configure.MapControllers());
         }
     }
 }

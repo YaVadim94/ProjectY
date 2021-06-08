@@ -9,6 +9,9 @@ using ProjectY.Logic.Services;
 
 namespace ProjectY.Web.Api.Controllers
 {
+    /// <summary>
+    /// Тестовый контроллер для отладки проекта.
+    /// </summary>
     public class TestController : BaseApiController
     {
         private readonly ITestService _testService;
@@ -18,10 +21,19 @@ namespace ProjectY.Web.Api.Controllers
             _testService = testService;
         }
 
+        /// <summary>
+        /// Получить все записи Home.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<Home>> CreateHome() =>
             await _testService.GetAllAsync();
 
+        /// <summary>
+        /// Создать запись Home.
+        /// </summary>
+        /// <param name="request">Модель для создания записи</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<AddHomeDto> CreateHome([FromBody][Required] AddHomeDto request)
         {
