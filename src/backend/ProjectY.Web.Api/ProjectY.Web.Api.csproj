@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Logic\ProjectY.Logic.csproj" />
+    <ProjectReference Include="..\ProjectY.Logic\ProjectY.Application.Logic.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,5 +39,7 @@
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="dotnet tool install -g dotnet-format&#xD;&#xA;dotnet tool update -g dotnet-format&#xD;&#xA;dotnet format -w &quot;$(SolutionPath)&quot;&#xD;&#xA;" />
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="`" /></VisualStudio></ProjectExtensions>
 
 </Project>
