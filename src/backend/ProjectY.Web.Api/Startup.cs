@@ -9,6 +9,7 @@ using ProjectY.Data;
 using Microsoft.Extensions.Configuration;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Services;
+using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ProjectY.Web.Api
@@ -26,6 +27,10 @@ namespace ProjectY.Web.Api
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration, sectionName: "Serilog")
+                .CreateLogger();
         }
 
         /// <summary>
@@ -46,7 +51,6 @@ namespace ProjectY.Web.Api
                 setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
                     $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
             });
-
             services.AddScoped<ITestService, TestService>();
         }
 
