@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Data.Entities;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Models;
-using ProjectY.Logic.Services;
+using ProjectY.Web.Api.Contracts.Requests;
 
 namespace ProjectY.Web.Api.Controllers
 {
@@ -15,30 +16,32 @@ namespace ProjectY.Web.Api.Controllers
     public class TestController : BaseApiController
     {
         private readonly ITestService _testService;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Тестовый контроллер для отладки проекта.
         /// </summary>
-        public TestController(ITestService testService)
+        public TestController(ITestService testService, IMapper mapper)
         {
             _testService = testService;
+            _mapper = mapper;
         }
 
         /// <summary>
         /// Получить все записи Home.
         /// </summary>
         [HttpGet]
-        public async Task<IEnumerable<Home>> CreateHome() =>
+        public async Task<IEnumerable<Home>> GetAll() =>
             await _testService.GetAllAsync();
 
         /// <summary>
         /// Создать запись Home.
         /// </summary>
         [HttpPost]
-        public async Task<AddHomeDto> CreateHome([FromBody][Required] AddHomeDto request)
+        public async Task<HomeDto> CreateHome([FromBody][Required] CreateHomeDto request)
         {
-            var result = await _testService.CreateHomeAsync(request);
-            return result;
+            var homeDto = _mapper.Map<HomeDto>(request);
+            return await _testService.CreateHomeAsync(homeDto);
         }
     }
 }

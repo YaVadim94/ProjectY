@@ -10,8 +10,8 @@ namespace ProjectY.Logic.Interfaces
 {
     public interface ITestService
     {
-        Task<AddHomeDto> CreateHomeAsync(AddHomeDto homeDto);
-
         Task<IEnumerable<Home>> GetAllAsync();
+
+        Task<HomeDto> CreateHomeAsync(HomeDto homeDto);
     }
 }

@@ -1,15 +1,16 @@
 using System;
-using System.IO;
-using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Services;
 using Swashbuckle.AspNetCore.SwaggerUI;
+
+using ProjectY.Web.Api.Extensions;
 
 namespace ProjectY.Web.Api
 {
@@ -19,13 +20,15 @@ namespace ProjectY.Web.Api
     public class Startup
     {
         private readonly IConfiguration _configuration;
+        private readonly IHostEnvironment _hostEnvironment;
 
         /// <summary>
-        /// Класс для конфигурации веб приложения
+        /// Конструктор класса для конфигурации веб приложения
         /// </summary>
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
             _configuration = configuration;
+            _hostEnvironment = hostEnvironment;
         }
 
         /// <summary>
@@ -41,13 +44,14 @@ namespace ProjectY.Web.Api
                     .EnableSensitiveDataLogging()
                     .LogTo(Console.WriteLine);
             });
-            services.AddSwaggerGen(setupAction =>
-            {
-                setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
-                    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
-            });
 
+            services.AddAutoMapper();
             services.AddScoped<ITestService, TestService>();
+
+            if (!_hostEnvironment.IsProduction())
+            {
+                services.AddSwagger();
+            }
         }
 
         /// <summary>
