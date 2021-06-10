@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace ProjectY.Web.Api.Contracts.Responses
+namespace ProjectY.Logic.Models.Home
 {
     /// <summary>
-    /// Модель созданной сущности Home.
+    /// Тестовая модель.
     /// </summary>
-    public class CreatedHomeDto
+    public class HomeDto
     {
         /// <summary>
         /// Номер.
@@ -16,5 +16,10 @@ namespace ProjectY.Web.Api.Contracts.Responses
         /// Дата создания.
         /// </summary>
         public DateTime CreatedDate { get; set; }
+
+        /// <summary>
+        /// Дата изменения.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
     }
 }

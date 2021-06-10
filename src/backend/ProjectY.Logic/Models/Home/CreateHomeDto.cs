@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectY.Web.Api.Contracts.Requests
+namespace ProjectY.Logic.Models.Home
 {
     /// <summary>
     /// Модель для создания сущности Home.

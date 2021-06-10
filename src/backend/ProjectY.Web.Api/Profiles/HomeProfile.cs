@@ -1,9 +1,8 @@
 ﻿using System;
 using AutoMapper;
 using ProjectY.Data.Entities;
-using ProjectY.Logic.Models;
-using ProjectY.Web.Api.Contracts.Requests;
-using ProjectY.Web.Api.Contracts.Responses;
+using ProjectY.Logic.Models.Home;
+using ProjectY.Web.Api.Contracts.Home;
 
 namespace ProjectY.Web.Api.Profiles
 {
@@ -23,8 +22,8 @@ namespace ProjectY.Web.Api.Profiles
                 .ForMember(d => d.ModifiedDate,
                     opt => opt.MapFrom(src => DateTime.Now))
                 .ReverseMap();
-            CreateMap<CreateHomeDto, HomeDto>();
-            CreateMap<HomeDto, CreatedHomeDto>();
+            CreateMap<CreateHomeContract, CreateHomeDto>();
+            CreateMap<HomeDto, HomeContract>();
         }
     }
 }

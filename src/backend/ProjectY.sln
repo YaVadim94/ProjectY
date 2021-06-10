@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Data", "ProjectY.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Data.Entities", "ProjectY.Data.Entities\ProjectY.Data.Entities.csproj", "{77D16D48-12CD-4539-B643-A6D569770C33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Logic", "ProjectY.Logic\ProjectY.Logic.csproj", "{0E41408D-D93B-4B2D-BCCC-6283E76305E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Logic", "ProjectY.Logic\ProjectY.Logic.csproj", "{0E41408D-D93B-4B2D-BCCC-6283E76305E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Application.Core", "ProjectY.Application.Core\ProjectY.Application.Core.csproj", "{6200B272-9E57-4735-A28E-30AA522ABA41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6200B272-9E57-4735-A28E-30AA522ABA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6200B272-9E57-4735-A28E-30AA522ABA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6200B272-9E57-4735-A28E-30AA522ABA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6200B272-9E57-4735-A28E-30AA522ABA41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{D8FC27C9-EEC3-4E85-8C04-BAA698BB04A9} = {90B802C7-C693-4386-968C-A7FA1E09C686}
 		{77D16D48-12CD-4539-B643-A6D569770C33} = {90B802C7-C693-4386-968C-A7FA1E09C686}
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3} = {57D395E7-42A4-46C8-BA19-61DF82A95A62}
+		{6200B272-9E57-4735-A28E-30AA522ABA41} = {57D395E7-42A4-46C8-BA19-61DF82A95A62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5ADAF21B-8ABE-480D-A237-BEF8ECCB8667}

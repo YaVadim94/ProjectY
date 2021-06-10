@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ProjectY.Data.Entities;
 using ProjectY.Logic.Interfaces;
-using ProjectY.Logic.Models;
-using ProjectY.Web.Api.Contracts.Requests;
-using ProjectY.Web.Api.Contracts.Responses;
+using ProjectY.Logic.Models.Home;
+using ProjectY.Web.Api.Contracts.Home;
 
 namespace ProjectY.Web.Api.Controllers
 {
@@ -29,21 +26,14 @@ namespace ProjectY.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Получить все записи Home.
-        /// </summary>
-        [HttpGet]
-        public async Task<IEnumerable<Home>> GetAll() =>
-            await _testService.GetAllAsync();
-
-        /// <summary>
         /// Создать запись Home.
         /// </summary>
         [HttpPost]
-        public async Task<CreatedHomeDto> CreateHome([FromBody][Required] CreateHomeDto request)
+        public async Task<HomeContract> CreateHome([FromBody][Required] CreateHomeContract request)
         {
-            var homeDto = _mapper.Map<HomeDto>(request);
-            var result = await _testService.CreateHomeAsync(homeDto);
-            return _mapper.Map<CreatedHomeDto>(result);
+            var homeDto = _mapper.Map<CreateHomeDto>(request);
+            var result = await _testService.CreateAsync(homeDto);
+            return _mapper.Map<HomeContract>(result);
         }
     }
 }
