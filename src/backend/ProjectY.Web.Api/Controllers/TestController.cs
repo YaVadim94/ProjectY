@@ -7,6 +7,7 @@ using ProjectY.Data.Entities;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Models;
 using ProjectY.Web.Api.Contracts.Requests;
+using ProjectY.Web.Api.Contracts.Responses;
 
 namespace ProjectY.Web.Api.Controllers
 {
@@ -38,10 +39,11 @@ namespace ProjectY.Web.Api.Controllers
         /// Создать запись Home.
         /// </summary>
         [HttpPost]
-        public async Task<HomeDto> CreateHome([FromBody][Required] CreateHomeDto request)
+        public async Task<CreatedHomeDto> CreateHome([FromBody][Required] CreateHomeDto request)
         {
             var homeDto = _mapper.Map<HomeDto>(request);
-            return await _testService.CreateHomeAsync(homeDto);
+            var result = await _testService.CreateHomeAsync(homeDto);
+            return _mapper.Map<CreatedHomeDto>(result);
         }
     }
 }
