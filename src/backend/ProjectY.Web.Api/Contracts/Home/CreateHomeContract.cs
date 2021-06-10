@@ -5,6 +5,9 @@
     /// </summary>
     public class CreateHomeContract
     {
-
+        /// <summary>
+        /// Номер.
+        /// </summary>
+        public int Number { get; set; }
     }
 }
