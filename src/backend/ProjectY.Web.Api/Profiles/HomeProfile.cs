@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using ProjectY.Application.Core.Extensions;
 using ProjectY.Data.Entities;
 using ProjectY.Logic.Models.Home;
 using ProjectY.Web.Api.Contracts.Home;
@@ -17,10 +18,8 @@ namespace ProjectY.Web.Api.Profiles
         public HomeProfile()
         {
             CreateMap<HomeDto, Home>()
-                .ForMember(d => d.CreatedDate,
-                    opt => opt.MapFrom(src => DateTime.Now))
-                .ForMember(d => d.ModifiedDate,
-                    opt => opt.MapFrom(src => DateTime.Now))
+                .MapMember(d => d.CreatedDate, src => DateTime.Now)
+                .MapMember(d => d.ModifiedDate, src => DateTime.Now)
                 .ReverseMap();
             CreateMap<CreateHomeContract, CreateHomeDto>();
             CreateMap<HomeDto, HomeContract>();

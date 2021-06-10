@@ -4,6 +4,16 @@
         <name>ProjectY.Web.Api</name>
     </assembly>
     <members>
+        <member name="T:ProjectY.Web.Api.Contracts.Home.CreateHomeContract">
+            <summary>
+            Контракт на создание сущности Home.
+            </summary>
+        </member>
+        <member name="T:ProjectY.Web.Api.Contracts.Home.HomeContract">
+            <summary>
+            Контракт для сущности Home.
+            </summary>
+        </member>
         <member name="T:ProjectY.Web.Api.Controllers.BaseApiController">
             <summary>
             Базовый класс контроллеров
@@ -14,19 +24,39 @@
             Тестовый контроллер для отладки проекта.
             </summary>
         </member>
-        <member name="M:ProjectY.Web.Api.Controllers.TestController.#ctor(ProjectY.Logic.Interfaces.ITestService)">
+        <member name="M:ProjectY.Web.Api.Controllers.TestController.#ctor(ProjectY.Logic.Interfaces.ITestService,AutoMapper.IMapper)">
             <summary>
             Тестовый контроллер для отладки проекта.
             </summary>
         </member>
-        <member name="M:ProjectY.Web.Api.Controllers.TestController.CreateHome">
-            <summary>
-            Получить все записи Home.
-            </summary>
-        </member>
-        <member name="M:ProjectY.Web.Api.Controllers.TestController.CreateHome(ProjectY.Logic.Models.AddHomeDto)">
+        <member name="M:ProjectY.Web.Api.Controllers.TestController.CreateHome(ProjectY.Web.Api.Contracts.Home.CreateHomeContract)">
             <summary>
             Создать запись Home.
+            </summary>
+        </member>
+        <member name="T:ProjectY.Web.Api.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Класс с методами расширения колекции сервисов.
+            </summary>
+        </member>
+        <member name="M:ProjectY.Web.Api.Extensions.ServiceCollectionExtensions.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Зарегистрировать Swagger.
+            </summary>
+        </member>
+        <member name="M:ProjectY.Web.Api.Extensions.ServiceCollectionExtensions.AddAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Зарегистировать AutoMapper.
+            </summary>
+        </member>
+        <member name="T:ProjectY.Web.Api.Profiles.HomeProfile">
+            <summary>
+            Класс для конфигурации маппинга.
+            </summary>
+        </member>
+        <member name="M:ProjectY.Web.Api.Profiles.HomeProfile.#ctor">
+            <summary>
+            Конструктор класса для конфигурации маппинга.
             </summary>
         </member>
         <member name="T:ProjectY.Web.Api.Program">
@@ -49,9 +79,9 @@
             Класс для конфигурации веб приложения
             </summary>
         </member>
-        <member name="M:ProjectY.Web.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:ProjectY.Web.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
-            Класс для конфигурации веб приложения
+            Конструктор класса для конфигурации веб приложения
             </summary>
         </member>
         <member name="M:ProjectY.Web.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
