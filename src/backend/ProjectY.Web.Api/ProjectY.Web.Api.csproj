@@ -20,19 +20,23 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Logic\ProjectY.Logic.csproj" />
+    <ProjectReference Include="..\ProjectY.Logic\ProjectY.Application.Logic.csproj" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="dotnet tool install -g dotnet-format&#xD;&#xA;dotnet tool update -g dotnet-format&#xD;&#xA;dotnet format -w &quot;$(SolutionPath)&quot;&#xD;&#xA;" />
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="`" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Services;
+using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 using ProjectY.Web.Api.Extensions;
@@ -29,6 +30,10 @@ namespace ProjectY.Web.Api
         {
             _configuration = configuration;
             _hostEnvironment = hostEnvironment;
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(configuration, sectionName: "Serilog")
+                .CreateLogger();
         }
 
         /// <summary>

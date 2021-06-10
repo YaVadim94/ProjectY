@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Data", "ProjectY.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Data.Entities", "ProjectY.Data.Entities\ProjectY.Data.Entities.csproj", "{77D16D48-12CD-4539-B643-A6D569770C33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Logic", "ProjectY.Logic\ProjectY.Logic.csproj", "{0E41408D-D93B-4B2D-BCCC-6283E76305E3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Application.Core", "ProjectY.Application.Core\ProjectY.Application.Core.csproj", "{6200B272-9E57-4735-A28E-30AA522ABA41}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Application.Logic", "ProjectY.Logic\ProjectY.Application.Logic.csproj", "{0E41408D-D93B-4B2D-BCCC-6283E76305E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
