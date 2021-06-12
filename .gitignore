@@ -321,11 +321,5 @@ ASALocalRun/
 /Admin/JuiceBox.Web.Admin.Ui.New/wwwroot/dist
 *.dll
 
-/Domains/EnergyUtility/JuiceBox.Web.Utility.UI/wwwroot/dist
-/src/Connectors/RenaultConnector/Emw.Connectors.RenaultConnector.Api/appsettings.Development.json
-/src/Connectors/HondaConnector/Emw.Connectors.HondaConnector.Api/appsettings.Development.json
-/src/Connectors/HondaConnector/Emw.Connectors.HondaConnector.Api/Emw.Connectors.HondaConnector.Api.xml
-src/Connectors/HondaConnector/.vscode
-src/EnergyServices/.vscode
-src/Connectors/RenaultConnector/.vscode
+/src/backend/ProjectY.Web.Api/ProjectY.Web.Api.xml
 
