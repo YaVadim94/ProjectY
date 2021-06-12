@@ -320,6 +320,3 @@ ASALocalRun/
 /Admin/JuiceBox.Web.Admin.Ui.New/ClientApp/dist
 /Admin/JuiceBox.Web.Admin.Ui.New/wwwroot/dist
 *.dll
-
-/src/backend/ProjectY.Web.Api/ProjectY.Web.Api.xml
-
