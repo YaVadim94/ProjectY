@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,15 @@ namespace ProjectY.Web.Api.Extensions
         {
             services.AddScoped(provider => new MapperConfiguration(config =>
             {
-                config.AddProfile(new HomeProfile());
+                Enumerable.Empty<Type>()
+                    .Concat(typeof(EmptyProfile)
+                        .Assembly.GetTypes()
+                        .Where(x => x.BaseType == typeof(Profile)))
+                    .Concat(typeof(Application.Logic.Profiles.EmptyProfile)
+                        .Assembly.GetTypes()
+                        .Where(x => x.BaseType == typeof(Profile)))
+                    .ToList()
+                    .ForEach(config.AddProfile);
             }).CreateMapper());
 
             return services;
