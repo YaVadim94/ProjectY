@@ -24,8 +24,7 @@ namespace ProjectY.Data.Extensions
             {
                 opt
                     .UseNpgsql(options.ConnectionString)
-                    .EnableSensitiveDataLogging()
-                    .LogTo(Console.WriteLine);
+                    .EnableSensitiveDataLogging();
             });
             return services;
         }
