@@ -32,18 +32,12 @@ namespace ProjectY.Web.Api.Extensions
         /// </summary>
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)
         {
-            services.AddScoped(provider => new MapperConfiguration(config =>
+            var assemblies = new[]
             {
-                Enumerable.Empty<Type>()
-                    .Concat(typeof(EmptyProfile)
-                        .Assembly.GetTypes()
-                        .Where(x => x.BaseType == typeof(Profile)))
-                    .Concat(typeof(Application.Logic.Profiles.EmptyProfile)
-                        .Assembly.GetTypes()
-                        .Where(x => x.BaseType == typeof(Profile)))
-                    .ToList()
-                    .ForEach(config.AddProfile);
-            }).CreateMapper());
+                Assembly.GetExecutingAssembly(),
+                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Application.Logic.dll"))
+            };
+            services.AddAutoMapper(assemblies);
 
             return services;
         }
