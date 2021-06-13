@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,10 +32,12 @@ namespace ProjectY.Web.Api.Extensions
         /// </summary>
         public static IServiceCollection AddAutoMapper(this IServiceCollection services)
         {
-            services.AddScoped(provider => new MapperConfiguration(config =>
+            var assemblies = new[]
             {
-                config.AddProfile(new HomeProfile());
-            }).CreateMapper());
+                Assembly.GetExecutingAssembly(),
+                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Application.Logic.dll"))
+            };
+            services.AddAutoMapper(assemblies);
 
             return services;
         }

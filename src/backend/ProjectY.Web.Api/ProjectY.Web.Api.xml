@@ -9,9 +9,24 @@
             Контракт на создание сущности Home.
             </summary>
         </member>
+        <member name="P:ProjectY.Web.Api.Contracts.Home.CreateHomeContract.Number">
+            <summary>
+            Номер.
+            </summary>
+        </member>
         <member name="T:ProjectY.Web.Api.Contracts.Home.HomeContract">
             <summary>
             Контракт для сущности Home.
+            </summary>
+        </member>
+        <member name="P:ProjectY.Web.Api.Contracts.Home.HomeContract.Number">
+            <summary>
+            Номер.
+            </summary>
+        </member>
+        <member name="P:ProjectY.Web.Api.Contracts.Home.HomeContract.CreatedDate">
+            <summary>
+            Дата создания.
             </summary>
         </member>
         <member name="T:ProjectY.Web.Api.Controllers.BaseApiController">
@@ -47,6 +62,11 @@
         <member name="M:ProjectY.Web.Api.Extensions.ServiceCollectionExtensions.AddAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             Зарегистировать AutoMapper.
+            </summary>
+        </member>
+        <member name="T:ProjectY.Web.Api.Profiles.EmptyProfile">
+            <summary>
+            Профайл конфигураций, который используется для настройки DI контейнера 
             </summary>
         </member>
         <member name="T:ProjectY.Web.Api.Profiles.HomeProfile">
