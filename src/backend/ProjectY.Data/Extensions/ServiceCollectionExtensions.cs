@@ -14,7 +14,6 @@ namespace ProjectY.Data.Extensions
         /// <summary>
         /// Зарегистрировать контекст БД.
         /// </summary>
-        /// <returns>Коллекция сервисов</returns>
         public static IServiceCollection AddRepositoryContext(this IServiceCollection services,
             Action<ProjectYDbOptions> configure)
         {
@@ -45,8 +44,6 @@ namespace ProjectY.Data.Extensions
         /// <summary>
         /// Применить миграции.
         /// </summary>
-        /// <typeparam name="TContext"></typeparam>
-        /// <param name="provider"></param>
         public static void ApplyMigration<TContext>(this IServiceProvider provider)
             where TContext : DbContext
         {
