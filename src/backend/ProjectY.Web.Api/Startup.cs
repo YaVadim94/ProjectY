@@ -1,11 +1,10 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using ProjectY.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using ProjectY.Data.Extensions;
 using ProjectY.Logic.Interfaces;
 using ProjectY.Logic.Services;
 using Serilog;
@@ -42,14 +41,10 @@ namespace ProjectY.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<DataContext>(options =>
+            services.AddRepositoryContext(opt =>
             {
-                options
-                    .UseNpgsql(_configuration.GetConnectionString("Postgres"))
-                    .EnableSensitiveDataLogging()
-                    .LogTo(Console.WriteLine);
+                opt.ConnectionString = _configuration.GetConnectionString("Postgres");
             });
-
             services.AddAutoMapper();
             services.AddScoped<ITestService, TestService>();
 
@@ -64,13 +59,19 @@ namespace ProjectY.Web.Api
         /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            if (!env.IsProduction())
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project Y API V1");
-                c.RoutePrefix = string.Empty;
-                c.DocExpansion(DocExpansion.None);
-            });
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project Y API V1");
+                    c.RoutePrefix = string.Empty;
+                    c.DocExpansion(DocExpansion.None);
+                });
+            }
+
+            app.UseApplyMigration<DataContext>();
+
             app.UseRouting().UseEndpoints(configure => configure.MapControllers());
         }
     }

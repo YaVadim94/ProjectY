@@ -17,10 +17,6 @@ namespace ProjectY.Web.Api.Profiles
         /// </summary>
         public HomeProfile()
         {
-            CreateMap<HomeDto, Home>()
-                .MapMember(d => d.CreatedDate, src => DateTime.Now)
-                .MapMember(d => d.ModifiedDate, src => DateTime.Now)
-                .ReverseMap();
             CreateMap<CreateHomeContract, CreateHomeDto>();
             CreateMap<HomeDto, HomeContract>();
         }
