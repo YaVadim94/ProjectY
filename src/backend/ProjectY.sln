@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Application.Core",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Application.Logic", "ProjectY.Logic\ProjectY.Application.Logic.csproj", "{0E41408D-D93B-4B2D-BCCC-6283E76305E3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A4B1DD24-CF45-4E2D-866C-A8142A65A2F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Contracts", "ProjectY.Contracts\ProjectY.Contracts.csproj", "{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,8 @@ Global
 		{77D16D48-12CD-4539-B643-A6D569770C33} = {90B802C7-C693-4386-968C-A7FA1E09C686}
 		{6200B272-9E57-4735-A28E-30AA522ABA41} = {57D395E7-42A4-46C8-BA19-61DF82A95A62}
 		{0E41408D-D93B-4B2D-BCCC-6283E76305E3} = {57D395E7-42A4-46C8-BA19-61DF82A95A62}
+		{A4B1DD24-CF45-4E2D-866C-A8142A65A2F8} = {003D797D-3AA4-42D0-A3A6-B21221E7EDFD}
+		{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B} = {A4B1DD24-CF45-4E2D-866C-A8142A65A2F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5ADAF21B-8ABE-480D-A237-BEF8ECCB8667}
