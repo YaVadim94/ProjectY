@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Application.Logic"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A4B1DD24-CF45-4E2D-866C-A8142A65A2F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Contracts", "ProjectY.Contracts\ProjectY.Contracts.csproj", "{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Contracts", "ProjectY.Contracts\ProjectY.Contracts.csproj", "{3B80CB8E-FF08-4ECE-8DC0-AF56C266E21B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
