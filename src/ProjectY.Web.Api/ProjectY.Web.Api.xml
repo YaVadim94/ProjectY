@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>ProjectY.Backend.Web.Api</name>
+        <name>ProjectY.Web.Api</name>
     </assembly>
     <members>
         <member name="T:ProjectY.Web.Api.Contracts.Home.CreateHomeContract">
@@ -39,7 +39,7 @@
             Тестовый контроллер для отладки проекта.
             </summary>
         </member>
-        <member name="M:ProjectY.Web.Api.Controllers.TestController.#ctor(ProjectY.Backend.Application.Logic.Interfaces.ITestService,AutoMapper.IMapper)">
+        <member name="M:ProjectY.Web.Api.Controllers.TestController.#ctor(ProjectY.Logic.Interfaces.ITestService,AutoMapper.IMapper)">
             <summary>
             Тестовый контроллер для отладки проекта.
             </summary>

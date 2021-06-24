@@ -1,0 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectY.Backend.Data.Entities;
+
+namespace ProjectY.Data
+{
+    /// <summary>
+    /// Контекст базы данных
+    /// </summary>
+    public class DataContext : DbContext
+    {
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        public DataContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DbSet<Home> Homes { get; set; }
+    }
+}
