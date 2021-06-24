@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectY", "ProjectY", "{C8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend", "ProjectY.Frontend\ProjectY.Frontend.csproj", "{956952F6-7A68-4A66-A5B3-E11E63026646}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{073D63C0-1217-414C-A794-9F89B10126DE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{073D63C0-1217-414C-A794-9F89B10126DE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Contracts", "..\backend\ProjectY.Contracts\ProjectY.Contracts.csproj", "{022575D6-DE36-4FEC-AD3B-91B7BCC66D80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Application", "ProjectY.Application\ProjectY.Application.csproj", "{B8AF6EB0-B821-4FBA-BB66-CDE70A07B25B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Application", "ProjectY.Application\ProjectY.Application.csproj", "{B8AF6EB0-B821-4FBA-BB66-CDE70A07B25B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
