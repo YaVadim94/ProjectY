@@ -1,6 +1,4 @@
-﻿using ProjectY.Frontend.Services.DeleteMeService;
-
-namespace ProjectY.Frontend.Application.Services.DeleteMeService
+﻿namespace ProjectY.Frontend.Application.Services.DeleteMeService
 {
     /// <summary>
     /// 
