@@ -15,12 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Application.Core\ProjectY.Application.Core.csproj" />
     <ProjectReference Include="..\ProjectY.Application.Core\ProjectY.Backend.Application.Core.csproj" />
     <ProjectReference Include="..\ProjectY.Data.Entities\ProjectY.Backend.Data.Entities.csproj" />
-    <ProjectReference Include="..\ProjectY.Data.Entities\ProjectY.Data.Entities.csproj" />
     <ProjectReference Include="..\ProjectY.Data\ProjectY.Backend.Data.csproj" />
-    <ProjectReference Include="..\ProjectY.Data\ProjectY.Data.csproj" />
   </ItemGroup>
 
 </Project>

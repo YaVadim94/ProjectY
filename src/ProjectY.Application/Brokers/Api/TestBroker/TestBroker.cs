@@ -20,9 +20,7 @@ namespace ProjectY.Frontend.Application.Brokers.Api.TestBroker
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Task<HomeContract> CreateHome(CreateHomeContract request)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<HomeContract> CreateHome(CreateHomeContract request) =>
+            await PostAsync<CreateHomeContract, HomeContract>(string.Empty, request);
     }
 }

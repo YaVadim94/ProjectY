@@ -7,7 +7,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>D:\Programming\Repositories\ProjectY\src\backend\ProjectY.Web.Api\ProjectY.Web.Api.xml</DocumentationFile>
+    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Web.Api.xml</DocumentationFile>
     <WarningsAsErrors />
   </PropertyGroup>
 
