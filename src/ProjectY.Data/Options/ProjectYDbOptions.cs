@@ -1,5 +1,8 @@
 ﻿namespace ProjectY.Backend.Data.Options
 {
+    /// <summary>
+    /// Настройка подключения к БД
+    /// </summary>
     public class ProjectYDbOptions
     {
         /// <summary>

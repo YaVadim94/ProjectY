@@ -1,16 +1,16 @@
-using Microsoft.AspNetCore.Hosting;
+п»їusing Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
 namespace ProjectY.Web.Api
 {
     /// <summary>
-    /// Исходный класс приложения
+    /// РСЃС…РѕРґРЅС‹Р№ РєР»Р°СЃСЃ РїСЂРёР»РѕР¶РµРЅРёСЏ
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// Исходный метод приложения
+        /// РСЃС…РѕРґРЅС‹Р№ РјРµС‚РѕРґ РїСЂРёР»РѕР¶РµРЅРёСЏ
         /// </summary>
         public static void Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace ProjectY.Web.Api
         }
 
         /// <summary>
-        /// Конфигурация веб хоста
+        /// РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ РІРµР± С…РѕСЃС‚Р°
         /// </summary>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

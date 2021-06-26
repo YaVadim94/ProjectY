@@ -4,6 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Frontend.Application.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Contracts\ProjectY.Shared.Contracts.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:\Users\79680\.nuget\packages\newtonsoft.json\9.0.1\lib\netstandard1.0\Newtonsoft.Json.dll</HintPath>

@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Builder;
+п»їusing Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Services;
+using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
-using ProjectY.Data;
 using ProjectY.Web.Api.Extensions;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -14,7 +14,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 namespace ProjectY.Web.Api
 {
     /// <summary>
-    /// Класс для конфигурации веб приложения
+    /// РљР»Р°СЃСЃ РґР»СЏ РєРѕРЅС„РёРіСѓСЂР°С†РёРё РІРµР± РїСЂРёР»РѕР¶РµРЅРёСЏ
     /// </summary>
     public class Startup
     {
@@ -22,7 +22,7 @@ namespace ProjectY.Web.Api
         private readonly IHostEnvironment _hostEnvironment;
 
         /// <summary>
-        /// Конструктор класса для конфигурации веб приложения
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° РґР»СЏ РєРѕРЅС„РёРіСѓСЂР°С†РёРё РІРµР± РїСЂРёР»РѕР¶РµРЅРёСЏ
         /// </summary>
         public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
@@ -35,7 +35,7 @@ namespace ProjectY.Web.Api
         }
 
         /// <summary>
-        /// Сидирование DI
+        /// РЎРёРґРёСЂРѕРІР°РЅРёРµ DI
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
@@ -54,7 +54,7 @@ namespace ProjectY.Web.Api
         }
 
         /// <summary>
-        /// Настройка дата пайплайна
+        /// РќР°СЃС‚СЂРѕР№РєР° РґР°С‚Р° РїР°Р№РїР»Р°Р№РЅР°
         /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

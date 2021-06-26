@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectY.Data;
-using System;
 using ProjectY.Backend.Data.Options;
 
 namespace ProjectY.Backend.Data.Extensions

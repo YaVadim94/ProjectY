@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningLevel>2</WarningLevel>
+    <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>D:\Programming\Repositories\ProjectY\src\backend\ProjectY.Web.Api\ProjectY.Web.Api.xml</DocumentationFile>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <!--<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Contracts\ProjectY.Shared.Contracts.csproj" />
     <ProjectReference Include="..\ProjectY.Logic\ProjectY.Backend.Application.Logic.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,10 @@
-﻿namespace ProjectY.Frontend.Services.DeleteMeService
+﻿using ProjectY.Frontend.Services.DeleteMeService;
+
+namespace ProjectY.Frontend.Application.Services.DeleteMeService
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DeleteMeService : IDeleteMeService
     {
     }

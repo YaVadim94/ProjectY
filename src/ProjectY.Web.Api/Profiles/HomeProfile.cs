@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ProjectY.Backend.Application.Logic.Models.Home;
-using ProjectY.Web.Api.Contracts.Home;
+using ProjectY.Shared.Contracts.TestController;
 
 namespace ProjectY.Web.Api.Profiles
 {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Models.Home;
-using ProjectY.Web.Api.Contracts.Home;
+using ProjectY.Shared.Contracts.TestController;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 

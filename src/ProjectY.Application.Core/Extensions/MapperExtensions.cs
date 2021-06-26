@@ -2,10 +2,16 @@
 using System.Linq.Expressions;
 using AutoMapper;
 
-namespace ProjectY.Application.Core.Extensions
+namespace ProjectY.Backend.Application.Core.Extensions
 {
+    /// <summary>
+    /// Расширения для маппера
+    /// </summary>
     public static class MapperExtensions
     {
+        /// <summary>
+        /// Простой маппинг свойства
+        /// </summary>
         public static IMappingExpression<TSource, TDest> MapMember<TSource, TDest, TMember>(
             this IMappingExpression<TSource, TDest> mappingExpression,
             Expression<Func<TDest, TMember>> destinationMember,
