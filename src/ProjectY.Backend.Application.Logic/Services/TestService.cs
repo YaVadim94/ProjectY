@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Models.Home;
-using ProjectY.Backend.Data.Entities;
-using System.Threading.Tasks;
 using ProjectY.Backend.Data;
+using ProjectY.Backend.Data.Entities;
 
 namespace ProjectY.Backend.Application.Logic.Services
 {
