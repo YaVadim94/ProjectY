@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using ProjectY.Shared.Contracts.TestController;
 
-namespace ProjectY.Frontend.Application.Brokers.Api.TestBroker
+namespace ProjectY.Frontend.Brokers.Api
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface ITestBroker
+    public partial interface IApiBroker
     {
         /// <summary>
         /// 

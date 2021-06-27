@@ -1,8 +1,6 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using ProjectY.Frontend.Extensions;
 
 namespace ProjectY.Frontend
 {
@@ -19,7 +17,10 @@ namespace ProjectY.Frontend
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.ConfigureBrokers(builder.Configuration.GetSection("ApiConfigurations")
+                .GetSection("Url").Value);
+
+            builder.Services.AddServices();
 
             await builder.Build().RunAsync();
         }

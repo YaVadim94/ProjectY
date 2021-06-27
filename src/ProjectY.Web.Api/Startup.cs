@@ -7,6 +7,7 @@ using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Services;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
+using ProjectY.Backend.Web.Api;
 using ProjectY.Web.Api.Extensions;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -40,6 +41,16 @@ namespace ProjectY.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                builder.WithOrigins("http://localhost:3000", "https://localhost:3001")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials());
+            });
+
             services.AddRepositoryContext(opt =>
             {
                 opt.ConnectionString = _configuration.GetConnectionString("Postgres");
@@ -58,6 +69,8 @@ namespace ProjectY.Web.Api
         /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<ExceptionHandler>();
+
             if (!env.IsProduction())
             {
                 app.UseSwagger();
@@ -71,7 +84,10 @@ namespace ProjectY.Web.Api
 
             app.UseApplyMigration<DataContext>();
 
-            app.UseRouting().UseEndpoints(configure => configure.MapControllers());
+            app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseCors();
+            app.UseEndpoints(configure => configure.MapControllers());
         }
     }
 }

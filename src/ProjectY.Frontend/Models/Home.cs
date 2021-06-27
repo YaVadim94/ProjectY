@@ -1,9 +1,9 @@
-﻿namespace ProjectY.Shared.Contracts.TestController
+﻿namespace ProjectY.Frontend.Models
 {
     /// <summary>
-    /// Тестовый контракт
+    /// 
     /// </summary>
-    public class CreateHomeContract
+    public class Home
     {
         /// <summary>
         /// Номер.

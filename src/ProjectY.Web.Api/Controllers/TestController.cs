@@ -1,10 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Models.Home;
 using ProjectY.Shared.Contracts.TestController;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 
 namespace ProjectY.Web.Api.Controllers
 {
@@ -29,11 +28,21 @@ namespace ProjectY.Web.Api.Controllers
         /// Создать запись Home.
         /// </summary>
         [HttpPost]
-        public async Task<HomeContract> CreateHome([FromBody][Required] CreateHomeContract request)
+        public async Task<HomeContract> CreateHome(CreateHomeContract request)
         {
             var homeDto = _mapper.Map<CreateHomeDto>(request);
             var result = await _testService.CreateAsync(homeDto);
             return _mapper.Map<HomeContract>(result);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task GetHome()
+        {
+            await Task.CompletedTask;
         }
     }
 }
