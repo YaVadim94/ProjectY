@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectY.Backend.Data.Entities;
 
-namespace ProjectY.Backend.Data.Core
+namespace ProjectY.Backend.Data
 {
     /// <summary>
     /// Контекст базы данных
@@ -13,5 +14,9 @@ namespace ProjectY.Backend.Data.Core
         public DataContext(DbContextOptions options) : base(options)
         {
         }
+
+        /// <summary> Тестовый дата сет </summary>
+        public DbSet<Home> Homes { get; set; }
+
     }
 }

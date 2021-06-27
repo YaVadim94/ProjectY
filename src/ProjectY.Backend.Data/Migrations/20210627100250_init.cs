@@ -1,15 +1,16 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ProjectY.Backend.Data.Migrations
 {
     /// <summary>
     /// Тестовая миграция
     /// </summary>
-    public partial class TestHome : Migration
+    public partial class init : Migration
     {
         /// <summary>
-        /// Накатить
+        /// Тестовая миграция
         /// </summary>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +18,8 @@ namespace ProjectY.Backend.Data.Migrations
                 name: "Homes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Number = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
@@ -29,9 +31,8 @@ namespace ProjectY.Backend.Data.Migrations
         }
 
         /// <summary>
-        /// Откатить
+        /// Тестовая миграция
         /// </summary>
-        /// <param name="migrationBuilder"></param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

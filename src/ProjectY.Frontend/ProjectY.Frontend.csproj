@@ -23,6 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Contracts\ProjectY.Shared.Contracts.csproj" />
+    <ProjectReference Include="..\ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj" />
   </ItemGroup>
 </Project>

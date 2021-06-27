@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ProjectY.Web.Api.Extensions
@@ -32,9 +33,10 @@ namespace ProjectY.Web.Api.Extensions
             var assemblies = new[]
             {
                 Assembly.GetExecutingAssembly(),
-                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Application.Logic.dll"))
+                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")),
             };
-            services.AddAutoMapper(assemblies);
+
+            services.AddAutoMapper(cfg => cfg.AddCollectionMappers(), assemblies);
 
             return services;
         }

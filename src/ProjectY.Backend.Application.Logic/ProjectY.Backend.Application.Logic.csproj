@@ -11,13 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Application.Core\ProjectY.Backend.Application.Core.csproj" />
-    <ProjectReference Include="..\ProjectY.Data.Entities\ProjectY.Backend.Data.Entities.csproj" />
-    <ProjectReference Include="..\ProjectY.Data\ProjectY.Backend.Data.csproj" />
+    <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+    <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
   </ItemGroup>
 
 </Project>

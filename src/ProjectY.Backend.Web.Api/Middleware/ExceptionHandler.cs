@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
-namespace ProjectY.Backend.Web.Api
+namespace ProjectY.Backend.Web.Api.Middleware
 {
     /// <summary>
     /// Обработчик исключений
@@ -30,7 +32,11 @@ namespace ProjectY.Backend.Web.Api
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                context.Response.StatusCode = 500;
+                context.Response.ContentType = "application/json";
+
+                var message = JsonConvert.SerializeObject(new { Type = typeof(Exception).Name, Message = ex.Message });
+                await context.Response.WriteAsync(message, Encoding.UTF8);
             }
         }
     }

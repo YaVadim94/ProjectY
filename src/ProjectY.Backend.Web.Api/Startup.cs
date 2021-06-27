@@ -7,7 +7,7 @@ using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Services;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
-using ProjectY.Backend.Web.Api;
+using ProjectY.Backend.Web.Api.Middleware;
 using ProjectY.Web.Api.Extensions;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
