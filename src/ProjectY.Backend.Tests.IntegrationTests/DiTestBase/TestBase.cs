@@ -14,11 +14,10 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
 {
     public abstract class TestBase : FixtureTestBase, IDisposable
     {
-        protected IServiceCollection ServiceCollection;
-
         private IServiceProvider _provider;
-
         private DataContext _dbContext;
+
+        protected IServiceCollection ServiceCollection;
 
         protected TestBase()
         {
@@ -194,8 +193,20 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
             ServiceCollection.Add(desc);
         }
     }
-    public abstract class TestBase<TService> : TestBase
+
+    public abstract class TestBase<TService, TImpl> : TestBase where TService : class
+                                                               where TImpl : class, TService
     {
+        protected TService Sut;
+        protected DataContext Context;
+
+        protected TestBase()
+        {
+            Register<TService, TImpl>();
+            Sut = GetTestingService();
+            Context = GetDbContext().Result;
+        }
+
         /// <summary>
         /// Получает тестируемый сервис
         /// </summary>

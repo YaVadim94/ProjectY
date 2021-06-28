@@ -3,55 +3,25 @@ using Microsoft.EntityFrameworkCore;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Models.Home;
 using ProjectY.Backend.Application.Logic.Services;
-using ProjectY.Backend.Data;
 using ProjectY.Backend.Tests.IntegrationTests.DiTestBase;
 using Xunit;
 
 namespace ProjectY.Backend.Tests.IntegrationTests
 {
-    public class TestServiceTests : TestBase<ITestService>
+    public class TestServiceTests : TestBase<ITestService, TestService>
     {
-        public TestServiceTests()
-        {
-            Register<ITestService, TestService>();
-        }
-        //private DataContext _context;
-
-        //[Fact]
-        //public async Task Test()
-        //{
-        //    var fixture = new Fixture();
-        //    var sf = new SpecimenFactory<DataContext>(CreateDbContext);
-        //    fixture.Customize(new AutoMoqCustomization() { ConfigureMembers = true });
-        //    fixture.Customize<DataContext>(composer => composer.FromFactory(sf));
-
-        //    _context = fixture.Create<DataContext>();
-        //    fixture.Inject(_context);
-
-        //    var sut = fixture.Create<TestService>();
-        //    var homeDto = fixture.Create<CreateHomeDto>();
-
-        //    var result = await sut.CreateAsync(homeDto);
-        //    var q = _context.Homes;
-        //}
-
-        private DataContext CreateDbContext()
-        {
-            var dbContextOptions = new DbContextOptionsBuilder<DataContext>()
-                .UseInMemoryDatabase("TestDb")
-                .Options;
-            return new DataContext(dbContextOptions);
-        }
-
         [Fact]
         public async Task Test1()
         {
-            var context = await GetDbContext();
-            var service = GetTestingService();
+            // Arrange
+            var createHomeDto = new CreateHomeDto { Number = 4 };
 
-            await service.CreateAsync(new CreateHomeDto { Number = 4 });
+            // Act
+            await Sut.CreateAsync(createHomeDto);
+            var result = Context.Homes;
 
-            var ss = context.Homes;
+            // Arrange
+            Assert.True(await result.CountAsync() == 1);
         }
     }
 }
