@@ -18,5 +18,8 @@ namespace ProjectY.Backend.Data
         /// <summary> Тестовый дата сет </summary>
         public DbSet<Home> Homes { get; set; }
 
+        /// <summary> Обувь. </summary>
+        public DbSet<Shoes> Shoes { get; set; }
+
     }
 }
