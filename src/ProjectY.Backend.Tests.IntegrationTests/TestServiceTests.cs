@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ProjectY.Backend.Tests.IntegrationTests
 {
-    public class TestServiceTests : TestBase<ITestService, TestService>
+    public class TestServiceTests : TestGenericBase<ITestService, TestService>
     {
         [Fact]
         public async Task Test1()

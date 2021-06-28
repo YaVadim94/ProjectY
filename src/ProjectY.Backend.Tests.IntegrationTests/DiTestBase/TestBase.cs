@@ -41,7 +41,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
             var assemblies = new[]
             {
                 Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Web.Api.dll")),
-                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")),
+                Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll"))
             };
 
             ServiceCollection.AddAutoMapper(cfg => cfg.AddCollectionMappers(), assemblies);
@@ -114,16 +114,6 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        /// Производит действией в транзакции
-        /// </summary>
-        protected async Task InTransaction(Func<Task> func)
-        {
-            var dbContext = await GetDbContext();
-            await func();
-            await dbContext.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// Получает экземпляр DI контейнера
         /// </summary>
         protected IServiceProvider GetServiceProvider()
@@ -144,8 +134,8 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
             if (_dbContext != null)
                 return _dbContext;
 
-            _dbContext = ServiceProviderServiceExtensions
-                .GetRequiredService<DataContext>(GetServiceProvider());
+            _dbContext = GetServiceProvider()
+                .GetRequiredService<DataContext>();
 
             await InitDbContext(_dbContext);
 
@@ -192,25 +182,5 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
 
             ServiceCollection.Add(desc);
         }
-    }
-
-    public abstract class TestBase<TService, TImpl> : TestBase where TService : class
-                                                               where TImpl : class, TService
-    {
-        protected TService Sut;
-        protected DataContext Context;
-
-        protected TestBase()
-        {
-            Register<TService, TImpl>();
-            Sut = GetTestingService();
-            Context = GetDbContext().Result;
-        }
-
-        /// <summary>
-        /// Получает тестируемый сервис
-        /// </summary>
-        protected TService GetTestingService()
-            => ServiceProviderServiceExtensions.GetRequiredService<TService>(GetServiceProvider());
     }
 }
