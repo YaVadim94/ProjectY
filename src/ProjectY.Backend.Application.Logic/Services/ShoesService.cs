@@ -58,13 +58,13 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// <summary>
         /// Получить все экземпляры обуви.
         /// </summary>
-        public async Task<List<ShoesDto>> GetAllAsync()
+        public async Task<IEnumerable<ShoesDto>> GetAllAsync()
         {
             var allShoes = await _context.Shoes
                 .AsNoTracking()
                 .ToListAsync();
 
-            return _mapper.Map<List<Shoes>, List<ShoesDto>>(allShoes);
+            return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
         }
     }
 }

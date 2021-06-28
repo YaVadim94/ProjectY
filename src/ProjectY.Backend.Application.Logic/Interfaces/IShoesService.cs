@@ -24,6 +24,6 @@ namespace ProjectY.Backend.Application.Logic.Interfaces
         /// <summary>
         /// Получить все экземпляры обуви.
         /// </summary>
-        Task<List<ShoesDto>> GetAllAsync();
+        Task<IEnumerable<ShoesDto>> GetAllAsync();
     }
 }

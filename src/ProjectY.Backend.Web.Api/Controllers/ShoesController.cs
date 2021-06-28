@@ -28,9 +28,11 @@ namespace ProjectY.Backend.Web.Api.Controllers
             _mapper = mapper;
         }
 
+
         /// <summary>
         /// Создать обувь.
         /// </summary>
+        /// <returns>Контракт для обуви</returns>
         [HttpPost]
         public async Task<ShoesContracts> CreateShoes(CreateShoesContract request)
         {
@@ -44,6 +46,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// <summary>
         /// Получить обувь по идентификатору.
         /// </summary>
+        /// <returns>Контракт для обуви</returns>
         [HttpGet]
         public async Task<ShoesContracts> GetShoesById(long id)
         {
@@ -55,12 +58,13 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// <summary>
         /// Получить обувь по идентификатору.
         /// </summary>
+        /// <returns>Список контрактов обуви</returns>
         [HttpGet]
-        public async Task<List<ShoesContracts>> GetAllShoes()
+        public async Task<IEnumerable<ShoesContracts>> GetAllShoes()
         {
             var result = await _shoesService.GetAllAsync();
 
-            return _mapper.Map<List<ShoesDto>, List<ShoesContracts>>(result);
+            return _mapper.Map<IEnumerable<ShoesContracts>>(result);
         }
     }
 }
