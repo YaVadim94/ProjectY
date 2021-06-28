@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Backend.Application.Logic.Interfaces;
@@ -52,6 +53,18 @@ namespace ProjectY.Backend.Application.Logic.Services
                 .SingleOrDefaultAsync(s => s.Id == id);
 
             return _mapper.Map<ShoesDto>(shoes);
+        }
+
+        /// <summary>
+        /// Получить все экземпляры обуви.
+        /// </summary>
+        public async Task<List<ShoesDto>> GetAllAsync()
+        {
+            var allShoes = await _context.Shoes
+                .AsNoTracking()
+                .ToListAsync();
+
+            return _mapper.Map<List<Shoes>, List<ShoesDto>>(allShoes);
         }
     }
 }

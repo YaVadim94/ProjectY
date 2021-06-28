@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ProjectY.Backend.Application.Logic.Models.Shoes;
 
 namespace ProjectY.Backend.Application.Logic.Interfaces
@@ -19,5 +20,10 @@ namespace ProjectY.Backend.Application.Logic.Interfaces
         /// </summary>
         /// <param name="id">Идентификатор</param>
         Task<ShoesDto> GetByIdAsync(long id);
+
+        /// <summary>
+        /// Получить все экземпляры обуви.
+        /// </summary>
+        Task<List<ShoesDto>> GetAllAsync();
     }
 }

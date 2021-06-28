@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.Logic.Interfaces;
@@ -49,6 +50,17 @@ namespace ProjectY.Backend.Web.Api.Controllers
             var result = await _shoesService.GetByIdAsync(id);
 
             return _mapper.Map<ShoesContracts>(result);
+        }
+
+        /// <summary>
+        /// Получить обувь по идентификатору.
+        /// </summary>
+        [HttpGet]
+        public async Task<List<ShoesContracts>> GetAllShoes()
+        {
+            var result = await _shoesService.GetAllAsync();
+
+            return _mapper.Map<List<ShoesDto>, List<ShoesContracts>>(result);
         }
     }
 }
