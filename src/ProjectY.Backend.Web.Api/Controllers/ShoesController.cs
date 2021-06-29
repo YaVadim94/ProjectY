@@ -20,8 +20,6 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// <summary>
         /// Конструктор контроллера для работы с обувью.
         /// </summary>
-        /// <param name="shoesService">Сервис для работы с обувью</param>
-        /// <param name="mapper">Маппер</param>
         public ShoesController(IShoesService shoesService, IMapper mapper)
         {
             _shoesService = shoesService;

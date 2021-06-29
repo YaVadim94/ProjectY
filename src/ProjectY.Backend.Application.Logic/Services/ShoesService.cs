@@ -20,8 +20,6 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// <summary>
         /// Конструктор сервиса для работы с обувью.
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="mapper"></param>
         public ShoesService(DataContext context, IMapper mapper)
         {
             _context = context;
@@ -31,7 +29,6 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// <summary>
         /// Создать обувь.
         /// </summary>
-        /// <param name="createShoesDto">Модель создаваемой обуви</param>
         public async Task<ShoesDto> CreateAsync(CreateShoesDto createShoesDto)
         {
             var createdShoes = _mapper.Map<Shoes>(createShoesDto);
@@ -45,7 +42,6 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// <summary>
         /// Получить обувь по идентификатору.
         /// </summary>
-        /// <param name="id">Идентификатор</param>
         public async Task<ShoesDto> GetByIdAsync(long id)
         {
             var shoes = await _context.Shoes
