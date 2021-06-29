@@ -36,7 +36,7 @@ namespace ProjectY.Backend.Application.Logic.Services
             await _context.AddAsync(createdShoes);
             await _context.SaveChangesAsync();
 
-            return await GetByIdAsync(createdShoes.Id);
+            return _mapper.Map<ShoesDto>(createdShoes);
         }
 
         /// <summary>
