@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76C6BB8E-862E-4FB7-B559-AE7D106A2C7A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		run_backend.bat = run_backend.bat
+		run_frontend.bat = run_frontend.bat
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Shared.Contracts", "ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj", "{80C562D9-80E0-4A34-ACB2-2D3947447CBF}"
@@ -40,7 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{864AFC6F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Backend.Tests.UnitTests", "ProjectY.Backend.Tests.UnitTests\ProjectY.Backend.Tests.UnitTests.csproj", "{494A706C-1D8C-4F0F-9544-F46F5F669F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Backend.Tests.IntegrationTests", "ProjectY.Backend.Tests.IntegrationTests\ProjectY.Backend.Tests.IntegrationTests.csproj", "{ACE5686B-166E-4513-AC73-4D781CB5F49B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Backend.Tests.IntegrationTests", "ProjectY.Backend.Tests.IntegrationTests\ProjectY.Backend.Tests.IntegrationTests.csproj", "{ACE5686B-166E-4513-AC73-4D781CB5F49B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
