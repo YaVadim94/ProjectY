@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectY.Frontend.Brokers.Api;
-using ProjectY.Frontend.Services.TestService;
+using ProjectY.Frontend.Application.Brokers.Api;
+using ProjectY.Frontend.Application.Services.ShoesService;
 
 namespace ProjectY.Frontend.Extensions
 {
@@ -16,7 +16,7 @@ namespace ProjectY.Frontend.Extensions
         /// </summary>
         public static IServiceCollection AddServices(this IServiceCollection serviceDescriptors)
         {
-            serviceDescriptors.AddScoped<ITestService, TestService>();
+            serviceDescriptors.AddScoped<IShoesService, ShoesService>();
 
             return serviceDescriptors;
         }

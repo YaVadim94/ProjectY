@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace ProjectY.Frontend.Brokers.Api
+namespace ProjectY.Frontend.Application.Brokers.Api
 {
     /// <summary>
     /// Базовый класс для брокеров апи

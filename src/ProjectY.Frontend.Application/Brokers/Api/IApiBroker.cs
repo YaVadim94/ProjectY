@@ -1,4 +1,4 @@
-﻿namespace ProjectY.Frontend.Brokers.Api
+﻿namespace ProjectY.Frontend.Application.Brokers.Api
 {
     /// <summary>
     /// Базовый интерфейс для брокеров апи

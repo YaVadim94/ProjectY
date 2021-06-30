@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using ProjectY.Frontend.Services;
+using ProjectY.Frontend.Application.Services.ShoesService;
 
 namespace ProjectY.Frontend.Views.Pages
 {

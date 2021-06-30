@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace ProjectY.Frontend.Brokers.Api
+namespace ProjectY.Frontend.Application.Brokers.Api
 {
     /// <summary>
     /// Основная имплементация интерфейся <see cref="IApiBroker"/>
