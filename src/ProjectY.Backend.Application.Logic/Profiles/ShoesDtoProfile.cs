@@ -1,8 +1,8 @@
 ﻿using System;
 using AutoMapper;
-using ProjectY.Backend.Application.Core.Extensions;
 using ProjectY.Backend.Application.Logic.Models.Shoes;
 using ProjectY.Backend.Data.Entities;
+using ProjectY.Shared.Core.Extensions;
 
 namespace ProjectY.Backend.Application.Logic.Profiles
 {
