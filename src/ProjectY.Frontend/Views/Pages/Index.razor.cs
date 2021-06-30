@@ -1,34 +1,23 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using ProjectY.Frontend.Models;
-using ProjectY.Frontend.Services.TestService;
+using ProjectY.Frontend.Services;
 
 namespace ProjectY.Frontend.Views.Pages
 {
     /// <summary>
-    /// Логика главное страницы
+    /// Логика главной страницы
     /// </summary>
     public partial class Index : ComponentBase
     {
-        /// <summary>
-        /// 
-        /// </summary>
         [Inject]
-        public ITestService Service { get; set; }
+        private IShoesService ShoesService { get; set; }
 
         /// <summary>
-        /// 
+        /// Список обуви
         /// </summary>
         [Parameter]
-        public Home Home { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task CreateHome()
-        {
-            await Service.CreateHome(Home);
-        }
+        public IEnumerable<object> Shoes { get; set; }
 
         /// <summary>
         /// 
@@ -37,7 +26,6 @@ namespace ProjectY.Frontend.Views.Pages
         {
             await base.OnInitializedAsync();
 
-            Home = new Home();
         }
     }
 }
