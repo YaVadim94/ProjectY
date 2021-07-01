@@ -3,16 +3,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Services;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
+using ProjectY.Backend.Web.Api.Extensions;
 using ProjectY.Backend.Web.Api.Middleware;
-using ProjectY.Web.Api.Extensions;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace ProjectY.Web.Api
+namespace ProjectY.Backend.Web.Api
 {
     /// <summary>
     /// Класс для конфигурации веб приложения
@@ -56,7 +54,7 @@ namespace ProjectY.Web.Api
                 opt.ConnectionString = _configuration.GetConnectionString("Postgres");
             });
             services.AddAutoMapper();
-            services.AddScoped<ITestService, TestService>();
+            services.AddServices();
 
             if (!_hostEnvironment.IsProduction())
             {

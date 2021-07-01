@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace ProjectY.Web.Api
+namespace ProjectY.Backend.Web.Api
 {
     /// <summary>
     /// Исходный класс приложения

@@ -45,7 +45,8 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// Получить обувь по идентификатору.
         /// </summary>
         /// <returns>Контракт для обуви</returns>
-        [HttpGet]
+        [HttpGet("{id}")]
+
         public async Task<ShoesContracts> GetShoesById(long id)
         {
             var result = await _shoesService.GetByIdAsync(id);
