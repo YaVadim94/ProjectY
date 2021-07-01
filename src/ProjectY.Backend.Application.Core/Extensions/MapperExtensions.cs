@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using AutoMapper;
 
-namespace ProjectY.Shared.Core.Extensions
+namespace ProjectY.Backend.Application.Core.Extensions
 {
     /// <summary>
     /// Расширения для маппера

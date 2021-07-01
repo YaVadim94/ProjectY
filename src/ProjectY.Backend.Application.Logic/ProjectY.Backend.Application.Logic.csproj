@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
     <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
-    <ProjectReference Include="..\ProjectY.Shared.Core\ProjectY.Shared.Core.csproj" />
   </ItemGroup>
 
 </Project>
