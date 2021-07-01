@@ -4,7 +4,7 @@ using System.Reflection;
 using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ProjectY.Web.Api.Extensions
+namespace ProjectY.Backend.Web.Api.Extensions
 {
     /// <summary>
     /// Класс с методами расширения колекции сервисов.
