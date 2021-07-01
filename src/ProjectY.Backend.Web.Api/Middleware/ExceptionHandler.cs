@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -7,14 +8,14 @@ using Newtonsoft.Json;
 namespace ProjectY.Backend.Web.Api.Middleware
 {
     /// <summary>
-    /// Обработчик исключений
+    /// Обработчик исключений.
     /// </summary>
     public class ExceptionHandler
     {
         private readonly RequestDelegate _next;
 
         /// <summary>
-        /// Middleware для глобального перехвата ошибок
+        /// Middleware для глобального перехвата ошибок.
         /// </summary>
         public ExceptionHandler(RequestDelegate next)
         {
@@ -22,7 +23,7 @@ namespace ProjectY.Backend.Web.Api.Middleware
         }
 
         /// <summary>
-        /// Выполнение кода middleware
+        /// Выполнение кода middleware.
         /// </summary>
         public async Task Invoke(HttpContext context)
         {
@@ -32,12 +33,29 @@ namespace ProjectY.Backend.Web.Api.Middleware
             }
             catch (Exception ex)
             {
-                context.Response.StatusCode = 500;
-                context.Response.ContentType = "application/json";
-
-                var message = JsonConvert.SerializeObject(new { Type = typeof(Exception).Name, Message = ex.Message });
-                await context.Response.WriteAsync(message, Encoding.UTF8);
+                await HandleExceptionAsync(context, ex);
             }
+        }
+
+        /// <summary>
+        /// Метод для обработки исключений.
+        /// </summary>
+        private static Task HandleExceptionAsync(HttpContext context, Exception ex)
+        {
+            var result = JsonConvert.SerializeObject(new { Type = typeof(Exception).Name, Message = ex.Message });
+
+            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
+
+            /* TODO: При создании кастомных типов исключений, добавлять их сюда
+            //if (ex is customException) code = HttpStatusCode.NotFound;
+            //else if (ex is customException) code = HttpStatusCode.Unauthorized;
+            //else if (ex is customException) code = HttpStatusCode.BadRequest;
+            */
+
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)code;
+
+            return context.Response.WriteAsync(result, Encoding.UTF8);
         }
     }
 }
