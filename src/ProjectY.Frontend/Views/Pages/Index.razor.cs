@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using ProjectY.Frontend.Application.Services.ShoesService;
+using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Frontend.Views.Pages
 {
@@ -17,7 +19,7 @@ namespace ProjectY.Frontend.Views.Pages
         /// Список обуви
         /// </summary>
         [Parameter]
-        public IEnumerable<object> Shoes { get; set; }
+        public List<ShoesContracts> Shoes { get; set; }
 
         /// <summary>
         /// 
@@ -25,7 +27,7 @@ namespace ProjectY.Frontend.Views.Pages
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-
+            Shoes = (await ShoesService.GetAll()).ToList();
         }
     }
 }

@@ -24,5 +24,11 @@
         /// Цвет модели.
         /// </summary>
         public int Color { get; set; }
+
+        /// <summary>
+        /// Описание
+        /// </summary>
+        public string GetDescription() =>
+            $"цвет: {Color}, тип: {Type}, артикул: {VendorCode}";
     }
 }

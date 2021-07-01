@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Frontend.Application.Services.ShoesService
 {
@@ -11,6 +12,6 @@ namespace ProjectY.Frontend.Application.Services.ShoesService
         /// <summary>
         /// Получить список всех моделей
         /// </summary>
-        Task<IEnumerable<object>> GetAll();
+        Task<IEnumerable<ShoesContracts>> GetAll();
     }
 }

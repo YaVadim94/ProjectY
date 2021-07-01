@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ProjectY.Frontend.Application.Brokers.Api;
+using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Frontend.Application.Services.ShoesService
 {
@@ -22,9 +23,9 @@ namespace ProjectY.Frontend.Application.Services.ShoesService
         /// <summary>
         /// Получить список всех моделей
         /// </summary>
-        public Task<IEnumerable<object>> GetAll()
+        public async Task<IEnumerable<ShoesContracts>> GetAll()
         {
-            throw new System.Exception();
+            return await _apiBroker.GetAllShoes();
         }
     }
 }
