@@ -10,7 +10,7 @@ using ProjectY.Backend.Web.Api.Middleware;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace ProjectY.Web.Api
+namespace ProjectY.Backend.Web.Api
 {
     /// <summary>
     /// Класс для конфигурации веб приложения
