@@ -18,15 +18,13 @@ namespace ProjectY.Backend.Application.Logic.Profiles
         {
             CreateMap<ShoesDto, Shoes>()
                 .MapMember(d => d.CreatedDate, src => DateTime.Now)
-                .MapMember(d => d.ModifiedDate, src => DateTime.Now)
-                .ForAllOtherMembers(x => x.Ignore());
+                .MapMember(d => d.ModifiedDate, src => DateTime.Now);
 
-            CreateMap<ShoesDto, Shoes>();
+            CreateMap<Shoes, ShoesDto>();
 
             CreateMap<CreateShoesDto, Shoes>()
                 .MapMember(d => d.CreatedDate, src => DateTime.Now)
-                .MapMember(d => d.ModifiedDate, src => DateTime.Now)
-                .ForAllOtherMembers(x => x.Ignore());
+                .MapMember(d => d.ModifiedDate, src => DateTime.Now);
         }
     }
 }

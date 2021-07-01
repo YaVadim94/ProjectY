@@ -10,7 +10,7 @@ namespace ProjectY.Backend.Tests.UnitTests
         [Fact]
         public void Automapper_Profiles_Test()
         {
-            var type = typeof(HomeDtoProfile);
+            var type = typeof(ShoesDtoProfile);
             var config = new MapperConfiguration(cfg =>
                 cfg.AddMaps(Assembly.GetAssembly(type)));
 
