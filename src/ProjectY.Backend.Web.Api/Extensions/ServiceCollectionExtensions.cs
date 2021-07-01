@@ -3,6 +3,8 @@ using System.IO;
 using System.Reflection;
 using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectY.Backend.Application.Logic.Interfaces;
+using ProjectY.Backend.Application.Logic.Services;
 
 namespace ProjectY.Backend.Web.Api.Extensions
 {
@@ -37,6 +39,16 @@ namespace ProjectY.Backend.Web.Api.Extensions
             };
 
             services.AddAutoMapper(cfg => cfg.AddCollectionMappers(), assemblies);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Зарегистрировать сервисы.
+        /// </summary>
+        public static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<IShoesService, ShoesService>();
 
             return services;
         }
