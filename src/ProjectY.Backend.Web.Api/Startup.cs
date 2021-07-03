@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProjectY.Backend.Application.ExceptionHandling;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using ExceptionHandler = ProjectY.Backend.Web.Api.Middleware.ExceptionHandler;
 
 namespace ProjectY.Backend.Web.Api
 {
