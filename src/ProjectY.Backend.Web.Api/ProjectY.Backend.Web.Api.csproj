@@ -31,8 +31,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Backend.Application.ExceptionHandling\ProjectY.Backend.Application.ExceptionHandling.csproj" />
     <ProjectReference Include="..\ProjectY.Backend.Application.Logic\ProjectY.Backend.Application.Logic.csproj" />
     <ProjectReference Include="..\ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleware\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="`" /></VisualStudio></ProjectExtensions>

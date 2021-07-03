@@ -1,21 +1,16 @@
 ﻿using Newtonsoft.Json;
 
-namespace ProjectY.Backend.Application.ExceptionHandling
+namespace ProjectY.Shared.Contracts
 {
     /// <summary>
     /// Модель для информации об ошибке.
     /// </summary>
-    public class ErrorDetails
+    public class ErrorDetailsContract
     {
         /// <summary>
         /// Наименование ошибки.
         /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// Код ошибки.
-        /// </summary>
-        public int StatusCode { get; set; }
 
         /// <summary>
         /// Сообщение об ошибке.

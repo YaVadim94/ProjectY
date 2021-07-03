@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using ProjectY.Shared.Contracts;
 
 namespace ProjectY.Backend.Application.ExceptionHandling
 {
@@ -34,10 +35,9 @@ namespace ProjectY.Backend.Application.ExceptionHandling
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = 500;
 
-                await context.Response.WriteAsync(new ErrorDetails
+                await context.Response.WriteAsync(new ErrorDetailsContract
                 {
                     Name = typeof(Exception).Name,
-                    StatusCode = context.Response.StatusCode,
                     Message = ex.Message
                 }.ToString(), Encoding.UTF8);
             }
