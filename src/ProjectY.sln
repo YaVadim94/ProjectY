@@ -23,7 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		run_backend.bat = run_backend.bat
-		run_frontend.bat = run_frontend.bat
+		run_frontend_server_side.bat = run_frontend_server_side.bat
+		run_frontend_webassembly.bat = run_frontend_webassembly.bat
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Shared.Contracts", "ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj", "{80C562D9-80E0-4A34-ACB2-2D3947447CBF}"
@@ -47,8 +48,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.Application", "ProjectY.Frontend.Application\ProjectY.Frontend.Application.csproj", "{379CE214-3D0D-41B3-BCE8-B17250E32F0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Frontend.Core", "ProjectY.Frontend.Core\ProjectY.Frontend.Core.csproj", "{08FD64A8-7175-4710-A140-6CD9CE60D262}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{C3949709-A95E-4447-8FB5-FFB4D097635D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Frontend.ServerSide", "ProjectY.Frontend.ServerSide\ProjectY.Frontend.ServerSide.csproj", "{C844E80A-7A4F-4CC2-8270-312091E14457}"
 EndProject
@@ -102,10 +101,6 @@ Global
 		{08FD64A8-7175-4710-A140-6CD9CE60D262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08FD64A8-7175-4710-A140-6CD9CE60D262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08FD64A8-7175-4710-A140-6CD9CE60D262}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3949709-A95E-4447-8FB5-FFB4D097635D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3949709-A95E-4447-8FB5-FFB4D097635D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3949709-A95E-4447-8FB5-FFB4D097635D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3949709-A95E-4447-8FB5-FFB4D097635D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C844E80A-7A4F-4CC2-8270-312091E14457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C844E80A-7A4F-4CC2-8270-312091E14457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C844E80A-7A4F-4CC2-8270-312091E14457}.Release|Any CPU.ActiveCfg = Release|Any CPU
