@@ -2,10 +2,8 @@
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using ProjectY.Backend.Application.Logic.Models;
-using Serilog;
 
-namespace ProjectY.Backend.Web.Api.Middleware
+namespace ProjectY.Backend.Application.ExceptionHandling
 {
     /// <summary>
     /// Обработчик исключений.
@@ -13,15 +11,13 @@ namespace ProjectY.Backend.Web.Api.Middleware
     public class ExceptionHandler
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
 
         /// <summary>
         /// Middleware для глобального перехвата ошибок.
         /// </summary>
-        public ExceptionHandler(RequestDelegate next, ILogger logger)
+        public ExceptionHandler(RequestDelegate next)
         {
             _next = next;
-            _logger = logger;
         }
 
         /// <summary>
