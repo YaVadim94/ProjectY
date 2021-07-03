@@ -2,7 +2,8 @@
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+using ProjectY.Backend.Application.Logic.Models;
+using Serilog;
 
 namespace ProjectY.Backend.Web.Api.Middleware
 {
@@ -12,13 +13,15 @@ namespace ProjectY.Backend.Web.Api.Middleware
     public class ExceptionHandler
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger _logger;
 
         /// <summary>
         /// Middleware для глобального перехвата ошибок.
         /// </summary>
-        public ExceptionHandler(RequestDelegate next)
+        public ExceptionHandler(RequestDelegate next, ILogger logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         /// <summary>
@@ -34,8 +37,13 @@ namespace ProjectY.Backend.Web.Api.Middleware
             {
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = 500;
-                var result = JsonConvert.SerializeObject(new { Type = typeof(Exception).Name, Message = ex.Message });
-                await context.Response.WriteAsync(result, Encoding.UTF8);
+
+                await context.Response.WriteAsync(new ErrorDetails
+                {
+                    Name = typeof(Exception).Name,
+                    StatusCode = context.Response.StatusCode,
+                    Message = ex.Message
+                }.ToString(), Encoding.UTF8);
             }
         }
     }
