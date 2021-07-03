@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace ProjectY.Backend.Application.Logic.Models
+namespace ProjectY.Backend.Application.ExceptionHandling
 {
     /// <summary>
     /// Модель для информации об ошибке.
