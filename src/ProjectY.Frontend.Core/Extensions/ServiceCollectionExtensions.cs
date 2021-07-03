@@ -14,7 +14,7 @@ namespace ProjectY.Frontend.Extensions
         /// <summary>
         /// Добавить все необходимые сервисы приложения
         /// </summary>
-        public static IServiceCollection AddServices(this IServiceCollection serviceDescriptors)
+        public static IServiceCollection AddCustomServices(this IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<IShoesService, ShoesService>();
 

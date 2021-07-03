@@ -7,20 +7,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Frontend.Application.xml</DocumentationFile>
+    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Frontend.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Mapping\**" />
-    <EmbeddedResource Remove="Mapping\**" />
-    <None Remove="Mapping\**" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Frontend.Application\ProjectY.Frontend.Application.csproj" />
     <ProjectReference Include="..\ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj" />
   </ItemGroup>
 

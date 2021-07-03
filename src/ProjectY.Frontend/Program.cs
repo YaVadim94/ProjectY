@@ -21,7 +21,7 @@ namespace ProjectY.Frontend
             builder.Services.ConfigureBrokers(builder.Configuration.GetSection("ApiConfigurations")
                 .GetSection("Url").Value);
 
-            builder.Services.AddServices();
+            builder.Services.AddCustomServices();
             builder.Services.AddAntDesign();
 
             await builder.Build().RunAsync();

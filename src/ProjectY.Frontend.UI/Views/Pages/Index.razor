@@ -1,0 +1,13 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+<AntList DataSource="@Shoes" TItem="ShoesContracts">
+    <ListItem>
+        <ListItemMeta Avatar="avatar" Description="@context.GetDescription()">
+            <TitleTemplate>
+                @context.Name
+            </TitleTemplate>
+        </ListItemMeta>
+    </ListItem>
+</AntList>
