@@ -47,9 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Backend.Tests.Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.Application", "ProjectY.Frontend.Application\ProjectY.Frontend.Application.csproj", "{379CE214-3D0D-41B3-BCE8-B17250E32F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Frontend.Core", "ProjectY.Frontend.Core\ProjectY.Frontend.Core.csproj", "{08FD64A8-7175-4710-A140-6CD9CE60D262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.Core", "ProjectY.Frontend.Core\ProjectY.Frontend.Core.csproj", "{08FD64A8-7175-4710-A140-6CD9CE60D262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Frontend.ServerSide", "ProjectY.Frontend.ServerSide\ProjectY.Frontend.ServerSide.csproj", "{C844E80A-7A4F-4CC2-8270-312091E14457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.ServerSide", "ProjectY.Frontend.ServerSide\ProjectY.Frontend.ServerSide.csproj", "{C844E80A-7A4F-4CC2-8270-312091E14457}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

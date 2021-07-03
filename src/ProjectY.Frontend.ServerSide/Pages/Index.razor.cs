@@ -20,7 +20,7 @@ namespace ProjectY.Frontend.ServerSide.Pages
         /// Список обуви
         /// </summary>
         [Parameter]
-        public List<ShoesContracts> Shoes { get; set; }
+        public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
 
         /// <summary>
         /// 
@@ -34,6 +34,12 @@ namespace ProjectY.Frontend.ServerSide.Pages
         {
             await base.OnInitializedAsync();
             Shoes = (await ShoesService.GetAll()).ToList();
+            //Test = builder => builder.AddContent(1, "<img alt=\"example\" src=\"/images/123.jpg\" />");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RenderFragment Test { get; set; }
     }
 }

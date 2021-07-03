@@ -1,12 +1,26 @@
 ﻿@page "/"
-<AntList DataSource="@Shoes" TItem="ShoesContracts">
-    <ListItem>
-        <ListItemMeta Avatar="avatar" Description="@context.GetDescription()">
-            <TitleTemplate>
-                @context.Name
-            </TitleTemplate>
-        </ListItemMeta>
-    </ListItem>
-</AntList>
+<Row>
+    <GridCol Span="8">
+        <Card Style="width:300px;" Bordered Cover="coverTemplate">
+            <CardMeta Title="@(Shoes?.FirstOrDefault()?.Name)" Description="@Shoes?.FirstOrDefault()?.GetDescription()" />
+        </Card>
+    </GridCol>
 
-<Image Width="200px" Src="/images/123.jpg" Locale="Locale" />
+    <GridCol Span="8">
+        <Card Style="width:300px;" Bordered Cover="coverTemplate">
+            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
+        </Card>
+    </GridCol>
+
+    <GridCol Span="8">
+        <Card Style="width:300px;" Bordered Cover="coverTemplate">
+            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
+        </Card>
+    </GridCol>
+</Row>
+
+@code
+{
+    RenderFragment coverTemplate =@<img alt="example" src="/images/123.jpg" />;
+
+}
