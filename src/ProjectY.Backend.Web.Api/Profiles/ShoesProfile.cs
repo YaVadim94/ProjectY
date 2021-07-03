@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ProjectY.Backend.Application.Logic.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Backend.Web.Api.Profiles

@@ -6,9 +6,9 @@ using Microsoft.Extensions.Hosting;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
-using ProjectY.Backend.Web.Api.Middleware;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using ExceptionHandler = ProjectY.Backend.Web.Api.Middleware.ExceptionHandler;
 
 namespace ProjectY.Backend.Web.Api
 {

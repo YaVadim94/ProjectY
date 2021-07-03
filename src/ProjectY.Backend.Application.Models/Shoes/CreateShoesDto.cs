@@ -1,9 +1,9 @@
-﻿namespace ProjectY.Backend.Application.Logic.Models.Shoes
+﻿namespace ProjectY.Backend.Application.Models.Shoes
 {
     /// <summary>
-    /// Модель для обуви.
+    /// Модель для создания обуви.
     /// </summary>
-    public class ShoesDto
+    public class CreateShoesDto
     {
         /// <summary>
         /// Наименование модели.

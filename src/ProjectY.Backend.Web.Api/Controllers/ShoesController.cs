@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Shared.Contracts.ShoesController;
 using ProjectY.Web.Api.Controllers;
 

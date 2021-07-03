@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using ProjectY.Shared.Contracts;
 
-namespace ProjectY.Backend.Web.Api.Middleware
+namespace ProjectY.Backend.Application.ExceptionHandling
 {
     /// <summary>
     /// Обработчик исключений.
