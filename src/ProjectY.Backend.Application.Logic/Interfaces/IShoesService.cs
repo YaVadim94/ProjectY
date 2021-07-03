@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ProjectY.Backend.Application.Logic.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes;
 
 namespace ProjectY.Backend.Application.Logic.Interfaces
 {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Entities;
 
