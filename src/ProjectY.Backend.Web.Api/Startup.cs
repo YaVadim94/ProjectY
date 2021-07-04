@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,7 +39,11 @@ namespace ProjectY.Backend.Web.Api
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddOData(opt => opt.Filter())
+                .AddNewtonsoftJson();
+
 
             services.AddCors(options =>
             {
@@ -55,6 +60,7 @@ namespace ProjectY.Backend.Web.Api
             });
             services.AddAutoMapper();
             services.AddServices();
+
 
             if (!_hostEnvironment.IsProduction())
             {
@@ -85,7 +91,10 @@ namespace ProjectY.Backend.Web.Api
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors();
-            app.UseEndpoints(configure => configure.MapControllers());
+            app.UseEndpoints(configure =>
+            {
+                configure.MapControllers();
+            });
         }
     }
 }

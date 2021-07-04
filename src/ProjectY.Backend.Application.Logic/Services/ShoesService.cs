@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
+using ProjectY.Backend.Application.Core.Extensions;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Data;
@@ -54,13 +57,15 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// <summary>
         /// Получить все экземпляры обуви.
         /// </summary>
-        public async Task<IEnumerable<ShoesDto>> GetAllAsync()
+        public async Task<IEnumerable<ShoesDto>> GetAllAsync(ODataQueryOptions options)
         {
             var allShoes = await _context.Shoes
                 .AsNoTracking()
+                .ProjectTo<ShoesDto>(_mapper.ConfigurationProvider)
+                .ApplyOptions(options)
                 .ToListAsync();
 
-            return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
+            return allShoes;
         }
     }
 }
