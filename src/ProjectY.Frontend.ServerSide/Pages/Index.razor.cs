@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AntDesign;
 using Microsoft.AspNetCore.Components;
 using ProjectY.Frontend.Application.Services.ShoesService;
 using ProjectY.Shared.Contracts.ShoesController;
@@ -22,10 +21,7 @@ namespace ProjectY.Frontend.ServerSide.Pages
         [Parameter]
         public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ImageLocale Locale = new ImageLocale { Preview = "Preview" };
+        private int _showedRowsCount;
 
         /// <summary>
         /// 
@@ -33,13 +29,21 @@ namespace ProjectY.Frontend.ServerSide.Pages
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-            Shoes = (await ShoesService.GetAll()).ToList();
-            //Test = builder => builder.AddContent(1, "<img alt=\"example\" src=\"/images/123.jpg\" />");
+            Test = builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\" />");
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public RenderFragment Test { get; set; }
+        public RenderFragment Test { get; set; } = builder =>
+            builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\" />");
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public async Task<RenderFragment> GetRow()
+        {
+            Shoes = (await ShoesService.GetAll()).ToList();
+        }
     }
 }
