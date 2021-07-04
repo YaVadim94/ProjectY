@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Shared.Contracts.ShoesController;
@@ -59,11 +60,12 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// </summary>
         /// <returns>Список контрактов обуви</returns>
         [HttpGet]
-        public async Task<IEnumerable<ShoesContracts>> GetAllShoes()
+        public async Task<IEnumerable<ShoesContracts>> GetAllShoes([FromServices] ODataQueryOptions<ShoesDto> options)
         {
-            var result = await _shoesService.GetAllAsync();
+            var result = await _shoesService.GetAllAsync(options);
 
             return _mapper.Map<IEnumerable<ShoesContracts>>(result);
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.OData.Query;
 using ProjectY.Backend.Application.Models.Shoes;
 
 namespace ProjectY.Backend.Application.Logic.Interfaces
@@ -22,6 +23,6 @@ namespace ProjectY.Backend.Application.Logic.Interfaces
         /// <summary>
         /// Получить все экземпляры обуви.
         /// </summary>
-        Task<IEnumerable<ShoesDto>> GetAllAsync();
+        Task<IEnumerable<ShoesDto>> GetAllAsync(ODataQueryOptions options);
     }
 }
