@@ -23,9 +23,11 @@ namespace ProjectY.Frontend.Application.Brokers.Api
         /// <summary>
         /// Отправить GET-запрос
         /// </summary>
-        protected async Task<T> GetAsync<T>(string relativeUrl)
+        protected async Task<T> GetAsync<T>(string relativeUrl, string oDataString = null)
         {
-            var response = await _apiClient.GetAsync(relativeUrl);
+            var oDataRelatedUrl = string.Concat(relativeUrl, oDataString ?? string.Empty);
+
+            var response = await _apiClient.GetAsync(oDataRelatedUrl);
             response.EnsureSuccessStatusCode();
 
             var responseJson = await response.Content.ReadAsStringAsync();

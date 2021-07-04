@@ -41,7 +41,7 @@ namespace ProjectY.Backend.Web.Api
         {
             services
                 .AddControllers()
-                .AddOData(opt => opt.Filter())
+                .AddOData(opt => opt.Filter().OrderBy().SkipToken().SetMaxTop(int.MaxValue))
                 .AddNewtonsoftJson();
 
 

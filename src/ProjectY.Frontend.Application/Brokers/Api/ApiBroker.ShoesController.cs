@@ -26,7 +26,7 @@ namespace ProjectY.Frontend.Application.Brokers.Api
         /// <summary>
         /// Получить обувь по идентификатору
         /// </summary>
-        public async Task<IEnumerable<ShoesContracts>> GetAllShoes() =>
-            await GetAsync<IEnumerable<ShoesContracts>>(controllerUrl);
+        public async Task<IEnumerable<ShoesContracts>> GetAllShoes(string oDataString) =>
+            await GetAsync<IEnumerable<ShoesContracts>>(controllerUrl, oDataString);
     }
 }

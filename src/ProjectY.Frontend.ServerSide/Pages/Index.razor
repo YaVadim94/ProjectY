@@ -1,29 +1,14 @@
 ﻿@page "/"
 
 <Row>
-    <GridCol Span="5" Offset="1">
-        <Card Style="width:300px;" Bordered Cover="Test" Hoverable="true">
-            <CardMeta Title="@(Shoes?.FirstOrDefault()?.Name)" Description="@Shoes?.FirstOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
-
-    <GridCol Span="5" Offset="1">
-        <Card Style="width:300px;" Bordered Cover="Test" Hoverable="true">
-            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
-
-    <GridCol Span="5" Offset="1">
-        <Card Style="width:300px;" Bordered Cover="Test" Hoverable="true">
-            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
-
-    <GridCol Span="5" Offset="1">
-        <Card Style="width:300px;" Bordered Cover="Test" Hoverable="true">
-            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
+    @foreach (var shoe in Shoes ?? new List<ShoesContracts>())
+    {
+        <GridCol Span="5" Offset="1">
+            <Card Style="width:300px;" Bordered Cover="ShowPicture()">
+                <CardMeta Title="@shoe.Name" Description="@shoe.GetDescription()" />
+            </Card>
+        </GridCol>
+    }
 </Row>
 
-<Divider Orientation="left"></Divider>
+<Button OnClick="() => AddRow()">Добавить ряд</Button>

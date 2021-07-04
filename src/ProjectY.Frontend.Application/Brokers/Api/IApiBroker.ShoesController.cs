@@ -22,6 +22,6 @@ namespace ProjectY.Frontend.Application.Brokers.Api
         /// <summary>
         /// Получить обувь по идентификатору
         /// </summary>
-        Task<IEnumerable<ShoesContracts>> GetAllShoes();
+        Task<IEnumerable<ShoesContracts>> GetAllShoes(string oDataString);
     }
 }

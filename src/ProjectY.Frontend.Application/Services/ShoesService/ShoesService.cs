@@ -23,9 +23,9 @@ namespace ProjectY.Frontend.Application.Services.ShoesService
         /// <summary>
         /// Получить список всех моделей
         /// </summary>
-        public async Task<IEnumerable<ShoesContracts>> GetAll()
+        public async Task<IEnumerable<ShoesContracts>> GetAll(string oDataString)
         {
-            return await _apiBroker.GetAllShoes();
+            return await _apiBroker.GetAllShoes(oDataString);
         }
     }
 }

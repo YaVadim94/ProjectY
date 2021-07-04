@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using ProjectY.Frontend.Application.Services.ShoesService;
@@ -21,29 +20,24 @@ namespace ProjectY.Frontend.ServerSide.Pages
         [Parameter]
         public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
 
-        private int _showedRowsCount;
+        private const int rowElementCount = 4;
 
         /// <summary>
-        /// 
+        /// Инициалзация
         /// </summary>
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-            Test = builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\" />");
+            await AddRow();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public RenderFragment Test { get; set; } = builder =>
-            builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\" />");
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<RenderFragment> GetRow()
+        private async Task AddRow()
         {
-            Shoes = (await ShoesService.GetAll()).ToList();
+            var row = await ShoesService.GetAll($"?$top={rowElementCount}&skip={Shoes.Count}");
+            Shoes.AddRange(row);
         }
+
+        private RenderFragment ShowPicture() =>
+            builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\"/>");
     }
 }
