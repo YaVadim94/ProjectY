@@ -94,7 +94,6 @@ namespace ProjectY.Backend.Web.Api
             app.UseEndpoints(configure =>
             {
                 configure.MapControllers();
-                configure.MapSwagger();
             });
         }
     }
