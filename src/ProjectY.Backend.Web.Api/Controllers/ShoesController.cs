@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Shared.Contracts.ShoesController;
 using ProjectY.Web.Api.Controllers;
 
@@ -34,7 +34,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
         [HttpPost]
         public async Task<ShoesContracts> CreateShoes(CreateShoesContract request)
         {
-            var createdShoesDto = _mapper.Map<CreateShoesDto>(request);
+            var createdShoesDto = _mapper.Map<CreateShoesCommand>(request);
 
             var result = await _shoesService.CreateAsync(createdShoesDto);
 

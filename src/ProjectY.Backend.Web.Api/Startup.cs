@@ -53,13 +53,16 @@ namespace ProjectY.Backend.Web.Api
             {
                 opt.ConnectionString = _configuration.GetConnectionString("Postgres");
             });
-            services.AddAutoMapper();
+
             services.AddServices();
+            services.AddAutoMapper();
 
             if (!_hostEnvironment.IsProduction())
             {
                 services.AddSwagger();
             }
+
+            services.AddMediatR();
         }
 
         /// <summary>

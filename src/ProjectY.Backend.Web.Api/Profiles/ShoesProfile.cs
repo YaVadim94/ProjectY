@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProjectY.Backend.Application.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Backend.Web.Api.Profiles
@@ -14,7 +15,7 @@ namespace ProjectY.Backend.Web.Api.Profiles
         /// </summary>
         public ShoesProfile()
         {
-            CreateMap<CreateShoesContract, CreateShoesDto>();
+            CreateMap<CreateShoesContract, CreateShoesCommand>();
             CreateMap<ShoesDto, ShoesContracts>();
         }
     }

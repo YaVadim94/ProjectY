@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+using MediatR;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Models.Shoes;
-using ProjectY.Backend.Data;
-using ProjectY.Backend.Data.Entities;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
+using ProjectY.Backend.Application.Models.Shoes.Queries;
 
 namespace ProjectY.Backend.Application.Logic.Services
 {
@@ -14,29 +13,22 @@ namespace ProjectY.Backend.Application.Logic.Services
     /// </summary>
     public class ShoesService : IShoesService
     {
-        private readonly DataContext _context;
-        private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
         /// <summary>
         /// Конструктор сервиса для работы с обувью.
         /// </summary>
-        public ShoesService(DataContext context, IMapper mapper)
+        public ShoesService(IMediator mediator)
         {
-            _context = context;
-            _mapper = mapper;
+            _mediator = mediator;
         }
 
         /// <summary>
         /// Создать обувь.
         /// </summary>
-        public async Task<ShoesDto> CreateAsync(CreateShoesDto createShoesDto)
+        public async Task<ShoesDto> CreateAsync(CreateShoesCommand command)
         {
-            var createdShoes = _mapper.Map<Shoes>(createShoesDto);
-
-            await _context.AddAsync(createdShoes);
-            await _context.SaveChangesAsync();
-
-            return _mapper.Map<ShoesDto>(createdShoes);
+            return await _mediator.Send(command);
         }
 
         /// <summary>
@@ -44,11 +36,8 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// </summary>
         public async Task<ShoesDto> GetByIdAsync(long id)
         {
-            var shoes = await _context.Shoes
-                .AsNoTracking()
-                .SingleOrDefaultAsync(s => s.Id == id);
-
-            return _mapper.Map<ShoesDto>(shoes);
+            var query = new GetShoesByIdQuery(id);
+            return await _mediator.Send(query);
         }
 
         /// <summary>
@@ -56,11 +45,8 @@ namespace ProjectY.Backend.Application.Logic.Services
         /// </summary>
         public async Task<IEnumerable<ShoesDto>> GetAllAsync()
         {
-            var allShoes = await _context.Shoes
-                .AsNoTracking()
-                .ToListAsync();
-
-            return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
+            var query = new GetAllShoesQuery();
+            return await _mediator.Send(query);
         }
     }
 }

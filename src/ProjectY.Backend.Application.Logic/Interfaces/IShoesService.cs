@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ProjectY.Backend.Application.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
 
 namespace ProjectY.Backend.Application.Logic.Interfaces
 {
@@ -12,7 +13,7 @@ namespace ProjectY.Backend.Application.Logic.Interfaces
         /// <summary>
         /// Создать обувь.
         /// </summary>
-        Task<ShoesDto> CreateAsync(CreateShoesDto createShoesDto);
+        Task<ShoesDto> CreateAsync(CreateShoesCommand createShoesDto);
 
         /// <summary>
         /// Получить обувь по идентификатору.
