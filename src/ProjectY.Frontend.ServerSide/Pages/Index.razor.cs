@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using AntDesign;
 using Microsoft.AspNetCore.Components;
 using ProjectY.Frontend.Application.Services.ShoesService;
 using ProjectY.Shared.Contracts.ShoesController;
@@ -22,24 +20,24 @@ namespace ProjectY.Frontend.ServerSide.Pages
         [Parameter]
         public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ImageLocale Locale = new ImageLocale { Preview = "Preview" };
+        private const int rowElementCount = 4;
 
         /// <summary>
-        /// 
+        /// Инициалзация
         /// </summary>
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-            Shoes = (await ShoesService.GetAll()).ToList();
-            //Test = builder => builder.AddContent(1, "<img alt=\"example\" src=\"/images/123.jpg\" />");
+            await AddRow();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public RenderFragment Test { get; set; }
+        private async Task AddRow()
+        {
+            var row = await ShoesService.GetAll($"?$top={rowElementCount}&skip={Shoes.Count}");
+            Shoes.AddRange(row);
+        }
+
+        private RenderFragment ShowPicture() =>
+            builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\"/>");
     }
 }

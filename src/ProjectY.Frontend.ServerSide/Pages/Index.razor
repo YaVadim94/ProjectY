@@ -1,26 +1,14 @@
 ﻿@page "/"
+
 <Row>
-    <GridCol Span="8">
-        <Card Style="width:300px;" Bordered Cover="coverTemplate">
-            <CardMeta Title="@(Shoes?.FirstOrDefault()?.Name)" Description="@Shoes?.FirstOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
-
-    <GridCol Span="8">
-        <Card Style="width:300px;" Bordered Cover="coverTemplate">
-            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
-
-    <GridCol Span="8">
-        <Card Style="width:300px;" Bordered Cover="coverTemplate">
-            <CardMeta Title="@(Shoes?.LastOrDefault()?.Name)" Description="@Shoes?.LastOrDefault()?.GetDescription()" />
-        </Card>
-    </GridCol>
+    @foreach (var shoe in Shoes ?? new List<ShoesContracts>())
+    {
+        <GridCol Span="5" Offset="1">
+            <Card Style="width:300px;" Bordered Cover="ShowPicture()">
+                <CardMeta Title="@shoe.Name" Description="@shoe.GetDescription()" />
+            </Card>
+        </GridCol>
+    }
 </Row>
 
-@code
-{
-    RenderFragment coverTemplate =@<img alt="example" src="/images/123.jpg" />;
-
-}
+<Button OnClick="() => AddRow()">Добавить ряд</Button>

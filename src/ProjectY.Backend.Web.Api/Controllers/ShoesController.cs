@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
+using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Shared.Contracts.ShoesController;
@@ -63,13 +65,14 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// </summary>
         /// <returns>Список контрактов обуви</returns>
         [HttpGet]
-        public async Task<IEnumerable<ShoesContracts>> GetAllShoes()
+        public async Task<IEnumerable<ShoesContracts>> GetAllShoes([FromServices] ODataQueryOptions<ShoesDto> options)
         {
-            var query = new GetAllShoesQuery();
+            var query = new GetAllShoesQuery(options);
 
             var result = await _mediator.Send(query);
 
             return _mapper.Map<IEnumerable<ShoesContracts>>(result);
         }
+
     }
 }

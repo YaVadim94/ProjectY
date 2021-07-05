@@ -12,6 +12,6 @@ namespace ProjectY.Frontend.Application.Services.ShoesService
         /// <summary>
         /// Получить список всех моделей
         /// </summary>
-        Task<IEnumerable<ShoesContracts>> GetAll();
+        Task<IEnumerable<ShoesContracts>> GetAll(string oDataString);
     }
 }

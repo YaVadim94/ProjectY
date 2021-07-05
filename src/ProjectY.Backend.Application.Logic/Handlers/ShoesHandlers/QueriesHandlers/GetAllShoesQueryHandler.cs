@@ -2,8 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ProjectY.Backend.Application.Core.Extensions;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Backend.Data;
@@ -34,6 +36,8 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandl
         {
             var allShoes = await _context.Shoes
                 .AsNoTracking()
+                .ProjectTo<ShoesDto>(_mapper.ConfigurationProvider)
+                .ApplyOptions(request.ODataOptions)
                 .ToListAsync(cancellationToken);
 
             return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
