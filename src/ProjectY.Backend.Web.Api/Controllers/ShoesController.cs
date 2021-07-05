@@ -27,7 +27,6 @@ namespace ProjectY.Backend.Web.Api.Controllers
         {
             _mediator = mediator;
             _mapper = mapper;
-
         }
 
 
