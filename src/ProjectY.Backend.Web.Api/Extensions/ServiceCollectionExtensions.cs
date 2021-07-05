@@ -4,8 +4,6 @@ using System.Reflection;
 using AutoMapper.EquivalencyExpression;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Services;
 
 namespace ProjectY.Backend.Web.Api.Extensions
 {
@@ -14,16 +12,6 @@ namespace ProjectY.Backend.Web.Api.Extensions
     /// </summary>
     public static class ServiceCollectionExtensions
     {
-        /// <summary>
-        /// Зарегистрировать сервисы.
-        /// </summary>
-        public static IServiceCollection AddServices(this IServiceCollection services)
-        {
-            services.AddScoped<IShoesService, ShoesService>();
-
-            return services;
-        }
-
         /// <summary>
         /// Зарегистрировать Swagger.
         /// </summary>

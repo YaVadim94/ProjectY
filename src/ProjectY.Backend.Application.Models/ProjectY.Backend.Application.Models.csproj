@@ -14,4 +14,8 @@
       <Folder Include="Exceptions\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -54,7 +54,6 @@ namespace ProjectY.Backend.Web.Api
                 opt.ConnectionString = _configuration.GetConnectionString("Postgres");
             });
 
-            services.AddServices();
             services.AddAutoMapper();
 
             if (!_hostEnvironment.IsProduction())
