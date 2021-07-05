@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using ProjectY.Frontend.Application.Brokers.Odata;
 using ProjectY.Frontend.Application.Services.ShoesService;
 using ProjectY.Shared.Contracts.ShoesController;
 
@@ -39,5 +40,11 @@ namespace ProjectY.Frontend.ServerSide.Pages
 
         private RenderFragment ShowPicture() =>
             builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\"/>");
+
+        private void Test()
+        {
+            var test = new FilterODataQueryBroker<ShoesContracts>();
+            test.GetEqualityQuery(x => x.Name, "ololo");
+        }
     }
 }
