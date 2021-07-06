@@ -8,8 +8,12 @@
                 <CardMeta Title="@shoe.Name" Description="@shoe.GetDescription()" />
             </Card>
         </GridCol>
+
+        @if (++showedCardCount % rowElementCount == 0 && showedCardCount != rowElementCount)
+        {
+            <Divider Orientation="left"></Divider>
+        }
     }
 </Row>
 
 <Button OnClick="() => AddRow()">Добавить ряд</Button>
-<Button OnClick="() => Test()">Test</Button>
