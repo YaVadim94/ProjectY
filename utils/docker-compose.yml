@@ -32,6 +32,18 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+  minio:
+    container_name: minio_container
+    image: minio/minio:latest
+    command: ["server", "/data"]
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: "projectY_access_key"
+      MINIO_SECRET_KEY: "projectY_secret_key"
+    volumes:
+      - minio:/data
+
 
 networks:
   postgres:
@@ -40,3 +52,6 @@ networks:
 volumes:
     postgres:
     pgadmin:
+    minio:
+
+
