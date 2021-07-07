@@ -60,7 +60,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Получить обувь по идентификатору.
+        /// Получить всю обувь.
         /// </summary>
         /// <returns>Список контрактов обуви</returns>
         [HttpGet]
