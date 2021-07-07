@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace ProjectY.Backend.Application.Logic.Exceptions
 {
@@ -10,7 +11,7 @@ namespace ProjectY.Backend.Application.Logic.Exceptions
         /// <summary>
         /// Код ошибки.
         /// </summary>
-        public int StatusCode { get; set; }
+        public int StatusCode => (int)HttpStatusCode.NotFound;
 
         /// <summary>
         /// Текст сообщения.
