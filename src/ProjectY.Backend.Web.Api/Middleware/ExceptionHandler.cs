@@ -2,7 +2,6 @@
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using ProjectY.Backend.Application.Logic.Exceptions;
 using ProjectY.Shared.Contracts;
 
 namespace ProjectY.Backend.Web.Api.Middleware
@@ -30,17 +29,6 @@ namespace ProjectY.Backend.Web.Api.Middleware
             try
             {
                 await _next(context);
-            }
-            catch (ShoesNotFoundException ex)
-            {
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = ex.StatusCode;
-
-                await context.Response.WriteAsync(new ErrorDetailsContract
-                {
-                    Name = typeof(Exception).Name,
-                    Message = ex.Message
-                }.ToString(), Encoding.UTF8);
             }
             catch (Exception ex)
             {
