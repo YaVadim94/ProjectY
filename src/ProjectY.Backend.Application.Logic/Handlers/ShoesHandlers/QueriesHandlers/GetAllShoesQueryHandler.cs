@@ -6,6 +6,7 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ProjectY.Backend.Application.Core.Extensions;
+using ProjectY.Backend.Application.Logic.Exceptions;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Backend.Data;
@@ -39,6 +40,8 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandl
                 .ProjectTo<ShoesDto>(_mapper.ConfigurationProvider)
                 .ApplyOptions(request.ODataOptions)
                 .ToListAsync(cancellationToken);
+
+            if (allShoes == null) throw new ShoesNotFoundException();
 
             return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
         }
