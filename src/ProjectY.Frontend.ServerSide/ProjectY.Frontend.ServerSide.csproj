@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="AntDesign" Version="0.8.2" />
+    <PackageReference Include="Microsoft.Data.Services.Client" Version="5.8.4" />
   </ItemGroup>
 
   <ItemGroup>

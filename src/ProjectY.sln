@@ -50,7 +50,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.Core", "ProjectY.Frontend.Core\ProjectY.Frontend.Core.csproj", "{08FD64A8-7175-4710-A140-6CD9CE60D262}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.ServerSide", "ProjectY.Frontend.ServerSide\ProjectY.Frontend.ServerSide.csproj", "{C844E80A-7A4F-4CC2-8270-312091E14457}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Backend.Application.Models", "ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj", "{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Backend.Application.Models", "ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj", "{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

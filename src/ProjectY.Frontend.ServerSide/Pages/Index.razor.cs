@@ -21,13 +21,13 @@ namespace ProjectY.Frontend.ServerSide.Pages
         public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
 
         private const int rowElementCount = 4;
+        private int showedCardCount = 0;
 
         /// <summary>
         /// Инициалзация
         /// </summary>
         protected override async Task OnInitializedAsync()
         {
-            await base.OnInitializedAsync();
             await AddRow();
         }
 
@@ -39,5 +39,6 @@ namespace ProjectY.Frontend.ServerSide.Pages
 
         private RenderFragment ShowPicture() =>
             builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\"/>");
+
     }
 }
