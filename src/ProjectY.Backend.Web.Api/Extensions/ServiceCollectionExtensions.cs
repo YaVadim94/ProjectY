@@ -2,9 +2,8 @@
 using System.IO;
 using System.Reflection;
 using AutoMapper.EquivalencyExpression;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Services;
 
 namespace ProjectY.Backend.Web.Api.Extensions
 {
@@ -44,11 +43,11 @@ namespace ProjectY.Backend.Web.Api.Extensions
         }
 
         /// <summary>
-        /// Зарегистрировать сервисы.
+        /// Зарегистрировать медиатр.
         /// </summary>
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
-            services.AddScoped<IShoesService, ShoesService>();
+            services.AddMediatR(Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")));
 
             return services;
         }

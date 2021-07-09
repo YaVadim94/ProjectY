@@ -1,9 +1,11 @@
-﻿namespace ProjectY.Backend.Application.Models.Shoes
+﻿using MediatR;
+
+namespace ProjectY.Backend.Application.Models.Shoes.Commands
 {
     /// <summary>
     /// Модель для создания обуви.
     /// </summary>
-    public class CreateShoesDto
+    public class CreateShoesCommand : IRequest<ShoesDto>
     {
         /// <summary>
         /// Наименование модели.

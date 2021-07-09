@@ -26,6 +26,8 @@ namespace ProjectY.Frontend.Views.Pages
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
+
+            Shoes = (await ShoesService.GetAll("")).ToList();
         }
     }
 }

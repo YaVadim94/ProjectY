@@ -11,11 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
     <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
     <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
