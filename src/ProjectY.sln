@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Frontend.ServerSid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectY.Backend.Application.Models", "ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj", "{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectY.Backend.Application.AmazonS3", "ProjectY.Backend.Application.AmazonS3\ProjectY.Backend.Application.AmazonS3.csproj", "{81E3734F-0B51-481F-91AA-4736CAAF4418}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BED975A-C9EC-4A82-8711-0FA20BD1AE66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E3734F-0B51-481F-91AA-4736CAAF4418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E3734F-0B51-481F-91AA-4736CAAF4418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E3734F-0B51-481F-91AA-4736CAAF4418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E3734F-0B51-481F-91AA-4736CAAF4418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +140,7 @@ Global
 		{08FD64A8-7175-4710-A140-6CD9CE60D262} = {F99A8E6A-9B08-460A-A6B1-F5A5B1212A47}
 		{C844E80A-7A4F-4CC2-8270-312091E14457} = {F99A8E6A-9B08-460A-A6B1-F5A5B1212A47}
 		{9BED975A-C9EC-4A82-8711-0FA20BD1AE66} = {2E487102-0F42-4A12-9A65-73975D0E2101}
+		{81E3734F-0B51-481F-91AA-4736CAAF4418} = {2E487102-0F42-4A12-9A65-73975D0E2101}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5ADAF21B-8ABE-480D-A237-BEF8ECCB8667}

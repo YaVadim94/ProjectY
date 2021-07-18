@@ -12,8 +12,12 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         protected TestGenericBase()
         {
             Register<TService, TImpl>();
+        }
+
+        protected void CompleteSetting()
+        {
             Sut = GetServiceProvider().GetRequiredService<TService>();
-            Context = GetDbContext().Result;
+            Context = GetDbContext().GetAwaiter().GetResult();
         }
     }
 }

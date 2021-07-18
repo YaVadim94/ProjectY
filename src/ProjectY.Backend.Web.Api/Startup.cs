@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Amazon.S3;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
@@ -60,7 +61,7 @@ namespace ProjectY.Backend.Web.Api
             });
             services.AddAutoMapper();
             services.AddServices();
-
+            services.AddAWSService<IAmazonS3>();
 
             if (!_hostEnvironment.IsProduction())
             {

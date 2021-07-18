@@ -3,6 +3,8 @@ using System.IO;
 using System.Reflection;
 using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectY.Backend.Application.AmazonS3.Interfaces;
+using ProjectY.Backend.Application.AmazonS3.Services;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Services;
 
@@ -49,6 +51,7 @@ namespace ProjectY.Backend.Web.Api.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IShoesService, ShoesService>();
+            services.AddScoped<IObjectStorageService, ObjectStorageService>();
 
             return services;
         }
