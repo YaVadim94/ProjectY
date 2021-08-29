@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using AutoMapper;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjectY.Backend.Application.Core.Extensions
 {
@@ -19,6 +20,17 @@ namespace ProjectY.Backend.Application.Core.Extensions
         {
             return mappingExpression
                 .ForMember(destinationMember, opt => opt.MapFrom(sourceMember));
+        }
+
+        /// <summary>
+        /// Проигнорировать маппинг свойства
+        /// </summary>
+        public static IMappingExpression<TSource, TDest>  IgnoreMember<TSource, TDest, TMember>(
+            this IMappingExpression<TSource, TDest> mappingExpression,
+            Expression<Func<TDest, TMember>> destinationMember)
+        {
+            return mappingExpression
+                .ForMember(destinationMember, opt => opt.Ignore());
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ProjectY.Web.Api.Controllers
+namespace ProjectY.Backend.Web.Api.Controllers
 {
     /// <summary>
     /// Базовый класс контроллеров
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseApiController : ControllerBase
+    public class ApiControllerBase : ControllerBase
     {
 
     }

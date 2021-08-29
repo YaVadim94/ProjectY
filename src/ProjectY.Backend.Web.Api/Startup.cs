@@ -61,7 +61,14 @@ namespace ProjectY.Backend.Web.Api
             });
             services.AddAutoMapper();
             services.AddServices();
-            services.AddAWSService<IAmazonS3>();
+
+            var options = new AmazonS3Config
+            {
+                ServiceURL = "",
+                ForcePathStyle = true
+            };
+
+            services.AddAWSService<IAmazonS3>(options);
 
             if (!_hostEnvironment.IsProduction())
             {

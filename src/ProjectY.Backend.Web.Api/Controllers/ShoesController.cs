@@ -6,14 +6,13 @@ using Microsoft.AspNetCore.OData.Query;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Shared.Contracts.ShoesController;
-using ProjectY.Web.Api.Controllers;
 
 namespace ProjectY.Backend.Web.Api.Controllers
 {
     /// <summary>
     /// Контроллер для работы с обувью.
     /// </summary>
-    public class ShoesController : BaseApiController
+    public class ShoesController : ApiControllerBase
     {
         private readonly IShoesService _shoesService;
         private readonly IMapper _mapper;
