@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using AutoMapper.EquivalencyExpression;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -47,9 +48,26 @@ namespace ProjectY.Backend.Web.Api.Extensions
         /// </summary>
         public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")));
+            return services.AddMediatR(
+                Assembly.LoadFrom(
+                    Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")));
+        }
 
-            return services;
+        /// <summary>
+        /// Зарегистрировать FluentValidation.
+        /// </summary>
+        public static IServiceCollection AddFluentValidation(this IServiceCollection services)
+        {
+            return services.AddFluentValidation(conf =>
+            {
+                var assemblies = new[]
+                {
+                    Assembly.GetExecutingAssembly(),
+                    Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll"))
+                };
+
+                conf.RegisterValidatorsFromAssemblies(assemblies);
+            });
         }
     }
 }

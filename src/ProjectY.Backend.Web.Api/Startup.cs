@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
+using ProjectY.Backend.Web.Api.Filters;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using ExceptionHandler = ProjectY.Backend.Web.Api.Middleware.ExceptionHandler;
@@ -39,35 +41,42 @@ namespace ProjectY.Backend.Web.Api
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
+            // IMvcBuilder
             services
-                .AddControllers()
+                .AddControllers(conf =>
+                {
+                    conf.Filters.Add(new ValidationFilter());
+                })
+                .ConfigureApiBehaviorOptions(opt =>
+                {
+                    opt.SuppressModelStateInvalidFilter = true;
+                })
                 .AddOData(opt => opt.Filter().OrderBy().SkipToken().SetMaxTop(int.MaxValue))
                 .AddNewtonsoftJson();
 
-
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                builder.WithOrigins("http://localhost:3000", "https://localhost:3001")
-                       .AllowAnyMethod()
-                       .AllowAnyHeader()
-                       .AllowCredentials());
-            });
-
-            services.AddRepositoryContext(opt =>
-            {
-                opt.ConnectionString = _configuration.GetConnectionString("Postgres");
-            });
-
-            services.AddAutoMapper();
+            // IServiceCollection
+            services
+                .AddCors(options =>
+                {
+                    options.AddDefaultPolicy(builder =>
+                        builder.WithOrigins("http://localhost:3000", "https://localhost:3001")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+                })
+                .AddRepositoryContext(opt =>
+                {
+                    opt.ConnectionString = _configuration.GetConnectionString("Postgres");
+                })
+                .AddAutoMapper()
+                .AddMediatR()
+                .AddFluentValidation();
 
 
             if (!_hostEnvironment.IsProduction())
             {
                 services.AddSwagger();
             }
-
-            services.AddMediatR();
         }
 
         /// <summary>

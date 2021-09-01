@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using ProjectY.Backend.Application.Core.Exceptions;
 using ProjectY.Shared.Contracts;
 
 namespace ProjectY.Backend.Web.Api.Middleware
@@ -30,6 +33,18 @@ namespace ProjectY.Backend.Web.Api.Middleware
             {
                 await _next(context);
             }
+            catch (ValidationException ex)
+            {
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(ex.Errors.Select(error =>
+                    new ErrorDetailsContract
+                    {
+                        Name = ex.GetType().Name,
+                        Message = error.Message
+                    }).ToList()), Encoding.UTF8);
+            }
             catch (Exception ex)
             {
                 context.Response.ContentType = "application/json";
@@ -37,8 +52,8 @@ namespace ProjectY.Backend.Web.Api.Middleware
 
                 await context.Response.WriteAsync(new ErrorDetailsContract
                 {
-                    Name = typeof(Exception).Name,
-                    Message = ex.Message
+                    Name = ex.GetType().Name,
+                    Message = ex.Message // TODO: придумать кастомный месседж
                 }.ToString(), Encoding.UTF8);
             }
         }
