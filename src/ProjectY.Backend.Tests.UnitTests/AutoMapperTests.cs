@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
-using ProjectY.Backend.Application.Logic.Profiles;
+using ProjectY.Backend.Application.Logic.MappingProfiles;
 using Xunit;
 
 namespace ProjectY.Backend.Tests.UnitTests

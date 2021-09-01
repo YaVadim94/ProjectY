@@ -8,7 +8,6 @@ using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Shared.Contracts.ShoesController;
-using ProjectY.Web.Api.Controllers;
 
 namespace ProjectY.Backend.Web.Api.Controllers
 {

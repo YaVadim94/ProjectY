@@ -5,7 +5,7 @@ using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Data.Entities;
 
-namespace ProjectY.Backend.Application.Logic.Profiles
+namespace ProjectY.Backend.Application.Logic.MappingProfiles
 {
     /// <summary>
     /// Класс для конфигурации маппинга моделей и сущностей обуви.
