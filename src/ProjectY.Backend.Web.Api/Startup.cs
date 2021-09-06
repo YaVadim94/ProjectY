@@ -1,5 +1,4 @@
-﻿using Amazon.S3;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
@@ -61,17 +60,8 @@ namespace ProjectY.Backend.Web.Api
             });
 
             services.AddAutoMapper();
+            services.AddObjectStorage(_configuration);
             services.AddServices();
-
-
-            var conf = new AmazonS3Config
-            {
-                ServiceURL = "http://localhost:9000",
-                ForcePathStyle = true,
-                SignatureVersion = string.Empty
-            };
-            services.AddScoped<IAmazonS3, AmazonS3Client>(provider => new AmazonS3Client("minio", "minio123", conf));
-
 
             if (!_hostEnvironment.IsProduction())
             {

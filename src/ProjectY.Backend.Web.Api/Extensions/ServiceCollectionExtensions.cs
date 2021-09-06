@@ -1,12 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using Amazon.S3;
 using AutoMapper.EquivalencyExpression;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Services;
 using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Logic.Services;
+using ProjectY.Backend.Web.Api.Models;
 
 namespace ProjectY.Backend.Web.Api.Extensions
 {
@@ -46,12 +49,32 @@ namespace ProjectY.Backend.Web.Api.Extensions
         }
 
         /// <summary>
+        /// Зарегистрировать объектное хранилище
+        /// </summary>
+        public static IServiceCollection AddObjectStorage(this IServiceCollection services, IConfiguration configuration)
+        {
+            var minioConfig = configuration.GetSection("Minio").Get<MinioConfiguration>();
+
+            var s3Config = new AmazonS3Config
+            {
+                ServiceURL = minioConfig.Url,
+                ForcePathStyle = true
+            };
+
+            services
+                .AddScoped<IAmazonS3, AmazonS3Client>(provider => new AmazonS3Client(minioConfig.AccessKey, minioConfig.SecretKey, s3Config))
+                .AddScoped<IObjectStorageService, ObjectStorageService>();
+
+            return services;
+        }
+
+        /// <summary>
         /// Зарегистрировать сервисы.
         /// </summary>
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IShoesService, ShoesService>();
-            services.AddScoped<IObjectStorageService, ObjectStorageService>();
+
 
             return services;
         }
