@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Models;
-using ProjectY.Shared.Contracts;
 
 namespace ProjectY.Backend.Web.Api.Controllers
 {
@@ -27,15 +26,15 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// Поместить файл в хранилище
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> PutFile([FromForm] PutFileContract fileContract)
+        public async Task<IActionResult> PutFile(IFormFile file)
         {
-            await using var stream = fileContract.File.OpenReadStream();
+            await using var stream = file.OpenReadStream();
 
             var putObjectDto = new PutObjectDto
             {
                 BucketName = "media",
-                ContentType = fileContract.File.ContentType,
-                Key = $"{fileContract.FileName}_{Guid.NewGuid()}",
+                ContentType = file.ContentType,
+                Key = $"{file.FileName}_{Guid.NewGuid()}",
                 InputStream = stream
             };
 
@@ -43,5 +42,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
 
             return NoContent();
         }
+
+
     }
 }

@@ -59,16 +59,19 @@ namespace ProjectY.Backend.Web.Api
             {
                 opt.ConnectionString = _configuration.GetConnectionString("Postgres");
             });
+
             services.AddAutoMapper();
             services.AddServices();
 
-            var options = new AmazonS3Config
-            {
-                ServiceURL = "",
-                ForcePathStyle = true
-            };
 
-            services.AddAWSService<IAmazonS3>(options);
+            var conf = new AmazonS3Config
+            {
+                ServiceURL = "http://localhost:9000",
+                ForcePathStyle = true,
+                SignatureVersion = string.Empty
+            };
+            services.AddScoped<IAmazonS3, AmazonS3Client>(provider => new AmazonS3Client("minio", "minio123", conf));
+
 
             if (!_hostEnvironment.IsProduction())
             {

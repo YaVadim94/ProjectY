@@ -8,12 +8,12 @@ using ProjectY.Frontend.Extensions;
 namespace ProjectY.Frontend.ServerSide
 {
     /// <summary>
-    /// 
+    /// Класс конфигурации приложения
     /// </summary>
     public class Startup
     {
         /// <summary>
-        /// 
+        /// Класс конфигурации приложения
         /// </summary>
         /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
@@ -22,12 +22,12 @@ namespace ProjectY.Frontend.ServerSide
         }
 
         /// <summary>
-        /// 
+        /// Класс конфигурации приложения
         /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// 
+        /// Класс конфигурации приложения
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
@@ -41,7 +41,7 @@ namespace ProjectY.Frontend.ServerSide
         }
 
         /// <summary>
-        /// 
+        /// Класс конфигурации приложения
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>

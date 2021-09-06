@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace ProjectY.Shared.Contracts
+namespace ProjectY.Shared.Contracts.AttachmentsController
 {
     /// <summary>
     /// Контакт для помещения файла в хранилище
     /// </summary>
-    public class PutFileContract
+    public class PutFileContractBackend
     {
         /// <summary> Наименование файла </summary>
         public string FileName { get; set; }

@@ -17,3 +17,10 @@
 </Row>
 
 <Button OnClick="() => AddRow()">Добавить ряд</Button>
+
+<Upload  OnSingleCompleted="OnSingleCompleted" Action="https://localhost:5001/api/testing" Name = "file"
+         OnRemove="HandleRemove">
+    <Button Icon="upload">
+        <span>Upload</span>
+    </Button>
+</Upload>

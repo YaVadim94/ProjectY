@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -71,6 +70,8 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// </summary>
         public async Task<object> PutObject(PutObjectDto obj)
         {
+            var ss = await _amazonS3Client.ListBucketsAsync();
+
             await CreateBucketIfNotExists(obj.BucketName);
 
             var request = new PutObjectRequest
@@ -78,7 +79,8 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
                 Key = obj.Key,
                 ContentType = obj.ContentType,
                 BucketName = obj.BucketName,
-                InputStream = obj.InputStream
+                InputStream = obj.InputStream,
+
             };
 
             var response = await _amazonS3Client.PutObjectAsync(request);
