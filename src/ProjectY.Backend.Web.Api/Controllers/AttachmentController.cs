@@ -8,16 +8,17 @@ using ProjectY.Backend.Application.AmazonS3.Models;
 namespace ProjectY.Backend.Web.Api.Controllers
 {
     /// <summary>
-    /// Контроллер для тестов
+    /// Контроллер для работы с объектами(приложениями)
     /// </summary>
-    public class TestingController : ApiControllerBase
+    public class AttachmentController : ApiControllerBase
     {
         private readonly IObjectStorageService _objectStorageService;
+        private const string bucketName = "media";
 
         /// <summary>
-        /// Контроллер для тестов
+        /// Контроллер для работы с объектами(приложениями)
         /// </summary>
-        public TestingController(IObjectStorageService objectStorageService)
+        public AttachmentController(IObjectStorageService objectStorageService)
         {
             _objectStorageService = objectStorageService;
         }
@@ -32,7 +33,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
 
             var putObjectDto = new PutObjectDto
             {
-                BucketName = "media",
+                BucketName = bucketName,
                 ContentType = file.ContentType,
                 Key = $"{file.FileName}_{Guid.NewGuid()}",
                 InputStream = stream

@@ -5,12 +5,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ProjectY.Backend.Data.Migrations
 {
     /// <summary>
-    /// 
+    /// Миграция
     /// </summary>
     public partial class Add_Shoes : Migration
     {
         /// <summary>
-        /// 
+        /// Накатить
         /// </summary>
         /// <param name="migrationBuilder"></param>
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +35,7 @@ namespace ProjectY.Backend.Data.Migrations
         }
 
         /// <summary>
-        /// 
+        /// Откатить
         /// </summary>
         /// <param name="migrationBuilder"></param>
         protected override void Down(MigrationBuilder migrationBuilder)

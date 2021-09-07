@@ -8,8 +8,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors></WarningsAsErrors>
     <WarningLevel>5</WarningLevel>
-    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Data.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210701154836_Add_Shoes.cs~RF15c6917a.TMP\**" />
+    <EmbeddedResource Remove="Migrations\20210701154836_Add_Shoes.cs~RF15c6917a.TMP\**" />
+    <None Remove="Migrations\20210701154836_Add_Shoes.cs~RF15c6917a.TMP\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
