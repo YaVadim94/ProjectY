@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectY.Backend.Application.Logic\ProjectY.Backend.Application.Logic.csproj" />
+    <ProjectReference Include="..\ProjectY.Backend.Shared\ProjectY.Backend.Shared.csproj" />
     <ProjectReference Include="..\ProjectY.Shared.Contracts\ProjectY.Shared.Contracts.csproj" />
   </ItemGroup>
 

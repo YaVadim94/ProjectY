@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
-using ProjectY.Backend.Application.Core.Exceptions;
+using ProjectY.Backend.Shared.BaseExceptions;
 using ProjectY.Backend.Web.Api.Exceptions;
 
 namespace ProjectY.Backend.Web.Api.Filters
@@ -19,22 +18,12 @@ namespace ProjectY.Backend.Web.Api.Filters
         {
             if (!context.ModelState.IsValid)
             {
-                var errorsInModelState = context.ModelState
+                var validationErrors = context.ModelState
                     .Where(e => e.Value.Errors.Count > 0)
-                    .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                    .SelectMany(x => x.Value.Errors, (name, value) => new { name.Key, value.ErrorMessage })
+                    .Select(x => new ValidationError { FieldName = x.Key, Message = x.ErrorMessage }).ToArray();
 
-                var validationErrors = new List<ValidationError>();
-
-                foreach (var error in errorsInModelState)
-                {
-                    validationErrors.AddRange(error.Value.Select(subError => new ValidationError
-                    {
-                        FieldName = error.Key,
-                        Message = subError
-                    }));
-                }
-
-                throw new ContractValidationException(validationErrors.ToArray());
+                throw new ContractValidationException(validationErrors);
             }
 
             await next();

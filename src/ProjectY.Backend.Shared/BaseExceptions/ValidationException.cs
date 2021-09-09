@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProjectY.Backend.Application.Core.Exceptions
+namespace ProjectY.Backend.Shared.BaseExceptions
 {
     /// <summary>
     /// Исключение при валидации данных.
@@ -15,6 +15,11 @@ namespace ProjectY.Backend.Application.Core.Exceptions
         {
             Errors = errors ?? throw new ArgumentNullException();
         }
+
+        /// <summary>
+        /// Название ошибки.
+        /// </summary>
+        public virtual string Name => "Ошибка валидации";
 
         /// <summary>
         /// Список ошибок.

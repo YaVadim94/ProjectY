@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors></WarningsAsErrors>
+        <WarningLevel>5</WarningLevel>
+        <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Shared.xml</DocumentationFile>
+    </PropertyGroup>
+</Project>

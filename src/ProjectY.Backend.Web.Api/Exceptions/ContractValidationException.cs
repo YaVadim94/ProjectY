@@ -1,4 +1,4 @@
-﻿using ProjectY.Backend.Application.Core.Exceptions;
+﻿using ProjectY.Backend.Shared.BaseExceptions;
 
 namespace ProjectY.Backend.Web.Api.Exceptions
 {
