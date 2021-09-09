@@ -6,8 +6,8 @@
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <WarningsAsErrors></WarningsAsErrors>
+        <WarningsAsErrors/>
         <WarningLevel>5</WarningLevel>
-        <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Shared.xml</DocumentationFile>
+        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Shared.xml</DocumentationFile>
     </PropertyGroup>
 </Project>
