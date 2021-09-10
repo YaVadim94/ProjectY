@@ -56,7 +56,7 @@ namespace ProjectY.Backend.Tests.UnitTests
             Assert.Equal(expectedErrorsCount, actualException.Errors.Count);
         }
 
-        private Tuple<ActionExecutingContext, ActionExecutedContext> GetActionContexts()
+        private static Tuple<ActionExecutingContext, ActionExecutedContext> GetActionContexts()
         {
             var modelState = new ModelStateDictionary();
             var httpContextMock = new DefaultHttpContext();
