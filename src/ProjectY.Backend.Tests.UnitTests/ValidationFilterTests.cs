@@ -59,9 +59,9 @@ namespace ProjectY.Backend.Tests.UnitTests
         private static Tuple<ActionExecutingContext, ActionExecutedContext> GetActionContexts()
         {
             var modelState = new ModelStateDictionary();
-            var httpContextMock = new DefaultHttpContext();
+            var httpContext = new DefaultHttpContext();
             var actionContext = new ActionContext(
-                httpContextMock,
+                httpContext,
                 Mock.Of<RouteData>(),
                 Mock.Of<ActionDescriptor>(),
                 modelState
