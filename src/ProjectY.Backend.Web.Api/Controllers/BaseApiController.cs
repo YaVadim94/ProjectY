@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ProjectY.Web.Api.Controllers
+namespace ProjectY.Backend.Web.Api.Controllers
 {
     /// <summary>
     /// Базовый класс контроллеров

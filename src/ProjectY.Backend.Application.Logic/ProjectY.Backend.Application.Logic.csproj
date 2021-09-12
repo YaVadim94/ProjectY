@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Application.Logic.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors/>
+        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Application.Logic.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
-    <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
-    <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj"/>
+        <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj"/>
+        <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj"/>
+    </ItemGroup>
 
 </Project>

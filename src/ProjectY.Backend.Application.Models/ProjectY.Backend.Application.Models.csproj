@@ -1,23 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <WarningsAsErrors />
-        <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Application.Models.xml</DocumentationFile>
+        <WarningsAsErrors/>
+        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Application.Models.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Exceptions\**" />
-      <EmbeddedResource Remove="Exceptions\**" />
-      <None Remove="Exceptions\**" />
+        <Compile Remove="Exceptions\**"/>
+        <EmbeddedResource Remove="Exceptions\**"/>
+        <None Remove="Exceptions\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+        <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj"/>
     </ItemGroup>
 
 </Project>
