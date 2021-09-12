@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using AntDesign;
 using Microsoft.AspNetCore.Components;
+using Newtonsoft.Json;
 using ProjectY.Frontend.Application.Services.FileService;
 using ProjectY.Frontend.Application.Services.ShoesService;
+using ProjectY.Shared.Contracts.AttachmentsController;
 using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Frontend.ServerSide.Pages
@@ -28,6 +30,8 @@ namespace ProjectY.Frontend.ServerSide.Pages
         private const int rowElementCount = 4;
         private int showedCardCount = 0;
 
+        private string ImageUrl { get; set; }
+
         /// <summary>
         /// Инициалзация
         /// </summary>
@@ -49,7 +53,8 @@ namespace ProjectY.Frontend.ServerSide.Pages
         {
             if (fileinfo.File.State == UploadState.Success)
             {
-                var result = string.Empty;
+                fileinfo.File.Url = JsonConvert.DeserializeObject<AttachmentContract>(fileinfo.File.Response).Url;
+                ImageUrl = JsonConvert.DeserializeObject<AttachmentContract>(fileinfo.File.Response).Url;
             }
         }
 

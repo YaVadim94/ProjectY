@@ -16,12 +16,12 @@ namespace ProjectY.Backend.Application.AmazonS3.Interfaces
         /// <summary>
         /// Поместить объект в хранилище
         /// </summary>
-        Task<object> PutObject(PutObjectDto obj);
+        Task PutObject(PutObjectDto obj);
 
         /// <summary>
         /// Получить объект по ключу
         /// </summary>
-        string GetObjectUrl(GetObjectUrlDto obj);
+        string GetObjectUrl(string key);
 
         /// <summary>
         /// Удалить файл из хранилища

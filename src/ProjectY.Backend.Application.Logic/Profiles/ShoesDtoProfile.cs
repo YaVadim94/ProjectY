@@ -17,12 +17,14 @@ namespace ProjectY.Backend.Application.Logic.Profiles
         public ShoesDtoProfile()
         {
             CreateMap<ShoesDto, Shoes>()
+                .IgnoreMember(d => d.Id)
                 .MapMember(d => d.CreatedDate, src => DateTime.Now)
                 .MapMember(d => d.ModifiedDate, src => DateTime.Now);
 
             CreateMap<Shoes, ShoesDto>();
 
             CreateMap<CreateShoesDto, Shoes>()
+                .IgnoreMember(d => d.Id)
                 .MapMember(d => d.CreatedDate, src => DateTime.Now)
                 .MapMember(d => d.ModifiedDate, src => DateTime.Now);
         }

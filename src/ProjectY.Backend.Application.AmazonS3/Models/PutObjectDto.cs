@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace ProjectY.Backend.Application.AmazonS3.Models
 {
@@ -10,16 +7,19 @@ namespace ProjectY.Backend.Application.AmazonS3.Models
     /// </summary>
     public class PutObjectDto
     {
-        /// <summary> Наименование объекта </summary>
+        /// <summary> Ключ объекта </summary>
         public string Key { get; set; }
 
         /// <summary> Тип контента </summary>
         public string ContentType { get; set; }
 
-        /// <summary> Наименование бакета </summary>
-        public string BucketName { get; set; }
-
         /// <summary> Поток к объекту </summary>
         public Stream InputStream { get; set; }
+
+        /// <summary> Наименование файла </summary>
+        public string FileName { get; set; }
+
+        /// <summary> Размер файла </summary>
+        public long FileSize { get; set; }
     }
 }

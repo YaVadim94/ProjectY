@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Models;
+using ProjectY.Backend.Application.Logic.Interfaces;
+using ProjectY.Shared.Contracts.AttachmentsController;
 
 namespace ProjectY.Backend.Web.Api.Controllers
 {
@@ -12,38 +14,45 @@ namespace ProjectY.Backend.Web.Api.Controllers
     /// </summary>
     public class AttachmentController : ApiControllerBase
     {
-        private readonly IObjectStorageService _objectStorageService;
-        private const string bucketName = "media";
+        private readonly IAttachmentService _attachmentService;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Контроллер для работы с объектами(приложениями)
         /// </summary>
-        public AttachmentController(IObjectStorageService objectStorageService)
+        public AttachmentController(IAttachmentService attachmentService, IMapper mapper)
         {
-            _objectStorageService = objectStorageService;
+            _attachmentService = attachmentService;
+            _mapper = mapper;
         }
 
         /// <summary>
         /// Поместить файл в хранилище
         /// </summary>
-        [HttpPost]
-        public async Task<IActionResult> PutFile(IFormFile file)
+        [HttpPost("put-file")]
+        public async Task<AttachmentContract> PutFile(IFormFile file)
         {
             await using var stream = file.OpenReadStream();
 
             var putObjectDto = new PutObjectDto
             {
-                BucketName = bucketName,
                 ContentType = file.ContentType,
-                Key = $"{file.FileName}_{Guid.NewGuid()}",
-                InputStream = stream
+                Key = Guid.NewGuid().ToString(),
+                InputStream = stream,
+                FileName = file.FileName,
+                FileSize = file.Length
             };
 
-            await _objectStorageService.PutObject(putObjectDto);
+            var attachment = await _attachmentService.PutFile(putObjectDto);
 
-            return NoContent();
+            return _mapper.Map<AttachmentContract>(attachment);
         }
 
-
+        /// <summary>
+        /// Получить адрес файла по идентификатору приложения
+        /// </summary>
+        [HttpGet("{attachmentId}")]
+        public async Task GetUrl(long attachmentId) =>
+            await _attachmentService.GetObjectUrl(attachmentId);
     }
 }

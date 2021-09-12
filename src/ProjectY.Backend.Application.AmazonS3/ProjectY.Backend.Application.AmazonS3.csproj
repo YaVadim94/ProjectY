@@ -15,4 +15,8 @@
     <PackageReference Include="AWSSDK.S3" Version="3.7.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+  </ItemGroup>
+
 </Project>

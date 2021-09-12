@@ -1,10 +1,13 @@
-﻿namespace ProjectY.Backend.Data.Entities
+﻿namespace ProjectY.Backend.Application.Models.Attachments
 {
     /// <summary>
-    /// Приложение(объект)
+    /// Дто приложения(объекта)
     /// </summary>
-    public class Attachment : EntityBase
+    public class AttachmentDto
     {
+        /// <summary> Идентификатор </summary>
+        public long Id { get; set; }
+
         /// <summary> Ключ объекта </summary>
         public string Key { get; set; }
 
@@ -19,6 +22,5 @@
 
         /// <summary> Адрес объекта </summary>
         public string Url { get; set; }
-
     }
 }

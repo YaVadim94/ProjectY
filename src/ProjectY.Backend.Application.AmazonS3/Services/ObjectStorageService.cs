@@ -1,9 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Models;
+using ProjectY.Backend.Application.Core;
 
 namespace ProjectY.Backend.Application.AmazonS3.Services
 {
@@ -12,6 +15,7 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
     /// </summary>
     public class ObjectStorageService : IObjectStorageService
     {
+        private const string bucket = "media";
         private readonly IAmazonS3 _amazonS3Client;
 
         /// <summary>
@@ -36,11 +40,7 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// </summary>
         public async Task DeleteObject(DeleteObjectDto obj)
         {
-            var request = new DeleteObjectRequest
-            {
-                Key = obj.Key,
-                BucketName = obj.BucketName
-            };
+            var request = new DeleteObjectRequest {Key = obj.Key, BucketName = bucket};
 
             var response = await _amazonS3Client.DeleteObjectAsync(request);
             //TODO: Изучить ответ при попытке удаления объекта, которого нет в хранилище
@@ -49,12 +49,14 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// <summary>
         /// Получить объект по идентификатору
         /// </summary>
-        public string GetObjectUrl(GetObjectUrlDto obj)
+        public string GetObjectUrl(string key)
         {
             var request = new GetPreSignedUrlRequest
             {
-                Key = obj.Key,
-                BucketName = obj.BucketName
+                Key = key,
+                BucketName = bucket,
+                Expires = DateTime.UtcNow + TimeSpan.FromHours(1),
+                Protocol = Protocol.HTTP
             };
 
             var response = _amazonS3Client.GetPreSignedURL(request);
@@ -68,26 +70,23 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// <summary>
         /// Поместить объект в хранилище
         /// </summary>
-        public async Task<object> PutObject(PutObjectDto obj)
+        public async Task PutObject(PutObjectDto obj)
         {
-            var ss = await _amazonS3Client.ListBucketsAsync();
-
-            await CreateBucketIfNotExists(obj.BucketName);
+            await CreateBucketIfNotExists(bucket);
 
             var request = new PutObjectRequest
             {
-                Key = obj.Key,
-                ContentType = obj.ContentType,
-                BucketName = obj.BucketName,
-                InputStream = obj.InputStream,
-
+                Key = obj.Key, ContentType = obj.ContentType, BucketName = bucket, InputStream = obj.InputStream
             };
+
+            request.Metadata.Add(Constants.FileName, obj.FileName);
+            request.Metadata.Add(Constants.FileSize, obj.FileSize.ToString());
 
             var response = await _amazonS3Client.PutObjectAsync(request);
 
-            //TODO: Скорее всего, тут нужно будет возвращать какую-то метадату объекта
-            //Возможно, получится размаппить респонс, если нет, то можно запросить мету через клиента
-            return null;
+            //TODO: продумать исключения
+            if (response.HttpStatusCode != HttpStatusCode.OK)
+                throw new Exception();
         }
     }
 }

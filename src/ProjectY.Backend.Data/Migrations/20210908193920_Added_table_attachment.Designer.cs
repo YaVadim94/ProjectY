@@ -10,7 +10,7 @@ using ProjectY.Backend.Data;
 namespace ProjectY.Backend.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210907191443_Added_table_attachment")]
+    [Migration("20210908193920_Added_table_attachment")]
     partial class Added_table_attachment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,6 @@ namespace ProjectY.Backend.Data.Migrations
                         .HasColumnType("bigint")
                         .HasComment("Идентификатор записи")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Bucket")
-                        .HasColumnType("text")
-                        .HasComment("Бакет");
 
                     b.Property<string>("ContentType")
                         .HasColumnType("text")
@@ -56,6 +52,10 @@ namespace ProjectY.Backend.Data.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone")
                         .HasComment("Дата последнего обновления");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("text")
+                        .HasComment("Адрес объекта");
 
                     b.HasKey("Id");
 

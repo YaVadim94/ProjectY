@@ -23,7 +23,7 @@ namespace ProjectY.Backend.Data.Configurations
             builder.Property(x => x.FileName).HasComment("Наименование файла");
             builder.Property(x => x.FileSize).HasComment("Размер файла");
             builder.Property(x => x.ContentType).HasComment("Тип контента файла");
-            builder.Property(x => x.Bucket).HasComment("Бакет");
+            builder.Property(x => x.Url).HasComment("Адрес объекта");
         }
     }
 }

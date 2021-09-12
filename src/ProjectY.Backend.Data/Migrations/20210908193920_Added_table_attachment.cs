@@ -18,10 +18,10 @@ namespace ProjectY.Backend.Data.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false, comment: "Идентификатор записи")
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Key = table.Column<string>(type: "text", nullable: true, comment: "Ключ объекта"),
-                    Bucket = table.Column<string>(type: "text", nullable: true, comment: "Бакет"),
                     FileName = table.Column<string>(type: "text", nullable: true, comment: "Наименование файла"),
                     ContentType = table.Column<string>(type: "text", nullable: true, comment: "Тип контента файла"),
                     FileSize = table.Column<long>(type: "bigint", nullable: false, comment: "Размер файла"),
+                    Url = table.Column<string>(type: "text", nullable: true, comment: "Адрес объекта"),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, comment: "Дата создания"),
                     ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, comment: "Дата последнего обновления")
                 },

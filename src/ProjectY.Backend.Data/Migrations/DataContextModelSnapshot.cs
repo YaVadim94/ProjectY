@@ -27,10 +27,6 @@ namespace ProjectY.Backend.Data.Migrations
                         .HasComment("Идентификатор записи")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Bucket")
-                        .HasColumnType("text")
-                        .HasComment("Бакет");
-
                     b.Property<string>("ContentType")
                         .HasColumnType("text")
                         .HasComment("Тип контента файла");
@@ -54,6 +50,10 @@ namespace ProjectY.Backend.Data.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone")
                         .HasComment("Дата последнего обновления");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("text")
+                        .HasComment("Адрес объекта");
 
                     b.HasKey("Id");
 

@@ -74,7 +74,7 @@ namespace ProjectY.Backend.Web.Api.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IShoesService, ShoesService>();
-
+            services.AddScoped<IAttachmentService, AttachmentService>();
 
             return services;
         }
