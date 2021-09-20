@@ -6,12 +6,8 @@
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <WarningsAsErrors />
-        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Application.Models.xml</DocumentationFile>
+        <WarningsAsErrors/>
+        <WarningLevel>5</WarningLevel>
+        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Shared.xml</DocumentationFile>
     </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
-    </ItemGroup>
-
 </Project>

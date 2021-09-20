@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+    <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
   </ItemGroup>
 
 </Project>

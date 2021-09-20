@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
-using ProjectY.Backend.Application.Logic.Interfaces;
 using ProjectY.Backend.Application.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
+using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Shared.Contracts.ShoesController;
 
 namespace ProjectY.Backend.Web.Api.Controllers
@@ -14,15 +16,15 @@ namespace ProjectY.Backend.Web.Api.Controllers
     /// </summary>
     public class ShoesController : ApiControllerBase
     {
-        private readonly IShoesService _shoesService;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
         /// <summary>
         /// Конструктор контроллера для работы с обувью.
         /// </summary>
-        public ShoesController(IShoesService shoesService, IMapper mapper)
+        public ShoesController(IMediator mediator, IMapper mapper)
         {
-            _shoesService = shoesService;
+            _mediator = mediator;
             _mapper = mapper;
         }
 
@@ -34,9 +36,9 @@ namespace ProjectY.Backend.Web.Api.Controllers
         [HttpPost]
         public async Task<ShoesContracts> CreateShoes(CreateShoesContract request)
         {
-            var createdShoesDto = _mapper.Map<CreateShoesDto>(request);
+            var createShoesCommand = _mapper.Map<CreateShoesCommand>(request);
 
-            var result = await _shoesService.CreateAsync(createdShoesDto);
+            var result = await _mediator.Send(createShoesCommand);
 
             return _mapper.Map<ShoesContracts>(result);
         }
@@ -49,19 +51,23 @@ namespace ProjectY.Backend.Web.Api.Controllers
 
         public async Task<ShoesContracts> GetShoesById(long id)
         {
-            var result = await _shoesService.GetByIdAsync(id);
+            var query = new GetShoesByIdQuery(id);
+
+            var result = await _mediator.Send(query);
 
             return _mapper.Map<ShoesContracts>(result);
         }
 
         /// <summary>
-        /// Получить обувь по идентификатору.
+        /// Получить всю обувь.
         /// </summary>
         /// <returns>Список контрактов обуви</returns>
         [HttpGet]
         public async Task<IEnumerable<ShoesContracts>> GetAllShoes([FromServices] ODataQueryOptions<ShoesDto> options)
         {
-            var result = await _shoesService.GetAllAsync(options);
+            var query = new GetAllShoesQuery(options);
+
+            var result = await _mediator.Send(query);
 
             return _mapper.Map<IEnumerable<ShoesContracts>>(result);
         }

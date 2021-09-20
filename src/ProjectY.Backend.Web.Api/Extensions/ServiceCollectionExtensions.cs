@@ -4,11 +4,11 @@ using System.Reflection;
 using Amazon.S3;
 using AutoMapper.EquivalencyExpression;
 using Microsoft.Extensions.Configuration;
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Services;
-using ProjectY.Backend.Application.Logic.Interfaces;
-using ProjectY.Backend.Application.Logic.Services;
 using ProjectY.Backend.Web.Api.Models;
 
 namespace ProjectY.Backend.Web.Api.Extensions
@@ -69,14 +69,29 @@ namespace ProjectY.Backend.Web.Api.Extensions
         }
 
         /// <summary>
-        /// Зарегистрировать сервисы.
+        /// Зарегистрировать медиатр.
         /// </summary>
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
-            services.AddScoped<IShoesService, ShoesService>();
-            services.AddScoped<IAttachmentService, AttachmentService>();
+            return services.AddMediatR(
+                Assembly.LoadFrom(
+                    Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll")));
+        }
 
-            return services;
+        /// <summary>
+        /// Зарегистрировать FluentValidation.
+        /// </summary>
+        public static IServiceCollection AddFluentValidation(this IServiceCollection services)
+        {
+            return services.AddFluentValidation(conf =>
+            {
+                var assemblies = new[]
+                {
+                    Assembly.GetExecutingAssembly(),
+                    Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory, "ProjectY.Backend.Application.Logic.dll"))
+                };
+                conf.RegisterValidatorsFromAssemblies(assemblies);
+            });
         }
     }
 }

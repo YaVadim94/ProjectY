@@ -10,8 +10,8 @@ using ProjectY.Backend.Data;
 namespace ProjectY.Backend.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210908193920_Added_table_attachment")]
-    partial class Added_table_attachment
+    [Migration("20210912193224_Added_table_attachments")]
+    partial class Added_table_attachments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,10 +52,6 @@ namespace ProjectY.Backend.Data.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("timestamp without time zone")
                         .HasComment("Дата последнего обновления");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("text")
-                        .HasComment("Адрес объекта");
 
                     b.HasKey("Id");
 

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ProjectY.Backend.Data.Migrations
 {
-    public partial class Added_table_attachment : Migration
+    public partial class Added_table_attachments : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +21,6 @@ namespace ProjectY.Backend.Data.Migrations
                     FileName = table.Column<string>(type: "text", nullable: true, comment: "Наименование файла"),
                     ContentType = table.Column<string>(type: "text", nullable: true, comment: "Тип контента файла"),
                     FileSize = table.Column<long>(type: "bigint", nullable: false, comment: "Размер файла"),
-                    Url = table.Column<string>(type: "text", nullable: true, comment: "Адрес объекта"),
                     CreatedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, comment: "Дата создания"),
                     ModifiedDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false, comment: "Дата последнего обновления")
                 },

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectY.Backend.Application.AmazonS3.Models;
-using ProjectY.Backend.Application.Logic.Interfaces;
+using ProjectY.Backend.Application.Models.Attachments.Commands;
+using ProjectY.Backend.Application.Models.Attachments.Queries;
 using ProjectY.Shared.Contracts.AttachmentsController;
 
 namespace ProjectY.Backend.Web.Api.Controllers
@@ -12,29 +13,29 @@ namespace ProjectY.Backend.Web.Api.Controllers
     /// <summary>
     /// Контроллер для работы с объектами(приложениями)
     /// </summary>
-    public class AttachmentController : ApiControllerBase
+    public class AttachmentsController : ApiControllerBase
     {
-        private readonly IAttachmentService _attachmentService;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
         /// <summary>
         /// Контроллер для работы с объектами(приложениями)
         /// </summary>
-        public AttachmentController(IAttachmentService attachmentService, IMapper mapper)
+        public AttachmentsController(IMapper mapper, IMediator mediator)
         {
-            _attachmentService = attachmentService;
             _mapper = mapper;
+            _mediator = mediator;
         }
 
         /// <summary>
         /// Поместить файл в хранилище
         /// </summary>
-        [HttpPost("put-file")]
+        [HttpPost]
         public async Task<AttachmentContract> PutFile(IFormFile file)
         {
             await using var stream = file.OpenReadStream();
 
-            var putObjectDto = new PutObjectDto
+            var putObjectCommand = new PutObjectCommand
             {
                 ContentType = file.ContentType,
                 Key = Guid.NewGuid().ToString(),
@@ -43,7 +44,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
                 FileSize = file.Length
             };
 
-            var attachment = await _attachmentService.PutFile(putObjectDto);
+            var attachment = await _mediator.Send(putObjectCommand);
 
             return _mapper.Map<AttachmentContract>(attachment);
         }
@@ -52,7 +53,13 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// Получить адрес файла по идентификатору приложения
         /// </summary>
         [HttpGet("{attachmentId}")]
-        public async Task GetUrl(long attachmentId) =>
-            await _attachmentService.GetObjectUrl(attachmentId);
+        public async Task<AttachmentContract> GetUrl(long attachmentId)
+        {
+            var getUrlQuery = new GetUrlQuery {AttachmentId = attachmentId};
+
+            var attachmentDto = await _mediator.Send(getUrlQuery);
+
+            return _mapper.Map<AttachmentContract>(attachmentDto);
+        }
     }
 }

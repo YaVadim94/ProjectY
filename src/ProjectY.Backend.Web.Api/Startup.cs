@@ -7,9 +7,10 @@ using Microsoft.Extensions.Hosting;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
+using ProjectY.Backend.Web.Api.Filters;
+using ProjectY.Backend.Web.Api.Middleware;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using ExceptionHandler = ProjectY.Backend.Web.Api.Middleware.ExceptionHandler;
 
 namespace ProjectY.Backend.Web.Api
 {
@@ -30,7 +31,7 @@ namespace ProjectY.Backend.Web.Api
             _hostEnvironment = hostEnvironment;
 
             Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(configuration, sectionName: "Serilog")
+                .ReadFrom.Configuration(configuration, "Serilog")
                 .CreateLogger();
         }
 
@@ -39,29 +40,37 @@ namespace ProjectY.Backend.Web.Api
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
+            // IMvcBuilder
             services
-                .AddControllers()
+                .AddControllers(conf =>
+                {
+                    conf.Filters.Add(new ValidationFilter());
+                })
+                .ConfigureApiBehaviorOptions(opt =>
+                {
+                    opt.SuppressModelStateInvalidFilter = true;
+                })
                 .AddOData(opt => opt.Filter().OrderBy().SkipToken().SetMaxTop(int.MaxValue))
                 .AddNewtonsoftJson();
 
-
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(builder =>
-                builder.WithOrigins("http://localhost:3000", "https://localhost:3001")
-                       .AllowAnyMethod()
-                       .AllowAnyHeader()
-                       .AllowCredentials());
-            });
-
-            services.AddRepositoryContext(opt =>
-            {
-                opt.ConnectionString = _configuration.GetConnectionString("Postgres");
-            });
-
-            services.AddAutoMapper();
-            services.AddObjectStorage(_configuration);
-            services.AddServices();
+            // IServiceCollection
+            services
+                .AddCors(options =>
+                {
+                    options.AddDefaultPolicy(builder =>
+                        builder.WithOrigins("http://localhost:3000", "https://localhost:3001")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+                })
+                .AddRepositoryContext(opt =>
+                {
+                    opt.ConnectionString = _configuration.GetConnectionString("Postgres");
+                })
+                .AddAutoMapper()
+                .AddMediatR()
+                .AddFluentValidation()
+                .AddObjectStorage(_configuration);
 
             if (!_hostEnvironment.IsProduction())
             {

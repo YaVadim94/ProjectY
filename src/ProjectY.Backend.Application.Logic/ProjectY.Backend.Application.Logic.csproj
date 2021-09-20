@@ -1,25 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <DocumentationFile>\obj\Debug\net5.0\ProjectY.Backend.Application.Logic.xml</DocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningsAsErrors />
+        <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Application.Logic.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectY.Backend.Application.AmazonS3\ProjectY.Backend.Application.AmazonS3.csproj" />
+    <ItemGroup>
+        <ProjectReference Include="..\ProjectY.Backend.Application.AmazonS3\ProjectY.Backend.Application.AmazonS3.csproj" />
     <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
-    <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
-    <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
-  </ItemGroup>
+        <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
+        <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
+    </ItemGroup>
 
 </Project>

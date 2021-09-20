@@ -15,20 +15,18 @@ namespace ProjectY.Frontend.ServerSide.Pages
     /// </summary>
     public partial class Index : ComponentBase
     {
-        [Inject]
-        private IShoesService ShoesService { get; set; }
+        private const int rowElementCount = 4;
+        private int showedCardCount;
 
-        [Inject]
-        private IFileService FileService { get; set; }
+        [Inject] private IShoesService ShoesService { get; set; }
+
+        [Inject] private IFileService FileService { get; set; }
 
         /// <summary>
         /// Список обуви
         /// </summary>
         [Parameter]
-        public List<ShoesContracts> Shoes { get; set; } = new List<ShoesContracts>();
-
-        private const int rowElementCount = 4;
-        private int showedCardCount = 0;
+        public List<ShoesContracts> Shoes { get; set; } = new();
 
         private string ImageUrl { get; set; }
 
@@ -49,16 +47,23 @@ namespace ProjectY.Frontend.ServerSide.Pages
         private RenderFragment ShowPicture() =>
             builder => builder.AddMarkupContent(1, "<img alt=\"example\" src=\"/images/321.png\"/>");
 
-        private void OnSingleCompleted(UploadInfo fileinfo)
+        private async Task OnSingleCompleted(UploadInfo fileInfo)
         {
-            if (fileinfo.File.State == UploadState.Success)
+            if (fileInfo.File.State == UploadState.Success)
             {
-                fileinfo.File.Url = JsonConvert.DeserializeObject<AttachmentContract>(fileinfo.File.Response).Url;
-                ImageUrl = JsonConvert.DeserializeObject<AttachmentContract>(fileinfo.File.Response).Url;
+                var attachment = JsonConvert.DeserializeObject<AttachmentContract>(fileInfo.File.Response);
+
+                if (attachment == null)
+                    return;
+
+                var fileUrl = await FileService.GetUrl(attachment.Id);
+
+                fileInfo.File.Url = fileUrl;
+                ImageUrl = fileUrl;
             }
         }
 
-        async Task<bool> HandleRemove(UploadFileItem file)
+        private async Task<bool> HandleRemove(UploadFileItem file)
         {
             return await Task.FromResult(true);
         }
@@ -73,6 +78,5 @@ namespace ProjectY.Frontend.ServerSide.Pages
 
         //    return await Task.FromResult(false);
         //}
-
     }
 }

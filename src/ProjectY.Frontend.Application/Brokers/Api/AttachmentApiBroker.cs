@@ -10,22 +10,24 @@ namespace ProjectY.Frontend.Application.Brokers.Api
     /// </summary>
     public class AttachmentApiBroker : ApiBrokerBase, IAttachmentApiBroker
     {
-        /// <summary> Относительный урл контроллера бекенда </summary>
-        protected override string ControllerUrl => "api/test";
-
         /// <summary>
         /// Брокер для работы с тестовым контроллером
         /// </summary>
         public AttachmentApiBroker(HttpClient client) : base(client) { }
 
+        /// <summary> Относительный урл контроллера бекенда </summary>
+        protected override string ControllerUrl => "api/attachments";
+
         /// <summary>
         /// Загрузить файл в хранилище
         /// </summary>
-        public async Task<object> Upload(PutFileContractFrontend fileContract)
-        {
-            var response = await PostAsync<PutFileContractFrontend, object>(string.Empty, fileContract);
+        public async Task<object> Upload(PutFileContractFrontend fileContract) =>
+            await PostAsync<PutFileContractFrontend, object>(string.Empty, fileContract);
 
-            return response;
-        }
+        /// <summary>
+        /// Получить адрес файла по идентификатору
+        /// </summary>
+        public async Task<AttachmentContract> GetUrl(long attachmentId) =>
+            await GetAsync<AttachmentContract>(attachmentId.ToString());
     }
 }

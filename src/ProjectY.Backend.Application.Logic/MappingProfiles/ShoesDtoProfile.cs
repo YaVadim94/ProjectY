@@ -2,9 +2,10 @@
 using AutoMapper;
 using ProjectY.Backend.Application.Core.Extensions;
 using ProjectY.Backend.Application.Models.Shoes;
+using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Data.Entities;
 
-namespace ProjectY.Backend.Application.Logic.Profiles
+namespace ProjectY.Backend.Application.Logic.MappingProfiles
 {
     /// <summary>
     /// Класс для конфигурации маппинга моделей и сущностей обуви.
@@ -23,7 +24,7 @@ namespace ProjectY.Backend.Application.Logic.Profiles
 
             CreateMap<Shoes, ShoesDto>();
 
-            CreateMap<CreateShoesDto, Shoes>()
+            CreateMap<CreateShoesCommand, Shoes>()
                 .IgnoreMember(d => d.Id)
                 .MapMember(d => d.CreatedDate, src => DateTime.Now)
                 .MapMember(d => d.ModifiedDate, src => DateTime.Now);

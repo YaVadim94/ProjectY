@@ -16,9 +16,5 @@
 
         /// <summary> Размер файла </summary>
         public long FileSize { get; set; }
-
-        /// <summary> Адрес объекта </summary>
-        public string Url { get; set; }
-
     }
 }

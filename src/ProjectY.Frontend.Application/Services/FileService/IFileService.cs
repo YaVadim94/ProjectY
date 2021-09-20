@@ -12,5 +12,10 @@ namespace ProjectY.Frontend.Application.Services.FileService
         /// Загрузить файл в хранилище
         /// </summary>
         Task<object> UploadFile(FileUploadModel file);
+
+        /// <summary>
+        /// Получить адрес файла по идентификатору приложения
+        /// </summary>
+        Task<string> GetUrl(long attachmentId);
     }
 }

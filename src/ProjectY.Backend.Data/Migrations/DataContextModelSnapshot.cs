@@ -51,10 +51,6 @@ namespace ProjectY.Backend.Data.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasComment("Дата последнего обновления");
 
-                    b.Property<string>("Url")
-                        .HasColumnType("text")
-                        .HasComment("Адрес объекта");
-
                     b.HasKey("Id");
 
                     b.ToTable("attachments");

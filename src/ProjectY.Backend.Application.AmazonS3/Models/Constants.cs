@@ -1,4 +1,4 @@
-﻿namespace ProjectY.Backend.Application.Core
+﻿namespace ProjectY.Backend.Application.AmazonS3.Models
 {
     /// <summary>
     /// Класс с постоянными значениями для <see cref="string"/>

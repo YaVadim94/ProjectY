@@ -27,18 +27,24 @@ namespace ProjectY.Frontend.Application.Services.FileService
         /// </summary>
         public async Task<object> UploadFile(FileUploadModel file)
         {
-            using var stream = new FileStream(file.Url, FileMode.Create);
+            await using var stream = new FileStream(file.Url, FileMode.Create);
             using var content = new MultipartFormDataContent();
             content.Add(new StreamContent(stream));
 
-            var contract = new PutFileContractFrontend
-            {
-                FileName = file.Name,
-                File = content
-            };
+            var contract = new PutFileContractFrontend {FileName = file.Name, File = content};
 
             var response = await _attachmentApiBroker.Upload(contract);
             return response;
+        }
+
+        /// <summary>
+        /// Получить адрес картинки по идентификатору приложения
+        /// </summary>
+        public async Task<string> GetUrl(long attachmentId)
+        {
+            var attachmentContract = await _attachmentApiBroker.GetUrl(attachmentId);
+
+            return attachmentContract.Url;
         }
     }
 }
