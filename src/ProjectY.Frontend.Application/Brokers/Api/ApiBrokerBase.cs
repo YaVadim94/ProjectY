@@ -14,17 +14,17 @@ namespace ProjectY.Frontend.Application.Brokers.Api
         private readonly HttpClient _apiClient;
 
         /// <summary>
-        /// Отновительный урл контроллера бекенда
-        /// </summary>
-        protected abstract string ControllerUrl { get; }
-
-        /// <summary>
         /// Базовый класс для брокеров апи
         /// </summary>
         protected ApiBrokerBase(HttpClient apiClient)
         {
             _apiClient = apiClient;
         }
+
+        /// <summary>
+        /// Относительный урл контроллера бекенда
+        /// </summary>
+        protected abstract string ControllerUrl { get; }
 
         /// <summary>
         /// Отправить GET-запрос
@@ -79,6 +79,5 @@ namespace ProjectY.Frontend.Application.Brokers.Api
             var controllerUrl = GetType().GetProperty("ControllerUrl", flags).GetValue(this) as string;
             return $"{controllerUrl}/{methodUrl}";
         }
-
     }
 }

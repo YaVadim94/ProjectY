@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
 using AutoMapper;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ProjectY.Backend.Application.Core.Extensions
 {
