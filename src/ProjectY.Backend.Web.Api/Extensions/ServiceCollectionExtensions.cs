@@ -62,7 +62,8 @@ namespace ProjectY.Backend.Web.Api.Extensions
             };
 
             services
-                .AddScoped<IAmazonS3, AmazonS3Client>(provider => new AmazonS3Client(minioConfig.AccessKey, minioConfig.SecretKey, s3Config))
+                .AddScoped<IAmazonS3, AmazonS3Client>(provider =>
+                    new AmazonS3Client(minioConfig.AccessKey, minioConfig.SecretKey, s3Config))
                 .AddScoped<IObjectStorageService, ObjectStorageService>();
 
             return services;

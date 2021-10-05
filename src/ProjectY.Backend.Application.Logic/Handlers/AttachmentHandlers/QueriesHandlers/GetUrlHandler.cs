@@ -39,7 +39,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.AttachmentHandlers.Queries
                 await _dataContext.Attacments.SingleOrDefaultAsync(x => x.Id == request.AttachmentId)
                 ?? throw new FileNotFoundException("Приложения с указанным идентификатором не существует");
 
-            var objectUrl = _objectStorageService.GetObjectUrl(attachmentEntity.Key)
+            var objectUrl = _objectStorageService.GetUrl(attachmentEntity.Key)
                             ?? string.Empty;
 
             var attachmentDto = _mapper.Map<AttachmentDto>(attachmentEntity, opt =>

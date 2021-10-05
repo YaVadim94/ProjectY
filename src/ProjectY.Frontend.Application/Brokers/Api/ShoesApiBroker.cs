@@ -10,13 +10,13 @@ namespace ProjectY.Frontend.Application.Brokers.Api
     /// </summary>
     public class ShoesApiBroker : ApiBrokerBase, IShoesApiBroker
     {
-        /// <summary> Относительный адрес контроллера юекенда </summary>
-        protected override string ControllerUrl => "api/shoes";
-
         /// <summary>
         /// Брокер для контроллера по работе с обувью
         /// </summary>
         public ShoesApiBroker(HttpClient httpClient) : base(httpClient) { }
+
+        /// <summary> Относительный адрес контроллера бекенда </summary>
+        protected override string ControllerUrl => "api/shoes";
 
         /// <summary>
         /// Создать обувь

@@ -38,7 +38,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.AttachmentHandlers.Command
             var putObjectDto = _mapper.Map<PutObjectDto>(request);
 
             //TODO: Продумать обработку исключения
-            await _objectStorageService.PutObject(putObjectDto);
+            await _objectStorageService.Put(putObjectDto);
 
             var attachment = _mapper.Map<Attachment>(putObjectDto);
 

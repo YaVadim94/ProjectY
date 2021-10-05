@@ -6,7 +6,6 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using ProjectY.Backend.Application.AmazonS3.Interfaces;
 using ProjectY.Backend.Application.AmazonS3.Models;
-using ProjectY.Backend.Application.Core;
 
 namespace ProjectY.Backend.Application.AmazonS3.Services
 {
@@ -38,7 +37,7 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// <summary>
         /// Удалить файл из хранилища
         /// </summary>
-        public async Task DeleteObject(DeleteObjectDto obj)
+        public async Task Delete(DeleteObjectDto obj)
         {
             var request = new DeleteObjectRequest {Key = obj.Key, BucketName = bucket};
 
@@ -49,7 +48,7 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// <summary>
         /// Получить объект по идентификатору
         /// </summary>
-        public string GetObjectUrl(string key)
+        public string GetUrl(string key)
         {
             var request = new GetPreSignedUrlRequest
             {
@@ -70,7 +69,7 @@ namespace ProjectY.Backend.Application.AmazonS3.Services
         /// <summary>
         /// Поместить объект в хранилище
         /// </summary>
-        public async Task PutObject(PutObjectDto obj)
+        public async Task Put(PutObjectDto obj)
         {
             await CreateBucketIfNotExists(bucket);
 

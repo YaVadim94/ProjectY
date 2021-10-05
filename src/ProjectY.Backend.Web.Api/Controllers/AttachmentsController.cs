@@ -35,14 +35,9 @@ namespace ProjectY.Backend.Web.Api.Controllers
         {
             await using var stream = file.OpenReadStream();
 
-            var putObjectCommand = new PutObjectCommand
-            {
-                ContentType = file.ContentType,
-                Key = Guid.NewGuid().ToString(),
-                InputStream = stream,
-                FileName = file.FileName,
-                FileSize = file.Length
-            };
+            // TODO: написать кастомный маппинг
+            var putObjectCommand = _mapper.Map<PutObjectCommand>(file);
+            putObjectCommand.InputStream = stream;
 
             var attachment = await _mediator.Send(putObjectCommand);
 

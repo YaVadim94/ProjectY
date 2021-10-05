@@ -6,7 +6,7 @@ using ProjectY.Backend.Application.Models.Attachments;
 using ProjectY.Backend.Application.Models.Attachments.Commands;
 using ProjectY.Backend.Data.Entities;
 
-namespace ProjectY.Backend.Application.Logic.Profiles
+namespace ProjectY.Backend.Application.Logic.MappingProfiles
 {
     /// <summary>
     /// Профиль маппинга для приложений
@@ -23,7 +23,8 @@ namespace ProjectY.Backend.Application.Logic.Profiles
                 .MapMember(d => d.ModifiedDate, src => DateTime.Now)
                 .IgnoreMember(d => d.Id);
 
-            CreateMap<Attachment, AttachmentDto>();
+            CreateMap<Attachment, AttachmentDto>()
+                .IgnoreMember(d => d.Url);
 
             CreateMap<PutObjectCommand, PutObjectDto>();
         }
