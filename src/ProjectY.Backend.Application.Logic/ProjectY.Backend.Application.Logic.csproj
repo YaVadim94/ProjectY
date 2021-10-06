@@ -6,14 +6,15 @@
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <WarningsAsErrors/>
+        <WarningsAsErrors />
         <DocumentationFile>.\obj\Debug\net5.0\ProjectY.Backend.Application.Logic.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj"/>
-        <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj"/>
-        <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj"/>
+        <ProjectReference Include="..\ProjectY.Backend.Application.AmazonS3\ProjectY.Backend.Application.AmazonS3.csproj" />
+    <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+        <ProjectReference Include="..\ProjectY.Backend.Application.Models\ProjectY.Backend.Application.Models.csproj" />
+        <ProjectReference Include="..\ProjectY.Backend.Data\ProjectY.Backend.Data.csproj" />
     </ItemGroup>
 
 </Project>

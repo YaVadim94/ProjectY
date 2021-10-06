@@ -7,7 +7,7 @@ namespace ProjectY.Frontend.Application.Brokers.Api
     /// <summary>
     /// Брокер для контроллера обуви
     /// </summary>
-    public partial interface IApiBroker
+    public interface IShoesApiBroker
     {
         /// <summary>
         /// Создать обувь

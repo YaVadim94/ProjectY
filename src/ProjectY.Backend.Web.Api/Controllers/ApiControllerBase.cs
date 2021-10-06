@@ -7,7 +7,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseApiController : ControllerBase
+    public class ApiControllerBase : ControllerBase
     {
 
     }

@@ -20,5 +20,16 @@ namespace ProjectY.Backend.Application.Core.Extensions
             return mappingExpression
                 .ForMember(destinationMember, opt => opt.MapFrom(sourceMember));
         }
+
+        /// <summary>
+        /// Проигнорировать маппинг свойства
+        /// </summary>
+        public static IMappingExpression<TSource, TDest>  IgnoreMember<TSource, TDest, TMember>(
+            this IMappingExpression<TSource, TDest> mappingExpression,
+            Expression<Func<TDest, TMember>> destinationMember)
+        {
+            return mappingExpression
+                .ForMember(destinationMember, opt => opt.Ignore());
+        }
     }
 }

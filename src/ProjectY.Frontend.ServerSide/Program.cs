@@ -4,12 +4,12 @@ using Microsoft.Extensions.Hosting;
 namespace ProjectY.Frontend.ServerSide
 {
     /// <summary>
-    /// 
+    /// Вход в приложение
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
-        /// 
+        /// Вход в приложение
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
@@ -18,7 +18,7 @@ namespace ProjectY.Frontend.ServerSide
         }
 
         /// <summary>
-        /// 
+        /// Вход в приложение
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>

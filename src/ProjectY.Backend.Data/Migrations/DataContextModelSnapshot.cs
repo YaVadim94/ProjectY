@@ -19,25 +19,41 @@ namespace ProjectY.Backend.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("ProjectY.Backend.Data.Entities.Home", b =>
+            modelBuilder.Entity("ProjectY.Backend.Data.Entities.Attachment", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
+                        .HasComment("Идентификатор записи")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("ContentType")
+                        .HasColumnType("text")
+                        .HasComment("Тип контента файла");
+
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("Дата создания");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("text")
+                        .HasComment("Наименование файла");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint")
+                        .HasComment("Размер файла");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("text")
+                        .HasComment("Ключ объекта");
 
                     b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("integer");
+                        .HasColumnType("timestamp without time zone")
+                        .HasComment("Дата последнего обновления");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Homes");
+                    b.ToTable("attachments");
                 });
 
             modelBuilder.Entity("ProjectY.Backend.Data.Entities.Shoes", b =>

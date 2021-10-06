@@ -56,7 +56,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        ///    Регистрирует экзепляр сервиса в DI контейнере 
+        /// Регистрирует экзепляр сервиса в DI контейнере 
         /// </summary>
         protected void Register<TService>(ServiceLifetime lifetime = ServiceLifetime.Transient)
             where TService : class
@@ -66,7 +66,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        ///    Регистрирует экзепляр сервиса в DI контейнере 
+        /// Регистрирует экзепляр сервиса в DI контейнере 
         /// </summary>
         protected void Register<TService>(TService instance)
             where TService : class
@@ -76,7 +76,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        ///    Регистрирует mock сервис в DI контейнере с использованием AutoFixtures 
+        /// Регистрирует mock сервис в DI контейнере с использованием AutoFixtures 
         /// </summary>
         protected void RegisterFixture<TService>(Action<Mock<TService>> setup)
             where TService : class
@@ -87,7 +87,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        ///    Регистрирует экземпляр mock сервиса в DI контейнере 
+        /// Регистрирует экземпляр mock сервиса в DI контейнере 
         /// </summary>
         protected void RegisterMock<TService>(Mock<TService> instance)
             where TService : class
@@ -97,7 +97,7 @@ namespace ProjectY.Backend.Tests.IntegrationTests.DiTestBase
         }
 
         /// <summary>
-        ///    Регистрирует mock сервис в DI контейнере 
+        /// Регистрирует mock сервис в DI контейнере 
         /// </summary>
         protected void RegisterMock<TService>(Action<Mock<TService>> setupCallback,
             ServiceLifetime lifetime = ServiceLifetime.Transient)

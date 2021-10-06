@@ -10,12 +10,12 @@ namespace ProjectY.Frontend.Application.Services.ShoesService
     /// </summary>
     public class ShoesService : IShoesService
     {
-        private readonly IApiBroker _apiBroker;
+        private readonly IShoesApiBroker _apiBroker;
 
         /// <summary>
         /// Сервис для работы с обувью
         /// </summary>
-        public ShoesService(IApiBroker apiBroker)
+        public ShoesService(IShoesApiBroker apiBroker)
         {
             _apiBroker = apiBroker;
         }

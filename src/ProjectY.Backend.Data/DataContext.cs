@@ -15,11 +15,21 @@ namespace ProjectY.Backend.Data
         {
         }
 
-        /// <summary> Тестовый дата сет </summary>
-        public DbSet<Home> Homes { get; set; }
+        /// <summary>
+        /// Переопределение метода создания моделей
+        /// </summary>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        }
 
         /// <summary> Обувь. </summary>
         public DbSet<Shoes> Shoes { get; set; }
+
+        /// <summary> Приложения(объекты) </summary>
+        public DbSet<Attachment> Attacments { get; set; }
 
     }
 }

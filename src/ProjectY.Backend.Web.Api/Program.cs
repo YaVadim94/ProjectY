@@ -7,7 +7,7 @@ namespace ProjectY.Backend.Web.Api
     /// <summary>
     /// Исходный класс приложения
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// Исходный метод приложения

@@ -5,7 +5,7 @@ namespace ProjectY.Backend.Data.Entities
     /// <summary>
     /// Базовая сущность базы данных
     /// </summary>
-    public abstract class BaseEntity
+    public abstract class EntityBase
     {
         /// <summary> Идентификатор </summary>
         public long Id { get; set; }

@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\ProjectY.Backend.Shared\ProjectY.Backend.Shared.csproj" />
         <ProjectReference Include="..\ProjectY.Backend.Web.Api\ProjectY.Backend.Web.Api.csproj" />
     </ItemGroup>
 

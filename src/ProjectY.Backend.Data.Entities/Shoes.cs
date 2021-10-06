@@ -3,7 +3,7 @@
     /// <summary>
     /// Сущность обувных моделей.
     /// </summary>
-    public class Shoes : BaseEntity
+    public class Shoes : EntityBase
     {
         /// <summary>
         /// Наименование модели.

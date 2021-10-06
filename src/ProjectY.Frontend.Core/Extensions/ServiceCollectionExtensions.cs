@@ -2,6 +2,8 @@
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectY.Frontend.Application.Brokers.Api;
+using ProjectY.Frontend.Application.Brokers.Api.Interfaces;
+using ProjectY.Frontend.Application.Services.FileService;
 using ProjectY.Frontend.Application.Services.ShoesService;
 
 namespace ProjectY.Frontend.Extensions
@@ -17,6 +19,7 @@ namespace ProjectY.Frontend.Extensions
         public static IServiceCollection AddCustomServices(this IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<IShoesService, ShoesService>();
+            serviceDescriptors.AddScoped<IFileService, FileService>();
 
             return serviceDescriptors;
         }
@@ -27,7 +30,9 @@ namespace ProjectY.Frontend.Extensions
         public static IServiceCollection ConfigureBrokers(this IServiceCollection serviceDescriptors, string baseAddress)
         {
             serviceDescriptors.AddScoped(sp => new HttpClient { BaseAddress = new Uri(baseAddress) });
-            serviceDescriptors.AddScoped<IApiBroker, ApiBroker>();
+
+            serviceDescriptors.AddScoped<IShoesApiBroker, ShoesApiBroker>();
+            serviceDescriptors.AddScoped<IAttachmentApiBroker, AttachmentApiBroker>();
 
             return serviceDescriptors;
         }

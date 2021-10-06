@@ -14,7 +14,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
     /// <summary>
     /// Контроллер для работы с обувью.
     /// </summary>
-    public class ShoesController : BaseApiController
+    public class ShoesController : ApiControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;

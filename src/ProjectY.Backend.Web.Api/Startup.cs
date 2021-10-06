@@ -1,5 +1,4 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
@@ -9,9 +8,9 @@ using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
 using ProjectY.Backend.Web.Api.Filters;
+using ProjectY.Backend.Web.Api.Middleware;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using ExceptionHandler = ProjectY.Backend.Web.Api.Middleware.ExceptionHandler;
 
 namespace ProjectY.Backend.Web.Api
 {
@@ -32,7 +31,7 @@ namespace ProjectY.Backend.Web.Api
             _hostEnvironment = hostEnvironment;
 
             Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(configuration, sectionName: "Serilog")
+                .ReadFrom.Configuration(configuration, "Serilog")
                 .CreateLogger();
         }
 
@@ -70,8 +69,8 @@ namespace ProjectY.Backend.Web.Api
                 })
                 .AddAutoMapper()
                 .AddMediatR()
-                .AddFluentValidation();
-
+                .AddFluentValidation()
+                .AddObjectStorage(_configuration);
 
             if (!_hostEnvironment.IsProduction())
             {
