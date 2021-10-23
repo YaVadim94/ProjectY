@@ -5,16 +5,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+        <PackageReference Include="Ardalis.Specification" Version="5.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ProjectY.Backend.Data.Entities\ProjectY.Backend.Data.Entities.csproj"/>
+        <ProjectReference Include="..\ProjectY.Backend.Application.Core\ProjectY.Backend.Application.Core.csproj" />
+        <ProjectReference Include="..\ProjectY.Backend.Data.Entities\ProjectY.Backend.Data.Entities.csproj" />
     </ItemGroup>
 
 </Project>

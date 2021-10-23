@@ -65,7 +65,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<ShoesContracts>> GetAllShoes([FromServices] ODataQueryOptions<ShoesDto> options)
         {
-            var query = new GetAllShoesQuery(options);
+            var query = new GetAllShoesQuery();
 
             var result = await _mediator.Send(query);
 

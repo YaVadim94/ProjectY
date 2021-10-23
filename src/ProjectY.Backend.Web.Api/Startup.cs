@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.OData;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectY.Backend.Application.Core.Interfaces;
 using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Extensions;
 using ProjectY.Backend.Web.Api.Extensions;
@@ -15,7 +16,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 namespace ProjectY.Backend.Web.Api
 {
     /// <summary>
-    /// Класс для конфигурации веб приложения
+    /// Класс для конфигурации веб приложения.
     /// </summary>
     public class Startup
     {
@@ -23,7 +24,7 @@ namespace ProjectY.Backend.Web.Api
         private readonly IHostEnvironment _hostEnvironment;
 
         /// <summary>
-        /// Конструктор класса для конфигурации веб приложения
+        /// Конструктор класса для конфигурации веб приложения.
         /// </summary>
         public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
@@ -36,7 +37,7 @@ namespace ProjectY.Backend.Web.Api
         }
 
         /// <summary>
-        /// Сидирование DI
+        /// Сидирование DI.
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
@@ -63,6 +64,7 @@ namespace ProjectY.Backend.Web.Api
                             .AllowAnyHeader()
                             .AllowCredentials());
                 })
+                .AddScoped(typeof(IRepository<>), typeof(EFRepository<>))
                 .AddRepositoryContext(opt =>
                 {
                     opt.ConnectionString = _configuration.GetConnectionString("Postgres");
@@ -79,7 +81,7 @@ namespace ProjectY.Backend.Web.Api
         }
 
         /// <summary>
-        /// Настройка дата пайплайна
+        /// Настройка дата пайплайна.
         /// </summary>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

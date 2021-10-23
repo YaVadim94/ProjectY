@@ -1,41 +1,41 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using ProjectY.Backend.Application.Core.Interfaces;
+using ProjectY.Backend.Application.Core.Specifications.Shoes;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
-using ProjectY.Backend.Data;
+using ProjectY.Backend.Data.Entities;
 
 namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandlers
 {
     /// <summary>
-    /// Класс для обработки запроса на получение всех моделей обуви.
+    /// Класс для обработки запроса на получение модели обуви по ее идентификатору.
     /// </summary>
-    public class GetShoesByIdHandler : IRequestHandler<GetShoesByIdQuery, ShoesDto>
+    public class GetShoesByIdHandler : BaseRequestHandler<GetShoesByIdQuery, ShoesDto>
     {
-        private readonly DataContext _context;
-        private readonly IMapper _mapper;
+        private readonly IRepository<Shoes> _repository;
 
         /// <summary>
         /// Конструктор класса для обработки запроса на получение всех моделей обуви.
         /// </summary>
-        public GetShoesByIdHandler(DataContext context, IMapper mapper)
+        public GetShoesByIdHandler(IMapper mapper, ILogger<GetShoesByIdHandler> logger, IRepository<Shoes> repository)
+            : base(mapper, logger)
         {
-            _context = context;
-            _mapper = mapper;
+            _repository = repository;
         }
 
         /// <summary>
         /// Обрабочик запроса на получение всех моделей обуви.
         /// </summary>
-        public async Task<ShoesDto> Handle(GetShoesByIdQuery request, CancellationToken cancellationToken)
+        protected override async Task<ShoesDto> Execute(GetShoesByIdQuery query, CancellationToken cancellationToken = default)
         {
-            var shoes = await _context.Shoes
-                .AsNoTracking()
-                .SingleOrDefaultAsync(s => s.Id == request.ShoesId, cancellationToken);
+            var spec = new ShoesCrtiteriaSpec(query.ShoesId);
 
-            return _mapper.Map<ShoesDto>(shoes);
+            var shoes = await _repository.First(spec, cancellationToken);
+
+            return Mapper.Map<ShoesDto>(shoes);
         }
     }
 }
