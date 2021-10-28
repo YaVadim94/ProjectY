@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
@@ -30,80 +29,76 @@ namespace ProjectY.Backend.Data
             _specificationEvaluator = specificationEvaluator;
         }
 
-        public async Task<T> GetById(int id, CancellationToken cancellationToken = default)
+        public async Task<T> GetById(long id)
         {
             var keyValues = new object[] { id };
-            
-            return await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+
+            return await _context.Set<T>().FindAsync(keyValues);
         }
 
-        public async Task<List<T>> ListAll(CancellationToken cancellationToken = default)
-        {
-            return await _context.Set<T>().ToListAsync(cancellationToken: cancellationToken);
-        }
-        
-        public async Task<List<T>> List(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        public async Task<List<T>> List(ISpecification<T> spec)
         {
             var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.ToListAsync(cancellationToken);
+
+            return await specificationResult.ToListAsync();
         }
-        
-        public async Task<List<TResult>> List<TResult>(ISpecification<T, TResult> spec,
-            CancellationToken cancellationToken = default)
+
+        public async Task<int> Count(ISpecification<T> spec)
         {
             var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.ToListAsync(cancellationToken);
+
+            return await specificationResult.CountAsync();
         }
-        
-        public async Task<int> Count(ISpecification<T> spec, CancellationToken cancellationToken = default)
+
+        public async Task Add(T entity)
         {
-            var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.CountAsync(cancellationToken);
+            await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<T> Add(T entity, CancellationToken cancellationToken = default)
-        {
-            await _context.Set<T>().AddAsync(entity, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return entity;
-        }
-
-        public async Task Update(T entity, CancellationToken cancellationToken = default)
+        public async Task Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(T entity, CancellationToken cancellationToken = default)
+        public async Task Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync(cancellationToken);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<T> FirstOrDefault(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        public async Task<T> FirstOrDefault(ISpecification<T> spec)
         {
             var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.FirstOrDefaultAsync(cancellationToken);
-        }
-        
-        public async Task<TResult> FirstOrDefault<TResult>(ISpecification<T, TResult> spec,
-            CancellationToken cancellationToken = default)
-        {
-            var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.FirstOrDefaultAsync(cancellationToken);
+
+            return await specificationResult.FirstOrDefaultAsync();
         }
 
-        public async Task<T> First(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        public async Task<T> First(ISpecification<T> spec)
         {
             var specificationResult = ApplySpecification(spec);
-            
-            return await specificationResult.FirstAsync(cancellationToken);
+
+            return await specificationResult.FirstAsync();
+        }
+
+        public async Task<List<T>> ListAll()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<List<TResult>> List<TResult>(ISpecification<T, TResult> spec)
+        {
+            var specificationResult = ApplySpecification(spec);
+
+            return await specificationResult.ToListAsync();
+        }
+
+        public async Task<TResult> FirstOrDefault<TResult>(ISpecification<T, TResult> spec)
+        {
+            var specificationResult = ApplySpecification(spec);
+
+            return await specificationResult.FirstOrDefaultAsync();
         }
 
         #region Private methods
@@ -117,7 +112,7 @@ namespace ProjectY.Backend.Data
         {
             return _specificationEvaluator.GetQuery(_context.Set<T>().AsQueryable(), spec);
         }
-        
+
         /// <summary>
         /// Примменить спецификацию c функцией-селектором.
         /// </summary>

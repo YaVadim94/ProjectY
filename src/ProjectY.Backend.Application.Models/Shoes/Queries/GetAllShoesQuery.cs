@@ -9,17 +9,5 @@ namespace ProjectY.Backend.Application.Models.Shoes.Queries
     /// </summary>
     public class GetAllShoesQuery : IRequest<IEnumerable<ShoesDto>>
     {
-        // /// <summary>
-        // /// класса запроса на получение всех моделей обуви.
-        // /// </summary>
-        // public GetAllShoesQuery(ODataQueryOptions<ShoesDto> oDataQueryOptions)
-        // {
-        //     ODataOptions = oDataQueryOptions;
-        // }
-        //
-        // /// <summary>
-        // /// Настройки Одаты.
-        // /// </summary>
-        // public ODataQueryOptions<ShoesDto> ODataOptions { get; set; }
     }
 }

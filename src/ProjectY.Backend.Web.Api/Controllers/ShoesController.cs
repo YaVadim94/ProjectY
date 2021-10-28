@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Query;
-using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
 using ProjectY.Shared.Contracts.ShoesController;
@@ -28,19 +26,17 @@ namespace ProjectY.Backend.Web.Api.Controllers
             _mapper = mapper;
         }
 
-
         /// <summary>
         /// Создать обувь.
         /// </summary>
-        /// <returns>Контракт для обуви</returns>
         [HttpPost]
-        public async Task<ShoesContracts> CreateShoes(CreateShoesContract request)
+        public async Task<IActionResult> CreateShoes(CreateShoesContract request)
         {
-            var createShoesCommand = _mapper.Map<CreateShoesCommand>(request);
+            var command = _mapper.Map<CreateShoesCommand>(request);
 
-            var result = await _mediator.Send(createShoesCommand);
+            var result = await _mediator.Send(command);
 
-            return _mapper.Map<ShoesContracts>(result);
+            return Ok();
         }
 
         /// <summary>
@@ -48,7 +44,6 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// </summary>
         /// <returns>Контракт для обуви</returns>
         [HttpGet("{id}")]
-
         public async Task<ShoesContracts> GetShoesById(long id)
         {
             var query = new GetShoesByIdQuery(id);
@@ -63,7 +58,7 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// </summary>
         /// <returns>Список контрактов обуви</returns>
         [HttpGet]
-        public async Task<IEnumerable<ShoesContracts>> GetAllShoes([FromServices] ODataQueryOptions<ShoesDto> options)
+        public async Task<IEnumerable<ShoesContracts>> GetAllShoes()
         {
             var query = new GetAllShoesQuery();
 
@@ -71,6 +66,5 @@ namespace ProjectY.Backend.Web.Api.Controllers
 
             return _mapper.Map<IEnumerable<ShoesContracts>>(result);
         }
-
     }
 }

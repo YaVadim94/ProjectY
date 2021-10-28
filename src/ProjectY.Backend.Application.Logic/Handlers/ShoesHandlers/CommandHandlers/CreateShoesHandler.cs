@@ -1,9 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.Extensions.Logging;
+using MediatR;
 using ProjectY.Backend.Application.Core.Interfaces;
-using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
 using ProjectY.Backend.Data.Entities;
 
@@ -12,29 +11,33 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.CommandHandl
     /// <summary>
     /// Класс для обработки команды на создание модели обуви.
     /// </summary>
-    public class CreateShoesHandler : BaseRequestHandler<CreateShoesCommand, ShoesDto>
+    public class CreateShoesHandler : IRequestHandler<CreateShoesCommand>
     {
+        private readonly IMapper _mapper;
         private readonly IRepository<Shoes> _repository;
 
         /// <summary>
         /// Конструктор класса для обработки команды на созадние модели обуви.
         /// </summary>
-        public CreateShoesHandler(IMapper mapper, ILogger<CreateShoesHandler> logger, IRepository<Shoes> repository)
-            : base(mapper, logger)
+        public CreateShoesHandler(IMapper mapper, IRepository<Shoes> repository)
         {
+            _mapper = mapper;
             _repository = repository;
         }
 
         /// <summary>
-        /// Исполнение команды на созадние модели обуви.
+        /// Метод, вызываемый для обработки запроса.
         /// </summary>
-        protected override async Task<ShoesDto> Execute(CreateShoesCommand command, CancellationToken cancellationToken = default)
+        /// <param name="request">Запрос</param>
+        /// <param name="cancellationToken">Токен отмены</param>
+        /// <returns>Unit as void</returns>
+        public async Task<Unit> Handle(CreateShoesCommand request, CancellationToken cancellationToken)
         {
-            var shoes = Mapper.Map<Shoes>(command);
+            var shoes = _mapper.Map<Shoes>(request);
 
-            await _repository.Add(shoes, cancellationToken);
+            await _repository.Add(shoes);
 
-            return Mapper.Map<ShoesDto>(shoes);
+            return new Unit();
         }
     }
 }

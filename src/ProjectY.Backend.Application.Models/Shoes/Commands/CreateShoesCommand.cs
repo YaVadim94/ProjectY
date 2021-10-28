@@ -3,9 +3,9 @@
 namespace ProjectY.Backend.Application.Models.Shoes.Commands
 {
     /// <summary>
-    /// Модель для создания обуви.
+    /// Команда для создания обуви.
     /// </summary>
-    public class CreateShoesCommand : IRequest<ShoesDto>
+    public class CreateShoesCommand : IRequest
     {
         /// <summary>
         /// Наименование модели.
