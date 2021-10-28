@@ -22,21 +22,21 @@ namespace ProjectY.Backend.Application.Core.Interfaces
         /// Получить все сущности.
         /// </summary>
         /// <returns>Найденные сущности</returns>
-        Task<List<TEntity>> ListAll();
+        Task<IEnumerable<TEntity>> ListAll();
 
         /// <summary>
         /// Получить сущности по спецификации.
         /// </summary>
         /// <param name="spec">Спецификация</param>
         /// <returns>Найденные сущности</returns>
-        Task<List<TEntity>> List(ISpecification<TEntity> spec);
+        Task<IEnumerable<TEntity>> List(ISpecification<TEntity> spec);
 
         /// <summary>
         /// Получить сущности по спецификации, которая имеет функцию-селектор.
         /// </summary>
         /// <param name="spec">Спецификация</param>
         /// <returns>Найденные сущности как проекции функции-селектора</returns>
-        Task<List<TResult>> List<TResult>(ISpecification<TEntity, TResult> spec);
+        Task<IEnumerable<TResult>> List<TResult>(ISpecification<TEntity, TResult> spec);
 
         /// <summary>
         /// Добавить новую сущность.

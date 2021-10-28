@@ -36,7 +36,7 @@ namespace ProjectY.Backend.Data
             return await _context.Set<T>().FindAsync(keyValues);
         }
 
-        public async Task<List<T>> List(ISpecification<T> spec)
+        public async Task<IEnumerable<T>> List(ISpecification<T> spec)
         {
             var specificationResult = ApplySpecification(spec);
 
@@ -82,12 +82,12 @@ namespace ProjectY.Backend.Data
             return await specificationResult.FirstAsync();
         }
 
-        public async Task<List<T>> ListAll()
+        public async Task<IEnumerable<T>> ListAll()
         {
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<List<TResult>> List<TResult>(ISpecification<T, TResult> spec)
+        public async Task<IEnumerable<TResult>> List<TResult>(ISpecification<T, TResult> spec)
         {
             var specificationResult = ApplySpecification(spec);
 
