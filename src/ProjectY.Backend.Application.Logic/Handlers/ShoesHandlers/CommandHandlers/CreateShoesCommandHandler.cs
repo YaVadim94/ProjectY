@@ -11,7 +11,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.CommandHandl
     /// <summary>
     /// Класс для обработки команды на создание модели обуви.
     /// </summary>
-    public class CreateShoesHandler : IRequestHandler<CreateShoesCommand>
+    public class CreateShoesCommandHandler : IRequestHandler<CreateShoesCommand>
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Shoes> _repository;
@@ -19,7 +19,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.CommandHandl
         /// <summary>
         /// Конструктор класса для обработки команды на созадние модели обуви.
         /// </summary>
-        public CreateShoesHandler(IMapper mapper, IRepository<Shoes> repository)
+        public CreateShoesCommandHandler(IMapper mapper, IRepository<Shoes> repository)
         {
             _mapper = mapper;
             _repository = repository;

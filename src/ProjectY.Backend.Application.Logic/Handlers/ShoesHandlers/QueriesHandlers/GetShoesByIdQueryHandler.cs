@@ -14,7 +14,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandl
     /// <summary>
     /// Класс для обработки запроса на получение модели обуви по ее идентификатору.
     /// </summary>
-    public class GetShoesByIdHandler : IRequestHandler<GetShoesByIdQuery, ShoesDto>
+    public class GetShoesByIdQueryHandler : IRequestHandler<GetShoesByIdQuery, ShoesDto>
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Shoes> _repository;
@@ -22,7 +22,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandl
         /// <summary>
         /// Конструктор класса для обработки запроса на получение всех моделей обуви.
         /// </summary>
-        public GetShoesByIdHandler(IMapper mapper, IRepository<Shoes> repository)
+        public GetShoesByIdQueryHandler(IMapper mapper, IRepository<Shoes> repository)
         {
             _mapper = mapper;
             _repository = repository;
