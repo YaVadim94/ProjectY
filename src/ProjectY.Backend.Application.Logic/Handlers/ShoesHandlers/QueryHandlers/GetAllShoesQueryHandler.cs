@@ -2,30 +2,27 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using ProjectY.Backend.Application.Core.Extensions;
 using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Queries;
-using ProjectY.Backend.Data;
+using ProjectY.Backend.Data.Repositories.Query;
 
-namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandlers
+namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueryHandlers
 {
     /// <summary>
     /// Класс для обработки запроса на получение всех моделей обуви.
     /// </summary>
     public class GetAllShoesQueryHandler : IRequestHandler<GetAllShoesQuery, IEnumerable<ShoesDto>>
     {
-        private readonly DataContext _context;
+        private readonly IShoesQueryRepository _repository;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// Конструктор класса для обработки запроса на получение всех моделей обуви.
         /// </summary>
-        public GetAllShoesQueryHandler(DataContext context, IMapper mapper)
+        public GetAllShoesQueryHandler(IShoesQueryRepository repository, IMapper mapper)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
 
@@ -34,11 +31,7 @@ namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.QueriesHandl
         /// </summary>
         public async Task<IEnumerable<ShoesDto>> Handle(GetAllShoesQuery request, CancellationToken cancellationToken)
         {
-            var allShoes = await _context.Shoes
-                .AsNoTracking()
-                .ProjectTo<ShoesDto>(_mapper.ConfigurationProvider)
-                .ApplyOptions(request.ODataOptions)
-                .ToListAsync(cancellationToken);
+            var allShoes = await _repository.GetAll();
 
             return _mapper.Map<IEnumerable<ShoesDto>>(allShoes);
         }

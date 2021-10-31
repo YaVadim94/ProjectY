@@ -67,6 +67,7 @@ namespace ProjectY.Backend.Web.Api
                 {
                     opt.ConnectionString = _configuration.GetConnectionString("Postgres");
                 })
+                .AddRepositories()
                 .AddAutoMapper()
                 .AddMediatR()
                 .AddFluentValidation()

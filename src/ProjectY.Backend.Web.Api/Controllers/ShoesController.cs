@@ -32,15 +32,12 @@ namespace ProjectY.Backend.Web.Api.Controllers
         /// <summary>
         /// Создать обувь.
         /// </summary>
-        /// <returns>Контракт для обуви</returns>
         [HttpPost]
-        public async Task<ShoesContracts> CreateShoes(CreateShoesContract request)
+        public async Task CreateShoes(CreateShoesContract request)
         {
             var createShoesCommand = _mapper.Map<CreateShoesCommand>(request);
 
-            var result = await _mediator.Send(createShoesCommand);
-
-            return _mapper.Map<ShoesContracts>(result);
+            await _mediator.Send(createShoesCommand);
         }
 
         /// <summary>

@@ -2,41 +2,37 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using ProjectY.Backend.Application.Models.Shoes;
 using ProjectY.Backend.Application.Models.Shoes.Commands;
-using ProjectY.Backend.Data;
 using ProjectY.Backend.Data.Entities;
+using ProjectY.Backend.Data.Repositories.Command;
 
 namespace ProjectY.Backend.Application.Logic.Handlers.ShoesHandlers.CommandHandlers
 {
     /// <summary>
     /// Класс для обработки команды на созадние модели обуви.
     /// </summary>
-    public class CreateShoesHandler : IRequestHandler<CreateShoesCommand, ShoesDto>
+    public class CreateShoesHandler : AsyncRequestHandler<CreateShoesCommand>
     {
-        private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private readonly IShoesCommandRepository _repository;
 
         /// <summary>
         /// Конструктор класса для обработки команды на созадние модели обуви.
         /// </summary>
-        public CreateShoesHandler(DataContext context, IMapper mapper)
+        public CreateShoesHandler(IShoesCommandRepository repository, IMapper mapper)
         {
-            _context = context;
+            _repository = repository;
             _mapper = mapper;
         }
 
         /// <summary>
         /// Обработчик команды на созадние модели обуви.
         /// </summary>
-        public async Task<ShoesDto> Handle(CreateShoesCommand request, CancellationToken cancellationToken)
+        protected override async Task Handle(CreateShoesCommand request, CancellationToken cancellationToken)
         {
             var createdShoes = _mapper.Map<Shoes>(request);
 
-            await _context.AddAsync(createdShoes, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-
-            return _mapper.Map<ShoesDto>(createdShoes);
+            await _repository.Add(createdShoes);
         }
     }
 }

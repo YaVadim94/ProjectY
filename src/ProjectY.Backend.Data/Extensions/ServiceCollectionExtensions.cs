@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectY.Backend.Data.Options;
+using ProjectY.Backend.Data.Repositories.Command;
+using ProjectY.Backend.Data.Repositories.Command.Base;
+using ProjectY.Backend.Data.Repositories.Query;
+using ProjectY.Backend.Data.Repositories.Query.Base;
 
 namespace ProjectY.Backend.Data.Extensions
 {
@@ -26,6 +30,17 @@ namespace ProjectY.Backend.Data.Extensions
                     .UseNpgsql(options.ConnectionString)
                     .EnableSensitiveDataLogging();
             });
+            return services;
+        }
+
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(IQueryRepository<>), typeof(QueryRepository<>));
+            services.AddScoped<IShoesQueryRepository, ShoesQueryRepository>();
+            
+            services.AddScoped(typeof(ICommandRepository<>), typeof(CommandRepository<>));
+            services.AddScoped<IShoesCommandRepository, ShoesCommandRepository>();
+
             return services;
         }
 
